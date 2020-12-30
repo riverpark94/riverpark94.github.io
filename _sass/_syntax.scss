@@ -1,0 +1,78 @@
+/*
+ * GitHub style for Pygments syntax highlighter, for use with Jekyll
+ * Courtesy of GitHub.com
+ */
+
+.highlight,pre.highlight { background: #1e1e1e; color: #abb2bf; }
+.highlight pre { background: #1e1e1e; } 
+.highlight .hll { background: #1e1e1e; }
+
+.highlight .bp { color: #e5c07b; font-weight: normal; }
+.highlight .c { color: #5c6370; font-style: italic; }
+.highlight .c1 { color: #5c6370; font-style: italic; }
+.highlight .cm { color: #5c6370; font-style: italic; }
+.highlight .cp { color: #5c6370; font-style: bold; }
+.highlight .cs { color: #5c6370; font-style: bold; font-style: italic; }
+.highlight .err { color: #960050; background-color: #1e0010; }
+.highlight .gc { color: #999; background-color: #EAF2F5; }
+.highlight .gd .x { color: #000000; background-color: #ffaaaa; }
+.highlight .gd { color: #f92672; background-color: #ffdddd; }
+.highlight .ge { font-style: italic; font-weight: normal; }
+.highlight .gh { color: #999999; font-weight: normal; }
+.highlight .gi .x { color: #000000; background-color: #aaffaa; }
+.highlight .gi { color: #a6e22e; background-color: #ddffdd; }
+.highlight .go { color: #888888; font-weight: normal; }
+.highlight .gp { color: #555555; font-weight: normal; }
+.highlight .gr { color: #aa0000; font-weight: normal; }
+.highlight .gs { font-weight: bold; }
+.highlight .gt { color: #aa0000; font-weight: normal; }
+.highlight .gu { color: #75715e; font-weight: bold; }
+.highlight .il { color: #d19a66; font-weight: normal; }
+.highlight .k { color: #c678dd; font-weight: bold; }
+.highlight .kc { color: #82aaff; font-weight: bold; }
+.highlight .kd { color: #82aaff; font-weight: bold; }
+.highlight .kn { color: #82aaff; font-weight: bold; }
+.highlight .kp { color: #82aaff; font-weight: bold; }
+.highlight .kr { color: #82aaff; font-weight: bold; }
+.highlight .kt { color: #82aaff; font-weight: bold; }
+.highlight .l { color: #98c379; font-weight: normal; }
+.highlight .ld { color: #98c379; font-weight: normal; }
+.highlight .m { color: #d19a66; font-weight: normal; }
+.highlight .mf { color: #d19a66; font-weight: normal; }
+.highlight .mh { color: #d19a66; font-weight: normal; }
+.highlight .mi { color: #b5cea8; font-weight: normal; }
+.highlight .mo { color: #d19a66; font-weight: normal; }
+.highlight .n { color: #c678dd; font-weight: normal; }
+.highlight .na { color: #d19a66; font-weight: normal; }
+.highlight .nb { color: #e5c07b; font-weight: normal; }
+.highlight .nc { color: #e5c07b; font-weight: bold; }
+.highlight .nd { color: #e5c07b; font-weight: normal; }
+.highlight .ne { color: #abb2bf; font-weight: bold; }
+.highlight .nf { color: #82aaff; font-weight: bold; }
+.highlight .ni { color: #e5c07b; font-weight: normal; }
+.highlight .nl { color: #e5c07b; font-weight: normal; }
+.highlight .nn { color: #e5c07b; font-weight: normal; }
+.highlight .no { color:  #e5c07b; font-weight: normal; }
+.highlight .nt { color: #e06c75; font-weight: normal; }
+.highlight .nv { color: #e5c07b; font-weight: normal; }
+.highlight .nx { color: #9cdcda; font-weight: normal; }
+.highlight .o { color: #dccd79; font-weight: bold; }
+.highlight .ow { font-weight: bold; }
+.highlight .p { color: #d4d4d4; font-weight: normal; }
+.highlight .py { color: #e5c07b}
+.highlight .s { color: #b5cea8; font-weight: normal; }
+.highlight .s1 { color: #b5cea8; font-weight: normal; }
+.highlight .s2 { color: #b5cea8; font-weight: normal; }
+.highlight .sb { color: #b5cea8; font-weight: normal; }
+.highlight .sc { color: #b5cea8; font-weight: normal; }
+.highlight .sd { color: #b5cea8; font-weight: normal; }
+.highlight .se { color: #b5cea8; font-weight: normal; }
+.highlight .sh { color: #b5cea8; font-weight: normal; }
+.highlight .si { color: #b5cea8; font-weight: normal; }
+.highlight .sr { color: #56b6c2; font-weight: normal; }
+.highlight .ss { color: #56b6c2; font-weight: normal; }
+.highlight .sx { color: #98c379; font-weight: normal; }
+.highlight .vc { color: #e5c07b; font-weight: normal; }
+.highlight .vg { color: #e5c07b; font-weight: normal; }
+.highlight .vi { color: #e06c75; font-weight: normal; }
+.highlight .w { color: #f8f8f2; font-weight: normal; }

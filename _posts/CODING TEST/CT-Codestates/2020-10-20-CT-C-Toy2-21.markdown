@@ -1,0 +1,211 @@
+---
+layout: post
+title: '[JS] Toy2 21. rotateMatrix'
+date: 2020-10-20 22:27:44 +0900
+subtitle: 'rotateMatrix'
+categories: CODING-TEST
+tags: Codestates
+comments: true!
+---
+
+> NxN 매트릭스를 90도로 회전시키는 함수를 작성하세요.
+
+<br>
+
+[Codestates](https://codestates.com/)의 **[소프트웨어 엔지니어링](https://codestates.com/course/software-engineering)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+**Your output should look something like:**
+
+매트릭스는 2차원 배열(배열의 배열)로 표현됩니다.
+
+```js
+1x1 매트릭스 예시:
+  [ [1] ]
+
+2x2 매트릭스 예시:
+  [ [1,2],
+    [3,4] ]
+```
+
+참고: 
+
+수학, 그리고 컴퓨터 과학에서 행렬은 "행"을 뜻하는 m과 "열"을 뜻하는 n의 곱으로 설명됩니다. 
+
+따라서 행렬의 [i](https://urclass.codestates.com/codeproblem/1cfb56ab-cee1-4474-9337-aa147a70fbc8) 주소는 "세로축에서 i만큼 아래에 있고 가로축에서 j만큼 옆에 있다." 를 뜻합니다. 
+
+이 방식은 일반적으로 배열이 코드에서 처리되는 방식과 일치하지만, 기하학이나 컴퓨터 그래픽에서는 (x, y) 형식의 좌표가 "가로축에서 x만큼 옆에 있고 세로축에서 y만큼 아래에 있다"를 뜻합니다.
+
+```js
+4x4 매트릭스 회전의 예시:
+
+const matrix = [
+[1,2,3,4],
+[5,6,7,8],
+[9,'A','B','C'],
+['D','E','F','G']
+];
+matrix[0][0]; // 1
+matrix[3][2]; // 'F'
+
+const rotatedMatrix = rotateMatrix(matrix); // Rotate 90 degrees clockwise
+// rotatedMatrix is:
+[ ['D',9,5,1],
+['E','A',6,2],
+['F','B',7,3],
+['G','C',8,4]
+]
+rotatedMatrix[0][0]; // 'D'
+rotatedMatrix[3][2]; // 8
+```
+
+**Advanced:**
+
+- 이 함수가 직사각형 매트릭스에서도 작동하도록 구현하세요. (NxN이 아닌 MxN)
+- 이 함수가 두 번째 전달인자로 회전의 방향을 달리할 수 있도록 구현하세요. (1 = 시계 방향, -1 = 반시계 방향)
+
+<br>
+
+***
+
+# 2. Pseudocode
+
+```js
+const rotateMatrix = function (matrix, direction) {
+  // TODO: 여기에 코드를 작성합니다.
+};
+```
+###  2020-10-20 (9:10~10:00)
+
+* **NxN 매트릭스**
+
+   1. \[y][0] => 무조건 \[0][X]로 배치시키기
+
+   2. for문은 x를 먼저 도는 것을, 그리고 그 안에 y를 도는 for문을 중첩시키기
+
+        2.1 근데 y는 끝에서부터 돌아야 함. 
+
+   3. 새 어레이에 넣어서 다시 새 어레이(resultMatrix)에 넣고, 그것을 N번 반복함.
+
+   4. 모든 매트릭스가 들어간 결과물을 퉤
+
+
+
+* **Advanced**
+
+   1. \[y][0] => 무조건 \[0][X]로 배치시키기
+
+   2. for문은 x를 먼저 도는 것을, 그리고 그 안에 y를 도는 for문을 중첩시키기
+
+      2.1 근데 y는 끝에서부터 돌아야 함. 
+
+      **2.2 그리고 x는 y의 길이와는 다름.**
+
+   3. 새 어레이에 넣어서 다시 새 어레이(resultMatrix)에 넣고, 그것을 N번 반복함.
+   
+   4. 모든 매트릭스가 들어간 결과물을 퉤
+
+
+<br>
+
+***
+
+## 3. My solution
+
+### 2020-10-20 (9:10~10:00)
+
+* **NxN 매트릭스**
+
+```js
+const rotateMatrix = function (matrix, direction) {
+    
+  let resultMatrix = []; // 리턴될 어레이
+
+  if (matrix.length === 0) {
+    return [];
+  }
+
+  let startY = matrix[0].length -1;
+  
+  function returnMatrix (matrix) {
+    for (let x = 0; x < matrix.length; x ++) {
+      let xMatrix = []; //
+      for(let y = startY; y >= 0; y --) {
+        xMatrix.push(matrix[y][x])
+      }
+      resultMatrix.push(xMatrix);
+    }
+  }
+
+  returnMatrix(matrix)
+
+  return resultMatrix;
+};
+
+```
+
+* **Advanced**
+
+```js
+const rotateMatrix = function (matrix, direction) {
+    
+  let resultMatrix = []; // 리턴될 어레이
+
+  if (matrix.length === 0) {
+    return [];
+  }
+
+  let startY = matrix[0].length -1;
+
+  if(direction < 0) {
+    for (let x = matrix.length -1; x >= 0; x --) {
+      let xMatrix = []; //
+      for(let y = 0; y <= startY; y ++) {
+        xMatrix.push(matrix[y][x])
+      }
+      resultMatrix.push(xMatrix);
+    }
+  }
+  else {
+    for (let x = 0; x < matrix.length; x ++) {
+      let xMatrix = []; //
+      for(let y = startY; y >= 0; y --) {
+        xMatrix.push(matrix[y][x])
+      }
+      resultMatrix.push(xMatrix);
+    }
+  }
+
+  return resultMatrix;
+};
+
+
+```
+
+<br>
+
+***
+
+## 4. Reference Code
+
+```js
+
+```
+
+<br>
+
+***
+
+# 마치며
+
+### 2020-10-20 (9:10~10:00)
+
+11개 중 9개를 통과했다. Advanced도 하나만 통과했다. MxN은 어떻게 해야할지 몰라서 시간이 된다면 다시 수도코드를 정리해가면서 해봐야겠다.
+
+뭔가 N-Queens를 떠올리면서 했는데, 처음에는 막막해서 노트에 적어가면서 했다. 아마 노트를 꺼낸거는 처음 해봤는데... 언제쯤 전부 통과할까?
+
+
