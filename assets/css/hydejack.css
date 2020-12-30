@@ -60,6 +60,8 @@
 
 .markdown-body p {
   word-break: break-word;
+  margin-bottom: 8px;
+  font-size: .9em !important
 }
 
 .markdown-body a {
