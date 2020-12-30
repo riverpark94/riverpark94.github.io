@@ -260,13 +260,13 @@ input[type="checkbox"]:checked ~ ul{
   padding: 1em;
   font-size: .75em !important;
   text-indent: initial;
-  background-color: #fbf2e6;
+  background-color: #dbc7a1;
   border-radius: 4px;
 }
 
 .markdown-body .notice--warning a {
     color: #a43838;
-    background-color: #fbf2e6;
+    background-color: #dbc7a1;
     text-decoration: none;
 }
 
