@@ -5,9 +5,11 @@
 
 .message {
   margin-bottom: 1rem;
-  padding: 1rem;
-  color: $gray-text;
-  background-color: $gray-bg;
+  padding: 1em;
+  font-size: .9em !important;
+  text-indent: initial;
+  background-color: #dbc7a1;
+  border-radius: 8px;
   margin-left: -1rem;
   margin-right: -1rem;
 }
