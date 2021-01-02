@@ -133,7 +133,7 @@ HTML은 tag들로 구성되어있다. 이 tag라는 것은 부등호(<>)로 묶�
 html 문서의 특징 중에 하나는 링크를 삽입해, 삽한 부분을 클릭하면 링크로 이동하는 것이다. `<a>` 태그도 href라는 키값에 킹크라는 value 값을 넣으면 링크가 삽입되며, `<a>`와 `</a>`사이에 글씨를 바꿔주면 링크가 담기는 글도 바뀌게 된다.
 
 링크가 삽입된 글을 누르면 그냥 해당 창에서 바뀌는데 여러분이 새창과 새탭으로 하고싶으면 href 키 값 뒤에 `target=”_blank”`를 넣어주면 된다. (”\_blank”는 새 탭으로 열어주는 것이다.)
- 
+
 ## 2.4  ul, li: 리스트
 
 ```html
@@ -392,6 +392,6 @@ HTML로 웹 앱의 구조잡기에서 div 태그, li 태그, ul 태그 등으로
 
 ## 5.2 selector 방식
 
-![title](/assets/img/JS-TIL/TIL7/2020-05-20-JS-TIL7-25.png){: width="70%" height="70%"}{: .center}
+![title](/assets/img/JS-TIL/TIL7/2020-05-20-JS-TIL7-24.png){: width="70%" height="70%"}{: .center}
 
 selector방식은 id 와 class를 명시적으로 표시해준 HTML 태그 방식과 모양만 다르다. 이것을 사용하는 이유는 더 쉽기 때문이다. id는 #을 앞에 붙여주고, class는 .(Dot)을 붙여준다.

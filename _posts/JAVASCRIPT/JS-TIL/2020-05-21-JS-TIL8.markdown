@@ -97,7 +97,7 @@ HTML은 로고, 검색창, 버튼, 그 외의 기능 등과 같이 웹 페이지
 
 ## 2.3 HTML 외부에 STYLESHEET 작성
 
-![title](/assets/img/JS-TIL/TIL7/2020-05-20-JS-TIL7-24.png){: .center}
+![title](/assets/img/JS-TIL/TIL8/2020-05-21-JS-TIL8-1.png){: .center}
 
 이 방법은 HTML 파일과 CSS 파일을 따로 작성하여 `<link>태그`를 이용해 적용하는 방법이다.
 
