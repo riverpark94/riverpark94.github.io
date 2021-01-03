@@ -59,11 +59,11 @@ HTML 문서를 조작할 수 있다? 우리가 평소에 사용하는 웹사이�
 }
 ```
 
-이러한 구조를 Javascript Object로 표현하면 위와 같다. 이것은 HTML이 트리구조이기 때문에 가능한 것이다. Javascript 의 데이터 타입 중에서도 트리구조라는 것이 있는데, 형태는 Object이다. Object에 key와 value가 있다. 즉, key의 자식으로 또 다른 Object(자식 엘리먼트)를 가질 수 있다는 것이다.
+이러한 구조를 Javascript Object로 표현하면 위와 같다. 이것은 HTML이 트리구조이기 때문에 가능한 것이다. (*Javascript 의 데이터 타입 중에서도 트리구조라는 것이 있는데, 형태는 Object이다. Object에 key와 value가 있다.*) 즉, key의 자식으로 또 다른 Object(자식 엘리먼트)를 가질 수 있다는 것이다.
 
 위 코드를 살펴보면 classList라는 key는 `Array`를 자식으로 갖는다. children이라는 키는 자식으로 Object를 가질 수 있다는 말이다. 이런식으로 HTML 문서의 구조와 관계를 객체(Object)로 표현한 모델이 DOM이다.
 
-HTML 문서와 JavaScript 객체 모두 트리구조라는 자료구조를 가지고 있기 때문에 이렇게 표현이 될 수 있는 것이다. 여기서 오해하지 말아야 할 것은 <u>**DOM이 Javascript는 아니고, JavaScript를 이용해서 DOM 구조 접근을 한다는 것**</u>이다. (document라는 전역변수로 접근이 가능.). 
+HTML 문서와 JavaScript 객체 모두 트리구조라는 자료구조를 가지고 있기 때문에 이렇게 표현이 될 수 있는 것이다. 여기서 오해하지 말아야 할 것은 **<u>DOM이 Javascript는 아니고, JavaScript를 이용해서 DOM 구조 접근을 한다는 것</u>**이다. (document라는 전역변수로 접근이 가능.). 
 
 <br>
 
