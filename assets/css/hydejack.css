@@ -265,6 +265,7 @@ input[type="checkbox"]:checked ~ ul{
   text-indent: initial;
   background-color: #dbc7a1;
   border-radius: 4px;
+  font-family: 'Nanum Gothic Coding';
 }
 
 .markdown-body .notice--warning a {
