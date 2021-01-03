@@ -61,8 +61,8 @@
 .markdown-body p {
   word-break: break-word;
   margin-bottom: 8px;
-  font-size: 1em !important;
-  line-height: 1.5;
+  font-size: 1.1em !important;
+  line-height: 1.6;
 }
 
 .markdown-body a {
