@@ -261,7 +261,7 @@ input[type="checkbox"]:checked ~ ul{
 .markdown-body .notice--warning,
 .markdown-body .notice--warning p{
   padding: 1em;
-  font-size: .75em !important;
+  font-size: .85em !important;
   text-indent: initial;
   background-color: #dbc7a1;
   border-radius: 4px;
