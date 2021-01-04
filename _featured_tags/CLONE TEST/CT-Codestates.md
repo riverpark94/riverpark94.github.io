@@ -1,10 +1,10 @@
 ---
 layout: tag-blog
-title: Coding test
+title: Codestates
 slug: CodingTest
-category: DEVLOG
+category: CodingTest
 menu: false
-order: 10
+order: 1
 description: >
   Today I Learn : 내가 오늘 공부한 것
 ---

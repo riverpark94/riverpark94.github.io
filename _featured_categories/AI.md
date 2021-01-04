@@ -1,10 +1,10 @@
 <!-- ---
 layout: list
 title: CLONE CODING
-slug: CloneCoding
+slug: CLONE-CODING
 menu: true
 submenu: true
 order: 4
-# description: >
-#   clone coding 혹은 project 흔적.
+description: >
+  머신러닝, 딥러닝 등등등
 --- -->
