@@ -4,7 +4,7 @@ title: '[JS] Toy2 20. fractionConverter'
 date: 2020-10-19 22:27:44 +0900
 subtitle: 'fractionConverter'
 categories: DEVLOG
-tags: Coding-test
+tags: CodingTest
 comments: true!
 sitemap :
 toc: true

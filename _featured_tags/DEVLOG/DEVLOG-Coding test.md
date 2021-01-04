@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Coding test
-slug: Coding-test
+slug: CodingTest
 category: DEVLOG
 menu: false
 order: 10
