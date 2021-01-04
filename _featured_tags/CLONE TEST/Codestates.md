@@ -6,5 +6,5 @@ category: CodingTest
 menu: false
 order: 1
 description: >
-  Today I Learn : 내가 오늘 공부한 것
+  Codestates에서 제공해주는 문제들
 ---
