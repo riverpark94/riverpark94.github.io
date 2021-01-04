@@ -1,10 +1,10 @@
 ---
 layout: list
-title: PROJECT
-slug: PROJECT
+title: RIVER
+slug: RIVER
 menu: true
 submenu: true
-order: 5
+order: 3
 # description: >
 #   clone coding 혹은 project 흔적.
 ---
