@@ -4,7 +4,7 @@ title: Coding test
 slug: Coding-test
 category: DEVLOG
 menu: false
-order: 2
+order: 10
 description: >
   Today I Learn : 내가 오늘 공부한 것
 ---
