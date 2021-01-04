@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Codestates
-slug: CodingTest
+slug: Codestates
 category: CodingTest
 menu: false
 order: 1
