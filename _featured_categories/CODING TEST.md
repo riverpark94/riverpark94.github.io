@@ -6,5 +6,5 @@ menu: true
 submenu: true
 order: 4
 description: >
-    codestates 제공 문제
+    codestates, 백준, 프로그레머스 제공 문제
 ---
