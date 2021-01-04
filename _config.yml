@@ -30,10 +30,10 @@ image:               /assets/img/nap.jpg
 color:               '#a43838'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
-font_heading:         " 'NanumSquare', 'D2Coding', 'Nanum Gothic Coding', 'Roboto Slab', 'Nanum Gothic', 'KoPub Batang', Helvetica, Arial, sans-serif"
+font_heading:         "'Nanum Barun Roboto', 'NanumSquare', 'D2Coding', 'Nanum Gothic Coding', 'Roboto Slab', 'Nanum Gothic', 'KoPub Batang', Helvetica, Arial, sans-serif"
 
 # The text font. Expects a string that is a valid CSS font-family value.
-font:                "'NanumSquare', 'D2Coding', 'Nanum Gothic Coding', 'Noto Sans', 'Nanum Gothic', 'KoPub Batang', Helvetica, Arial, sans-serif" 
+font:                "'Nanum Barun Roboto', 'NanumSquare', 'D2Coding', 'Nanum Gothic Coding', 'Noto Sans', 'Nanum Gothic', 'KoPub Batang', Helvetica, Arial, sans-serif" 
 
 # The string encoding what fonts to fetch from Google Fonts.
 # See: https://qwtel.com/hydejack/docs/configuration/
