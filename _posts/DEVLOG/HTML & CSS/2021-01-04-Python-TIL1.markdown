@@ -1,0 +1,21 @@
+---
+layout: post
+title: '[HTML & CSS] TIL 1. 변수(variable)에 대한 이해'
+date: 2021-01-04 18:57:44 +0900
+subtitle: '변수(variable)에 대한 이해'
+categories: DEVLOG
+tags: HtmlCss
+comments: true!
+sitemap :
+toc: true
+changefreq : daily
+---
+
+
+<br>
+
+[boostcourse](https://www.boostcourse.org//)의 **[웹 UI 개발](https://www.boostcourse.org/web344)** 강의를 듣고 정리한 필기입니다. 😀 
+{: .notice--warning}
+
+<br>
+
