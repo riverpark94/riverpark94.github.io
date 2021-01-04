@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: TIL
-slug: TIL
-category: JAVASCRIPT
+title: Javascript
+slug: Javascript
+category: DEVLOG
 menu: false
 order: 2
 description: >

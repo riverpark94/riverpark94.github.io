@@ -3,8 +3,8 @@ layout: post
 title: '[JS] TIL 4. 객체와 배열 다루기'
 date: 2020-05-08 22:27:44 +0900
 subtitle: '객체와 배열 다루기'
-categories: JAVASCRIPT
-tags: TIL
+categories: DEVLOG
+tags: Javascript
 comments: true!
 sitemap :
 toc: true

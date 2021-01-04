@@ -3,10 +3,12 @@ layout: post
 title: '[JS] TIL 7. HTML'
 date: 2020-05-20 22:27:44 +0900
 subtitle: 'HTML'
-categories: JAVASCRIPT
-tags: TIL
-toc: true
+categories: DEVLOG
+tags: Javascript
 comments: true!
+sitemap :
+toc: true
+changefreq : daily
 ---
 
 

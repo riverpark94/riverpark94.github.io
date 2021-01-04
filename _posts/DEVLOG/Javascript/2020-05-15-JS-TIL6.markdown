@@ -3,10 +3,12 @@ layout: post
 title: '[JS] TIL 6. 스코프, 클로저, 객체지향, 매개변수'
 date: 2020-05-13 22:27:44 +0900
 subtitle: '스코프, 클로저, 객체지향, 매개변수'
-categories: JAVASCRIPT
-tags: TIL
-toc: true
+categories: DEVLOG
+tags: Javascript
 comments: true!
+sitemap :
+toc: true
+changefreq : daily
 ---
 
 > 1. 스코프(Scope)

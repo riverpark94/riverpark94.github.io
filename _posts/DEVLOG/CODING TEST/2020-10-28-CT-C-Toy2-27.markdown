@@ -3,9 +3,12 @@ layout: post
 title: '[JS] Toy2 27. binaryHeap'
 date: 2020-10-28 22:27:44 +0900
 subtitle: 'binaryHeap'
-categories: CODING-TEST
-tags: Codestates
+categories: Coding-test
+tags: DEVLOG
 comments: true!
+sitemap :
+toc: true
+changefreq : daily
 ---
 
 > 이번 과제에서 여러분들이 구현하셔야 할 것은 "노드가 정수인 이진 최소 힙" 입니다. storage는 배열이며 `getRoot` 메소드는 이미 구현되어 있습니다.

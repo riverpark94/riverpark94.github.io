@@ -3,8 +3,8 @@ layout: post
 title: '[JS] TIL 2. 함수와 조건문'
 date: 2020-05-06 22:27:44 +0900
 subtitle: '함수와 조건문'
-categories: JAVASCRIPT
-tags: TIL
+categories: DEVLOG
+tags: Javascript
 comments: true!
 sitemap :
 toc: true

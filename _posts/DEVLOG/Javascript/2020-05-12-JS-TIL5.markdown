@@ -3,10 +3,12 @@ layout: post
 title: '[JS] TIL 5. 재귀함수'
 date: 2020-05-12 22:27:44 +0900
 subtitle: '재귀'
-categories: JAVASCRIPT
-tags: TIL
-toc: true
+categories: DEVLOG
+tags: Javascript
 comments: true!
+sitemap :
+toc: true
+changefreq : daily
 ---
 
 > 1. 재귀
