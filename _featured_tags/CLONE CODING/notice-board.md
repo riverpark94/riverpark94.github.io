@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: notice-board
+title: notice board
 slug: notice-board
 category: CLONE CODING
 menu: false
