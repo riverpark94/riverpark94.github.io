@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Python] TIL 1. 변수(variable)에 대한 이해'
-date: 2021-01-04 22:27:44 +0900
+date: 2021-01-04 18:55:44 +0900
 subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
 tags: Python
