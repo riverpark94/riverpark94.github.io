@@ -20,7 +20,7 @@ changefreq : daily
 
  문자형은 큰 따옴표(" ")나 작은 따옴표(' ')로 묶어주어야 하고, 숫자형은 그럴 필요가 없다. 다만, 숫자를 큰 따옴표나 작은 따옴표로 ㅂ묶으면 문자로 인식한다.
 
-```Python
+```python
 >>>  a = '안녕'
 >>>  b = 2
 ```
@@ -33,7 +33,7 @@ changefreq : daily
 
   이러한 변수는 print()라는 함수나 변수명으로 출력할 수 있다. 이때 출력 값은 우리가 저장한 오른쪽 값이다. 
 
-```Python
+```python
 >>>  print(a)
 안녕
 
@@ -43,7 +43,7 @@ changefreq : daily
 
   변수의 값은 언제든지 바뀔 수 있다. 이러한 이유 때문에 변수라는 이름을 붙인 것이기도 하다. 아래의 예를 보면, 변수 a에 ' 안녕'을 먼저 입력했었지만, 뒤에 '잘 가'를 다시 입력해줌으로써 마지막에는 '잘 가'만 남게 된다.
 
-``` Python
+``` python
 >>> a = '안녕'
 >>> a = '잘 가'
 >>> print(a)
@@ -52,7 +52,7 @@ changefreq : daily
 
   이러한 숫자형 변수는 사칙 연산이 가능하다.
 
-``` Python
+``` python
 >>> ## 사칙연산( +, -, *, /)
 >>> a = 7
 >>> b = 3
@@ -68,7 +68,7 @@ changefreq : daily
 
   또한 변수는 우리가 필요하면 얼마든지 만들 수 있다. 변수 a와 변수 b를 더한 값을 저장하기 위해 변수 result를 만들었다.
 
-``` Python
+``` python
 >>> ## 사칙연산( +, -, *, /)
 >>> a = 7
 >>> b = 3
@@ -96,7 +96,7 @@ changefreq : daily
 - 식별자의 첫 글자는 반드시 영문자 또는 밑줄 문자(_) 여야 하며, 식별자는 숫자로 시작할 수 없다. 
 - 파이썬 지정 단어(keyword.Reserved word)는 변수명으로 사용할 수 없다. 파이썬 지정 단어 확인 방법은 다음과 같다.
 
-```Python
+```python
 >>> import keyword
 >>> keyword.kwlist
 ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 
