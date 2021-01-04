@@ -1,6 +1,6 @@
 ---
 layout: list
-title: CLONE TEST
+title: CODING TEST
 slug: CodingTest
 menu: true
 submenu: true
