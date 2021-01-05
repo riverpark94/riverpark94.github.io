@@ -12,15 +12,19 @@ changefreq : daily
 ---
 
 > 1. HTML에대한 개념을 살펴본다.
+>
 > 2. 태그
 >
 >    - 시작 태그와 닫는 태그는 꼭 쌍으로 돌아다녀야 할까요?
 >
 >    - 내용과 요소의 차이점에 대해서 말하시오.
-> 2. 속성을 정의할 때 어떤 형태로 쓰이나요?
 >
-> 3. 태그는 중첩이 가능한가요? 가능하다면, 모든 태그가 중첩이 가능한가요?
+> 3. 속성을 정의할 때 어떤 형태로 쓰이나요?
+>
+> 4. 태그는 중첩이 가능한가요? 가능하다면, 모든 태그가 중첩이 가능한가요?
+>
 > 5. 중첩이 불가능한 태그가 있다면, 그 태그에 대해서 서술하시오.
+>
 > 6. html의 기본 구조를 설명하세요.
 
 <br>
@@ -42,11 +46,11 @@ HTML은 HyperText Markup Language의 약자이다.
 
 다음은 [네이버](https://www.naver.com/)메인 화면의 html 문서이다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL1/2021-01-05-HC-TIL1-1.png){: width="70%" height="70%"}
+![title](/assets/img/DEVLOG/HTML & CSS/TIL1/2021-01-05-HC-TIL1-1.png)
 
 브라우져는 이러한 html 문서를 해석하여 우리에게 익숙한 화면으로 출력한다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL1/2021-01-05-HC-TIL1-2.png){: width="70%" height="70%"}
+![title](/assets/img/DEVLOG/HTML & CSS/TIL1/2021-01-05-HC-TIL1-2.png)
 
 html은 90년대 초반, 영국의 물리학자 [팀 버너스 리](https://en.wikipedia.org/wiki/Tim_Berners-Lee)의 제안으로 개발되었다. 처음에 만들게 된 이유는 자신이 속해있던 연구소에서 연구원들이 신속하게 정보다 문서를 공유하기 위해서 만들었다. 지금의 웹과는 형태와 모양, 구체적인 방향은 다르지만,  정보를 공유한다는 목적 자체는 비슷하다.
 
