@@ -52,9 +52,9 @@ changefreq : daily
 
 # 1. CSS & SELECTOR
 
-CSS는 Cascading Style Sheets의 약자이며, **HTML로 잘 짜놓은 구조에 디자인을 부여하기 위한 도구**이다. HTML에서 id와 class를 적절하게 부여했다면, CSS를 적재적소에 부여할 수 있다. 
+CSS는 Cascading Style Sheets의 약자이며, **HTML로 잘 짜놓은 구조에 디자인을 부여하기 위한 도구**이다. HTML에서 `id`와 `class`를 적절하게 부여했다면, CSS를 적재적소에 부여할 수 있다. 
 
-HTML은 로고, 검색창, 버튼, 그 외의 기능 등과 같이 웹 페이지의 요소들을 구성하는 역할을 한다면, CSS는 그것들의 위치, 너비, 버튼 크기, 색 등을 구성한다. 또한, HTML tag에 id와 class를 잘 지어뒀다면 tag를 고치기 위해 똑같은 코드를 반복할 필요 없다.
+HTML은 로고, 검색창, 버튼, 그 외의 기능 등과 같이 웹 페이지의 요소들을 구성하는 역할을 한다면, CSS는 그것들의 위치, 너비, 버튼 크기, 색 등을 구성한다. 또한, HTML tag에 `id`와 `class`를 잘 지어뒀다면 tag를 고치기 위해 똑같은 코드를 반복할 필요 없다.
 
 <br>
 
@@ -64,13 +64,13 @@ HTML은 로고, 검색창, 버튼, 그 외의 기능 등과 같이 웹 페이지
 
 ## 2.1 INLINE
 
-이 방법은 HTML의 특정 태그에 직접 style을 정용하는 것이다.
+이 방법은 HTML의 특정 태그에 직접 style을 적용하는 것이다.
 
 ```html
 <h1 style="color: red; font-style: italic">Hello world</h1>
 ```
 
-`h1태그`에 `style`이라는 속성을 부여 적용한다. 위 코드를 예로 들어보면 색은 빨강, 폰트 스타일은 기울임꼴임을 명시하고 있다.
+`h1태그`에 `style`이라는 속성을 부여 적용한다. 위 코드를 예로 들어보면 색은 빨강, 폰트 스타일은 기울임 꼴임을 명시하고 있다.
 
 ## 2.2 HTML 내부에 STYLESHEET 작성
 
@@ -176,11 +176,12 @@ css에서 요소(element)를 선택하는 규칙이다.
 .createAt {color : gray;} 
 ```
 
-  위 코드를 살펴보면 `new-comment`라는 id에는 blue를, `creatAt`이라는 class에는 gray를 입혀주었다. 즉, 특정 아이디에 스타일을 부여하고 싶으면 #을 이용해 지정해주면되고, 특정 class에 스타일을 부여하고 싶으면 .(Dot)을 이용해 지정해주면 된다.
+위 코드를 살펴보면 `new-comment`라는 `id`에는 blue를, `creatAt`이라는 `class`에는 gray를 입혀주었다. 즉, 특정 아이디에 스타일을 부여하고 싶으면 `#`을 이용해 지정해주면 되고, 특정 `class`에 스타일을 부여하고 싶으면 `.(Dot)`을 이용해 지정해주면 된다.
 
 ```css
 #new-comment {color:blue;}
 .createAt {color : gray; font-weight: bold; } 
 ```
 
-스타일을 여러개를 지정하고 싶으면, 공백을 이용하면 된다. 
+스타일을 여러 개를 지정하고 싶으면, 공백을 이용하면 된다.
+
