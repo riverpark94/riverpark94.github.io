@@ -22,8 +22,8 @@ changefreq : daily
  문자형은 큰 따옴표(" ")나 작은 따옴표(' ')로 묶어주어야 하고, 숫자형은 그럴 필요가 없다. 다만, 숫자를 큰 따옴표나 작은 따옴표로 ㅂ묶으면 문자로 인식한다.
 
 ```python
->>>  a = '안녕'
->>>  b = 2
+a = '안녕'
+b = 2
 ```
 
 변수는 파이썬에서 가장 많이 사용되는 객체이다. 파이썬에서 변수 할당은 `=` 기호로 이루어지는데, 이때 `=`은 '같다'의 의미가 아니라 '오른쪽 값을 왼쪽 변수에 저장하라'라는 말이다. 위의 예시에 적용해 보면 오른쪽에 있는 '안녕'이라는 값을 왼쪽에 있는 a라는 변수에 저장(할당) 한 것이다. 아래  `b = 2` 또한 마찬가지이다. 
@@ -35,47 +35,47 @@ changefreq : daily
   이러한 변수는 `print()`라는 함수나 변수명으로 출력할 수 있다. 이때 출력 값은 우리가 저장한 오른쪽 값이다. 
 
 ```python
->>>  print(a)
-안녕
+print(a)
+# => 안녕
 
->>>  b
-2
+b
+# => 2
 ```
 
   변수의 값은 언제든지 바뀔 수 있다. 이러한 이유 때문에 변수라는 이름을 붙인 것이기도 하다. 아래의 예를 보면, 변수 `a`에 ' 안녕'을 먼저 입력했었지만, 뒤에 '잘 가'를 다시 입력해줌으로써 마지막에는 '잘 가'만 남게 된다.
 
 ``` python
->>> a = '안녕'
->>> a = '잘 가'
->>> print(a)
-'잘 가'
+a = '안녕'
+a = '잘 가'
+print(a)
+# => '잘 가'
 ```
 
   이러한 숫자형 변수는 사칙 연산이 가능하다.
 
 ``` python
->>> ## 사칙연산( +, -, *, /)
->>> a = 7
->>> b = 3
->>> print(a + b)
->>> print(a - b)
->>> print(a * b)
->>> print(a / b)
-10
-4
-21
-2.333333333333333335
+## 사칙연산( +, -, *, /)
+a = 7
+b = 3
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+# => 10
+# => 4
+# => 21
+# => 2.333333333333333335
 ```
 
   또한 변수는 우리가 필요하면 얼마든지 만들 수 있다. 변수 `a`와 변수 `b`를 더한 값을 저장하기 위해 변수`result`를 만들었다.
 
 ``` python
->>> ## 사칙연산( +, -, *, /)
->>> a = 7
->>> b = 3
->>> result = a + b
->>> print(result)
-10
+## 사칙연산( +, -, *, /)
+a = 7
+b = 3
+result = a + b
+print(result)
+# => 10
 ```
 
 ![title](/assets/img/DEVLOG/Python/TIL1/2021-01-04-Python-TIL1-2.png){: width=60% height=60%}{: .center}
@@ -98,13 +98,13 @@ changefreq : daily
 - 파이썬 지정 단어(keyword.Reserved word)는 변수명으로 사용할 수 없다. 파이썬 지정 단어 확인 방법은 다음과 같다.
 
 ```python
->>> import keyword
->>> keyword.kwlist
-['False', 'None', 'True', 'and', 'as', 'assert', 'async', 
-'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 
-'else', 'except', 'finally', 'for', 'from','global', 'if', 
-'import', 'in', 'is', 'lambda','nonlocal', 'not', 'or', 
-'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+import keyword
+keyword.kwlist
+# => ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 
+# => 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 
+# => 'else', 'except', 'finally', 'for', 'from','global', 'if', 
+# => 'import', 'in', 'is', 'lambda','nonlocal', 'not', 'or', 
+# => 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 ```
 
   변수를 데이터를 담아두는 바구니로 생각해보자. 변수에 있는 값은 언제든지 바뀔 수 있다. (그래서 변수라는 이름을 붙인 것이다.) 즉, 우리가 필요에 따라 변수에 들어가 있는 값을 다른 값으로 바꿀 수 있다.
