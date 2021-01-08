@@ -93,6 +93,7 @@ a, .a {
     transition: none;
 
     &:hover, &:focus {
+      text-decoration: underline;
       transition: none;
     }
   }
