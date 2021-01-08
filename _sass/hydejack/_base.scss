@@ -81,7 +81,6 @@ a, .a {
   transition: color 500ms, border-color 250ms;
 
   &:hover, &:focus {
-    text-decoration: underline;
     font-weight: bold;
     // border-bottom-width: 4px;
     transition: color 500ms, border-color 50ms;
@@ -93,7 +92,6 @@ a, .a {
     transition: none;
 
     &:hover, &:focus {
-      text-decoration: underline;
       transition: none;
     }
   }
