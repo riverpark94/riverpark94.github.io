@@ -81,6 +81,8 @@ Heading Content는 Section의 헤더를 정의하는 요소이다.
 
 Phrasing Content는 문서의 텍스트 또는 텍스트를 꾸며주는 문단 내부 레벨로 사용되는 요소이다. 많은 태그가 여기에 해당된다. `<area>`는   `<map>`의 하위 항목인 경우에만 해당한다.
 
+​	▶ `<abbr>`, `<audio>`, `<b>`, `<bdo>`, `<br>`, `<button>`, `<canvas>`, `<cite>`, `<code>`, `<datalist>`, `<dfn>`, `<em>`, `<embed>`, `<i>`, `<iframe>`, `<img>`, `<input>`, `<kbd>`, `<keygen>`, `<label>`,  `<mark>`, `<math>`, `<meter>`, `<noscript>`, `<object>`, `<output>`, `<progress>`, `<q>`, `<ruby>`, `<samp>`, `<script>`, `<select>`, `<small>`, `<span>`, `<strong>`, `<sub>`, `<sup>`, `<svg>`, `<textarea>`, `<time>`, `<var>`, `<video>`, `<wb>`
+
 몇가지는 특정 조건이 충족되는 경우에만 해당된다.
 
 - `<a>`:  phrasing content에만 포함된 경우
@@ -90,8 +92,6 @@ Phrasing Content는 문서의 텍스트 또는 텍스트를 꾸며주는 문단 
 - `<area>`:   `<map>`의 하위 항목인 경우
 - `<link>` :  `itemprop` 속성이 있는 경우
 - `<meta>` :  `itemprop` 속성이 있는 경우
-
-​	▶ `<abbr>`, `<audio>`, `<b>`, `<bdo>`, `<br>`, `<button>`, `<canvas>`, `<cite>`, `<code>`, `<datalist>`, `<dfn>`, `<em>`, `<embed>`, `<i>`, `<iframe>`, `<img>`, `<input>`, `<kbd>`, `<keygen>`, `<label>`,  `<mark>`, `<math>`, `<meter>`, `<noscript>`, `<object>`, `<output>`, `<progress>`, `<q>`, `<ruby>`, `<samp>`, `<script>`, `<select>`, `<small>`, `<span>`, `<strong>`, `<sub>`, `<sup>`, `<svg>`, `<textarea>`, `<time>`, `<var>`, `<video>`, `<wb>`
 
 ![title](/assets/img/DEVLOG/HTML & CSS/TIL4/2021-01-08-HC-TIL4-6.png)
 
