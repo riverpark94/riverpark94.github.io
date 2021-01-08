@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[HTML & CSS] TIL 2.HTML 태그(2)'
+title: '[HTML & CSS] TIL 3.HTML 태그(2)'
 date: 2021-01-07 18:57:44 +0900
 subtitle: 'HTML 태그'
 categories: DEVLOG

@@ -25,7 +25,8 @@
     border-width: 1px 0;
   }
 
-  > a, > a:hover, > a:focus {
+  > a, > a:hover, > a:focus {    
+    text-decoration: underline;
     border-color: #b8aa90!important;
   }
 

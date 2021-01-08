@@ -66,7 +66,7 @@
 }
 
 .markdown-body a {
-  background: #eece8b;
+  /* background: #eece8b; */
   text-decoration: none;
 }
 
@@ -264,7 +264,6 @@ input[type="checkbox"]:checked ~ ul{
 
 .markdown-body .notice--warning a {
     color: #a43838;
-    background-color: #dbc7a1;
     text-decoration: none;
 }
 
