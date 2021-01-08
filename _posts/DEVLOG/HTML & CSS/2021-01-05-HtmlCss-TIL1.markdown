@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[HTML & CSS] TIL 1.HTML 이해하기'
+title: '[HTML & CSS] TIL 1. HTML 이해하기'
 date: 2021-01-05 18:57:44 +0900
 subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
