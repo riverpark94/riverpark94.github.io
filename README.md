@@ -27,7 +27,7 @@
 </p>
 
 ```sh
-평소 자바스크립트를 이용한 웹 개발에 관심이 많아 프론트엔드 공부를 시작했습니다.
+작은 규모의 실험이 습관화되어, 성공의 기분을 알고 실패를 두려워하지 않는 개발자를 꿈꿉니다.
 ```
 
 <br>
@@ -46,9 +46,10 @@
 <h3 align="center"> 🍒 Always 🍒 </h3>
 
 ```sh
-- 즐거움과 흥미를 줄 수 있는 콘텐츠를 만들기 위해 최신 트렌드를 눈여겨봅니다.
+- 개발은 창의적인 마음을 자유롭게하고, 끊임없는 자기 성장에 대한 열망을 충족시킵니다.
+- 프로젝트를 할 때, 인내심으로 문제의 가장 작은 세부 사항에 주의를 기울이고 있습니다.
 - 꾸준함과 성취감을 중요시 합니다.
-- 기본기와 개발 역량을 발전시키기 위해 끊임없이 공부하고 있습니다.
+- 높은 목표 보다는 기본기가 있는 개발자가 되고자 합니다.
 ```
 <p align="center">
    <a href="https://github.com/riverpark94/github-readme-stats"><img src="https://github-readme-stats.vercel.app/api?username=riverpark94&hide=stars&show_icons=true&theme=tokyonight"/></a>&nbsp 
@@ -61,5 +62,5 @@
   <a href="mailto:river.nameless@gmail.com"><img src="https://img.shields.io/badge/Gmail-d14836?style=flat-square&logo=Gmail&logoColor=white&link=river.nameless@gmail.com"/></a>
   <a href="https://www.linkedin.com/in/mijin-park-1658a01a5/"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/mijin-park-1658a01a5/"/></a>&nbsp  
   <a href="https://namelessRiver.github.io/"><img src="https://img.shields.io/badge/-Portfolio-0096D6?style=flat-square"/></a>&nbsp  
-  <a href="https://riverpark94.github.io/"><img src="http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=https://riverpark94.github.io/"/></a>&nbsp  
-  
+  <a href="https://riverpark94.github.io/"><img src="http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=https://riverpark94.github.io/"/></a>&nbsp   <a href="https://github.com/riverpark94"><img src="https://img.shields.io/badge/-github-000000?style=flat-square&logo=github"></a>&nbsp
+</p>	
