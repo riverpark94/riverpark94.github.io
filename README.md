@@ -63,5 +63,3 @@
   <a href="https://namelessRiver.github.io/"><img src="https://img.shields.io/badge/-Portfolio-0096D6?style=flat-square"/></a>&nbsp  
   <a href="https://riverpark94.github.io/"><img src="http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=https://riverpark94.github.io/"/></a>&nbsp  
   
-  
-<p align="center"><img src="/assets/img/about.png"></p>
