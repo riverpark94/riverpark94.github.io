@@ -1,10 +1,9 @@
-<!-- ---
+---
 layout: list
-title: CLONE CODING
-slug: CloneCoding
+title: 회고
+slug: retrospection
 menu: true
-submenu: true
-order: 4
+order: 1
 # description: >
 #   clone coding 혹은 project 흔적.
---- -->
+---
