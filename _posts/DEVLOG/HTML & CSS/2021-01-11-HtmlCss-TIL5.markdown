@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[HTML & CSS] TIL 6. CSS 이해하기(1)'
+title: '[HTML & CSS] TIL 5. CSS 이해하기(1)'
 date: 2021-01-11 18:57:44 +0900
 subtitle: 'CSS'
 categories: DEVLOG
