@@ -29,13 +29,13 @@ CSS는 Cascading Style Sheets의 약자이다. Style Sheets라는 말처럼 저�
 
 CSS는 HTML처럼 많은 속성과 그에 해당하는 값의 집합으로 이루어져있다. 다음 그림은 해당 블로그이 CSS 중 하나이다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL4/2021-01-11-HC-TIL5-1.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL5/2021-01-11-HC-TIL5-1.png)
 
 ### 1.1 문법
 
 CSS 문법에는 **선택자(selector), 속성(property), 값(value), 선언(delclaration), 선언부(delclaration block), 규칙(rule set)** 여섯가지의 특징이 있다. 여기서 **선언부(delclaration block)는 중괄혼에 묶여있는 속성과 값들을 말하고, 규칙(rule set)은 선언부(delclaration block) + 선택자(selector)를 말한다.** 그리고 속성과 값은 한 쌍으로 항상 같이 다니며, 속성과 속성값 사이에는 개행을 해주면 안된다. 여기서 선택자는 태그 이름, id 값, class 값 세가지로 이루어진다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL4/2021-01-11-HC-TIL5-2.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL5/2021-01-11-HC-TIL5-2.png)
 
 - 선택자(selector) - ".markdown-body pre"
 - 속성(property) - "word-wrap"
@@ -96,7 +96,7 @@ css 를 HTML 문서와 연결하는 방법에는 4가지가 있다.
 
 방법은 HTML 파일과 CSS 파일을 따로 작성하여 `<link>`를 이용해 적용하는 방법이다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL4/2021-01-11-HC-TIL5-3.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL5/2021-01-11-HC-TIL5-3.png)
 
 <center> <h5>
     index.html
