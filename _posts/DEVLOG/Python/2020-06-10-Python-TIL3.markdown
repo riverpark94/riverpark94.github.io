@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Python] TIL 3. 입출력 방법(2) - input함수'
-date: 2021-01-06 11:55:44 +0900
+date: 2020-06-10 11:55:44 +0900
 subtitle: ' input함수'
 categories: DEVLOG
 tags: Python
@@ -19,13 +19,13 @@ changefreq : daily
 
 
 
-![title](/assets/img/DEVLOG/Python/TIL3/2021-01-06-Python-TIL3-1.png){: width=90% height=90%}
+![title](/assets/img/DEVLOG/Python/TIL3/2020-06-10-Python-TIL3-1.png){: width=90% height=90%}
 
 <center> 그림1. input을 활용하면 키보드로 값을 직접 입력할 수 있다. </center>
 
 input 입력문은 마우스와 키보드를 사용해 입력 받을 수 있으며, 입력부분은 반드시 처리(입력)해주어야 한다.
 
-![title](/assets/img/DEVLOG/Python/TIL3/2021-01-06-Python-TIL3-2.png){: width=90% height=90%}
+![title](/assets/img/DEVLOG/Python/TIL3/2020-06-10-Python-TIL3-2.png){: width=90% height=90%}
 
 <center> 그림2. </center>
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Python] TIL 1. 변수(variable)에 대한 이해'
-date: 2021-01-04 18:55:44 +0900
+date: 2020-06-08 18:55:44 +0900
 subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
 tags: Python
@@ -28,7 +28,7 @@ b = 2
 
 변수는 파이썬에서 가장 많이 사용되는 객체이다. 파이썬에서 변수 할당은 `=` 기호로 이루어지는데, 이때 `=`은 '같다'의 의미가 아니라 '오른쪽 값을 왼쪽 변수에 저장하라'라는 말이다. 위의 예시에 적용해 보면 오른쪽에 있는 '안녕'이라는 값을 왼쪽에 있는 a라는 변수에 저장(할당) 한 것이다. 아래  `b = 2` 또한 마찬가지이다. 
 
-![title](/assets/img/DEVLOG/Python/TIL1/2021-01-04-Python-TIL1-1.png){: width=50% height=50%}
+![title](/assets/img/DEVLOG/Python/TIL1/2020-06-08-Python-TIL1-1.png){: width=50% height=50%}
 
 <center>그림 1. 변수에 입력된 값</center>
 
@@ -78,7 +78,7 @@ print(result)
 # => 10
 ```
 
-![title](/assets/img/DEVLOG/Python/TIL1/2021-01-04-Python-TIL1-2.png){: width=60% height=60%}{: .center}
+![title](/assets/img/DEVLOG/Python/TIL1/2020-06-08-Python-TIL1-2.png){: width=60% height=60%}{: .center}
 
 <center>그림 2. 사칙연산자를 이용해 더한 값을 새로운 변수에 입력한다.</center>
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[Python] TIL 2. 입출력 방법(1) - print함수'
-date: 2021-01-05 16:55:44 +0900
+date: 2020-06-09 16:55:44 +0900
 subtitle: ' print함수'
 categories: DEVLOG
 tags: Python
@@ -93,7 +93,7 @@ print(1920, 1080, sep = 'x')   # sep에 빈 문자열을 지정
 
   이스케이프 문자(escape sequence)는 어느 책에서는 이스케이프 코드, 특수 문자열 등으로 불리지만 본 블로그에서는 이스케리프 문자로 통일한다 이스케이프 문자는 백슬래시(`\`)와 특정문자(알파벳,',? 등)을 조합한 것으로 프로그래밍을 할때 사용할 수 있도록 미리 정의해 둔 '문자 조합'이다. 파이썬에서의 이스케이프 문자는 다음과 같다.
 
-![title](/assets/img/DEVLOG/Python/TIL2/2021-01-05-Python-TIL2-1.png){: width=90% height=90%}
+![title](/assets/img/DEVLOG/Python/TIL2/2020-06-09-Python-TIL2-1.png){: width=90% height=90%}
 
 이중에서 자주 사용하는 것은 `\n`, `\t`, `\b`, `\\`, `\'`, `\"` 정도이다. 
 
