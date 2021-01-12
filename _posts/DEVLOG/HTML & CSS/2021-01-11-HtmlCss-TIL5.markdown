@@ -353,7 +353,7 @@ p[class*="HTML"] { font-style: italic; } /* 1, 2, 3번째 요소 */
 
 #### 2.3.1 문서 구조의 이해
 
-```hml
+```html
 <!DOCTYPE html>
 <html>
 <head>
