@@ -343,7 +343,7 @@ span[id = "explanation"] { text-decoration: underline; }
 ```css
 p[class~="HTML"] { font-style: italic; } /* 1, 2번째 요소 */
 p[class^="HTML"] { font-style: italic; } /* 1, 3번째 요소 */
-p[class$="HTML"] { font-style: italic; } /* 2번째 요소 */
+p[classS="HTML"] { font-style: italic; } /* 2번째 요소 */
 p[class*="HTML"] { font-style: italic; } /* 1, 2, 3번째 요소 */
 ```
 
