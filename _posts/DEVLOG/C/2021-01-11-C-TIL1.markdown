@@ -14,7 +14,7 @@ toc: true
 
 <br>
 
-[boostcourse](https://www.boostcourse.org//)의 **[모두를 위한 컴퓨터 과학 (CS50 2019)](https://www.boostcourse.org/cs112/joinLectures/43415)** 강의를 듣고 정리한 필기입니다. 😀 
+[boostcourse](https://www.boostcourse.org/)의 **[모두를 위한 컴퓨터 과학 (CS50 2019)](https://www.boostcourse.org/cs112/joinLectures/43415)** 강의를 듣고 정리한 필기입니다. 😀 
 {: .notice--warning}
 
 <br>

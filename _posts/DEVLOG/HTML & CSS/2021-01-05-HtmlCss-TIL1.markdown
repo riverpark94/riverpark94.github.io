@@ -27,7 +27,7 @@ toc: true
 
 <br>
 
-[boostcourse](https://www.boostcourse.org//)의 **[웹 UI 개발](https://www.boostcourse.org/web344)** 강의를 듣고 정리한 필기입니다. 😀 
+[boostcourse](https://www.boostcourse.org/)의 **[웹 UI 개발](https://www.boostcourse.org/web344)** 강의를 듣고 정리한 필기입니다. 😀 
 {: .notice--warning}
 
 <br>

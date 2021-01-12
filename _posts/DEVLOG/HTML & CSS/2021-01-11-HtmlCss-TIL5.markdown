@@ -15,7 +15,7 @@ toc: true
 
 <br>
 
-[boostcourse](https://www.boostcourse.org//)의 **[웹 UI 개발](https://www.boostcourse.org/web344)** 강의를 듣고 정리한 필기입니다. 😀 
+[boostcourse](https://www.boostcourse.org/)의 **[웹 UI 개발](https://www.boostcourse.org/web344)** 강의를 듣고 정리한 필기입니다. 😀 
 {: .notice--warning}
 
 <br>
@@ -263,7 +263,7 @@ id 선택자는 class 선택자와 매우 비슷하다. 아래의 두 코드로 
 
 ### 2.3 속성 선택자
 
-[요소선택자]()와 [class 선택자, id 선택자]()는 각각 태그, class, id 하나의 선택자만을 사용해서 요소를 선택했다. 사실, 선택자는 종류에 상관없이 여러가지 선택자들을 조합할 수 있다.
+[요소선택자](https://riverpark94.github.io/devlog/2021/01/11/HtmlCss-TIL5/#21-%EC%9A%94%EC%86%8C-%EC%84%A0%ED%83%9D%EC%9E%90)와 [class 선택자, id 선택자](https://riverpark94.github.io/devlog/2021/01/11/HtmlCss-TIL5/#22-class-%EC%84%A0%ED%83%9D%EC%9E%90%EC%99%80-id-%EC%84%A0%ED%83%9D%EC%9E%90)는 각각 태그, class, id 하나의 선택자만을 사용해서 요소를 선택했다. 사실, 선택자는 종류에 상관없이 여러가지 선택자들을 조합할 수 있다.
 
 ```css
 /* 요소와 class의 조합 */
