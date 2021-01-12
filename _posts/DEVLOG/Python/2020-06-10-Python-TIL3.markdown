@@ -5,7 +5,7 @@ date: 2020-06-10 11:55:44 +0900
 subtitle: ' input함수'
 categories: DEVLOG
 tags: Python
-comments: true!
+comments: true
 toc: true
 ---
 
