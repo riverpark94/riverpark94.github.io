@@ -6,9 +6,7 @@ subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
 tags: C
 comments: true!
-sitemap :
 toc: true
-changefreq : daily
 ---
 
 > 1. 2진법

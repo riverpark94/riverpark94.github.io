@@ -5,10 +5,8 @@ date: 2021-01-06 20:20:44 +0900
 subtitle: 'HTML 태그'
 categories: DEVLOG
 tags: HtmlCss
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 제목, 단락 등과 같은 문서의 기본적인 요소를 나타내는 태그들을 설명하시오.

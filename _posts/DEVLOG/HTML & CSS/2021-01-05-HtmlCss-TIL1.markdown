@@ -5,10 +5,8 @@ date: 2021-01-05 18:57:44 +0900
 subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
 tags: HtmlCss
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. HTML에대한 개념을 살펴본다.

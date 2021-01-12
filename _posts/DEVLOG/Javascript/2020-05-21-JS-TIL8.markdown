@@ -5,10 +5,8 @@ date: 2020-05-21 22:27:44 +0900
 subtitle: 'CSS & Selector'
 categories: DEVLOG
 tags: Javascript
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. CSS를 HTML에 적용하는 방법에 대해서 충분히 이해하고 있다.

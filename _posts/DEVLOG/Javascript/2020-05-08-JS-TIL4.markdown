@@ -5,10 +5,8 @@ date: 2020-05-08 22:27:44 +0900
 subtitle: '객체와 배열 다루기'
 categories: DEVLOG
 tags: Javascript
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 객체

@@ -5,10 +5,8 @@ date: 2020-05-04 22:27:44 +0900
 subtitle: '변수와 타입 그리고 문자열 다루기'
 categories: DEVLOG
 tags: Javascript
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 변수

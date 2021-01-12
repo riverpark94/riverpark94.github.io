@@ -5,10 +5,8 @@ date: 2020-06-08 18:55:44 +0900
 subtitle: '변수(variable)에 대한 이해'
 categories: DEVLOG
 tags: Python
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 변수가 무엇인지 이해

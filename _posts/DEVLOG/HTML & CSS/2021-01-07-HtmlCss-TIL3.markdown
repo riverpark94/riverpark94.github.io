@@ -5,10 +5,8 @@ date: 2021-01-07 18:57:44 +0900
 subtitle: 'HTML 태그'
 categories: DEVLOG
 tags: HtmlCss
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. `<table>`의 기본 구조를 설명하세요.

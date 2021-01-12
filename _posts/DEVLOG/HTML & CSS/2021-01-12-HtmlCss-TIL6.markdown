@@ -5,8 +5,8 @@ date: 2021-01-12 15:27:44 +0900
 subtitle: 'CSS'
 categories: DEVLOG
 tags: HtmlCss
-comments: true!
-toc: trueㅈ
+comments: true
+toc: true
 ---
 
 > 1. 구체성의 정의와 알아야하는 이유는 무엇인가?

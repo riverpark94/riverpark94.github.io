@@ -6,9 +6,7 @@ subtitle: ' input함수'
 categories: DEVLOG
 tags: Python
 comments: true!
-sitemap :
 toc: true
-changefreq : daily
 ---
 
 > 1. `input()` 함수의 사용법을 살펴본다.

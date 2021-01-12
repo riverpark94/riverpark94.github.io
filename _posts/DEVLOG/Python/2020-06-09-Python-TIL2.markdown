@@ -5,10 +5,8 @@ date: 2020-06-09 16:55:44 +0900
 subtitle: ' print함수'
 categories: DEVLOG
 tags: Python
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. `print()` 함수의 사용법을 살펴본다.

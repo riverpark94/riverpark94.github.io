@@ -5,10 +5,8 @@ date: 2020-05-07 22:27:44 +0900
 subtitle: '반복문과 배열'
 categories: DEVLOG
 tags: Javascript
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 반복문

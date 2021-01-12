@@ -5,10 +5,8 @@ date: 2020-10-20 22:27:44 +0900
 subtitle: 'rotateMatrix'
 categories: CODING_TEST
 tags: Codestates
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > NxN 매트릭스를 90도로 회전시키는 함수를 작성하세요.

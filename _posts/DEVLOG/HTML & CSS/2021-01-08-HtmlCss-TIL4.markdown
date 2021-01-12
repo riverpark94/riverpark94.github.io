@@ -5,10 +5,8 @@ date: 2021-01-08 18:57:44 +0900
 subtitle: 'HTML 태그'
 categories: DEVLOG
 tags: HtmlCss
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. HTML5에서 요소의 종류를 정의하는 규칙을 나열하고 설명하시오.

@@ -5,10 +5,8 @@ date: 2020-05-12 22:27:44 +0900
 subtitle: '재귀'
 categories: DEVLOG
 tags: Javascript
-comments: true!
-sitemap :
+comments: true
 toc: true
-changefreq : daily
 ---
 
 > 1. 재귀
