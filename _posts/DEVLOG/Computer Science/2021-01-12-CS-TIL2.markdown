@@ -1,7 +1,7 @@
 ---
 layout: post
-title: '[CS] TIL 1. 컴퓨팅 사고 (1)'
-date: 2021-01-11 18:55:44 +0900
+title: '[CS] TIL 2. 컴퓨팅 사고 (2)'
+date: 2021-01-12 18:15:44 +0900
 subtitle: '알고리즘과 스크레치(기초)'
 categories: DEVLOG
 tags: CS
