@@ -3,7 +3,7 @@ layout: post
 title: '[JS] Toy2 27. binaryHeap'
 date: 2020-10-28 22:27:44 +0900
 subtitle: 'binaryHeap'
-categories: CodingTest
+categories: CODING_TEST
 tags: Codestates
 comments: true!
 sitemap :

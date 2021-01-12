@@ -1,8 +1,8 @@
 <!-- ---
 layout: tag-blog
-title: notice board
-slug: notice-board
-category: CLONE-CODING
+title: Notice Board
+slug: Notice_Board
+category: CLONE_CODING
 menu: false
 order: 2
 --- -->

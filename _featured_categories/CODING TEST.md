@@ -1,7 +1,7 @@
 ---
 layout: list
 title: CODING TEST
-slug: CodingTest
+slug: CODING_TEST
 menu: true
 submenu: true
 order: 5

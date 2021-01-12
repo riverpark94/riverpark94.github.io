@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
 title: address book
-slug: address-book
-category: CLONE-CODING
+slug: address_book
+category: CLONE_CODING
 menu: false
 order: 1
 ---

@@ -1,7 +1,7 @@
 ---
 layout: list
 title: CLONE CODING
-slug: CloneCoding
+slug: CLONE_CODING
 menu: true
 submenu: true
 order: 6

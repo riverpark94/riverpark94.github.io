@@ -3,7 +3,7 @@ layout: post
 title: '[JS] Toy2 20. fractionConverter'
 date: 2020-10-19 22:27:44 +0900
 subtitle: 'fractionConverter'
-categories: CodingTest
+categories: CODING_TEST
 tags: Codestates
 comments: true!
 ---

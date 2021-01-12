@@ -3,7 +3,7 @@ layout: post
 title: '[JS] Toy2 21. rotateMatrix'
 date: 2020-10-20 22:27:44 +0900
 subtitle: 'rotateMatrix'
-categories: CodingTest
+categories: CODING_TEST
 tags: Codestates
 comments: true!
 sitemap :

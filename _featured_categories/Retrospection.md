@@ -1,7 +1,7 @@
 ---
 layout: list
 title: 회고
-slug: retrospection
+slug: RETROSPECTION
 menu: true
 order: 1
 # description: >
