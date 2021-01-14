@@ -3,7 +3,7 @@ layout: post
 title: '[JS] Toy1. rockPaperScissors'
 date: 2020-09-11 22:27:44 +0900
 subtitle: 'rockPaperScissors'
-categories: CodingTest
+categories: CODING_TEST
 tags: Codestates
 comments: true!
 ---
