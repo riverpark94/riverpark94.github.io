@@ -64,7 +64,7 @@ inline 요소의 경우 공백과 개행에 대해서 하나의 여백으로 받
 
 #### 1.2 display와 box model의 관계
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-1.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-1.png)
 
 ```html
 <!DOCTYPE html>
@@ -93,11 +93,11 @@ inline 요소의 경우 공백과 개행에 대해서 하나의 여백으로 받
 
 위에 코드를 보면 margin와 border에 10px의 값을 주었다.  콘솔창, box modle 부분을 참고해보면  margin, padding, border 모두 좌/우뿐만 아니라, 상/하에도 적용됨을 알 수 있다. 하지만 실제 브라우저에서 적용된 것을 확인해보면 좌/우에만 margin 영역이 잡힌다. 
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-2.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-2.png)
 
 또, 이들의 부모 요소를 선택해보면, 부모 요소는 자식요소의 콘텐츠 (box)만큼만 선언되는 것을 볼 수 있다. 이렇듯 상/하 padding/border는 line-box에는 영향을 주지 못하기 때문에 위와 같이 부모 요소의 박스에 반영되지 않는다.
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-3.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-3.png)
 
 
 ### 2. `visibility`
@@ -191,7 +191,7 @@ visible | hidden | collapse | initial | inherit;
 </body>
 </html>
 ```
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-5.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-5.png)
 
   
 
@@ -236,7 +236,7 @@ visible | hidden | collapse | initial | inherit;
 </body>
 </html>
 ```
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-6.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-6.png)
 
 
 #### display: none과 차이점
@@ -257,15 +257,15 @@ visible | hidden | collapse | initial | inherit;
 
 - **none** : float 시키지 않음(기본값)
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-8.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-8.png)
 
 - **left** : 좌측으로 float 시킴
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-9.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-9.png)
 
 - **right** : 우측으로 float 시킴
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-7.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-7.png)
 
 
 
@@ -505,7 +505,7 @@ width는 길이에 유효한 단위면 px이든 cm이든 상관없다.orientatio
  	: `<link rel="stylesheet" media="screen and (color)" herf="examplr.css">`
 
  	: `<link>` 태그의 media 속성에 미디어 쿼리를 선언한다.
-
+ 	
  	: 미디어 쿼리가 참이면 뒤에 css 파일 규칙이 적용된다.
 
 ​	 : 거짓으로 평가가 되어도 다운을 받게 된다.
@@ -514,5 +514,5 @@ width는 길이에 유효한 단위면 px이든 cm이든 상관없다.orientatio
  	: `@import orl(example.css) screen and(color);`
 
  	: CSS 파일 내부에 또는 `<style>` 태그 내부에 사용가능하다.
-
+ 	
  	: `@import`문 뒤에 css 파일의 경로를 적고 한 칸 뛰고 미디어 쿼리를 선언하면 된다.
