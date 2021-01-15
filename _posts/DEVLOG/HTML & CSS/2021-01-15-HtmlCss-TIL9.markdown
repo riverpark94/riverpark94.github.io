@@ -109,6 +109,7 @@ visible | hidden | collapse | initial | inherit;
 ```
 
 - **visible** : 화면에 표시 
+
 ```html
 <!DOCTYPE html>
 <html lang="ko">
@@ -148,7 +149,9 @@ visible | hidden | collapse | initial | inherit;
 </body>
 </html>
 ```
+
 ![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-4.png)
+
 
 - **hidden** : 화면에 표시되지 않음(공간은 차지함) 
 
