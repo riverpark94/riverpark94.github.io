@@ -225,7 +225,7 @@ font-style, font-variant, font-weight, font-size/line-height, font-family | init
 
 - **웹폰트(@FONT-FACE)** : 아예 다른 글꼴을 서버에 저장해서 제공하거나, 혹은 웹 경로를 가지고 와서 `import` 해서 제공하는 폰트를 의미한다. 혹은 사용자가 로컬 환경에 글꼴을 다운 받아 적용하는 것도 이에 해당한다. 
 
-```
+```html
 @font-face {
     font-family: webNanumGothic; /* 사용자 지정 웹 폰트명 */
     src: url(NanumGothic.eot); /* 적용 될 웹 폰트의 경로 */
