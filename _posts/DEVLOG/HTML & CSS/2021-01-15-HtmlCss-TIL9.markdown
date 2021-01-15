@@ -150,11 +150,10 @@ visible | hidden | collapse | initial | inherit;
 </html>
 ```
 
-![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-14-HC-TIL9-4.png)
+![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-4.png)
+<br>
 
-
-- **hidden** : 화면에 표시되지 않음(공간은 차지함) 
-
+- **hidden** : 화면에 표시되지 않음(공간은 차지함) <br>
 ```html
 <!DOCTYPE html>
 <html lang="ko">
@@ -195,11 +194,8 @@ visible | hidden | collapse | initial | inherit;
 </html>
 ```
 ![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-5.png)
-
-  
-
-- **collapse** : 셀 간의 경계를 무시하고 숨김(테이블 관련 요소에만 적용 가능)
-
+<br>
+- **collapse** : 셀 간의 경계를 무시하고 숨김(테이블 관련 요소에만 적용 가능)<br>
 ```html
 <!DOCTYPE html>
 <html lang="ko">
@@ -252,7 +248,7 @@ visible | hidden | collapse | initial | inherit;
 
 ### 3. `float`
 
-`float` 속성은 요소를 보통의 흐름에서 벗어나게 할지를 지정하는 속성이다. *요소를 보통의 흐름에서 벗어난다?* 모든 요소는 기본적으로 위에서 아래로, 좌에서 우로 배치된다. 요소 박스의 경계를 기준으로 배치되는데, `float` 속성은 이런 흐름을 벗어나  독자적인 공간에 배치되게 한다. `float` 속성을 사용한 이유는 주변 요소들과 더 자연스럽게 배치하기 위함이지만 floating되지 않은 주변 요소에도 영향을 주기 때문에 그 원리를 잘 알고 있어야 한다. **주변 텍스트나 인라인 요소가 주위를 감싸는 특징이 있다. 또 대부분 요소의 display 값을 block으로 변경됩니다. **(display 값 변경 예외: inline-table, flex 등)
+`float` 속성은 요소를 보통의 흐름에서 벗어나게 할지를 지정하는 속성이다. *요소를 보통의 흐름에서 벗어난다?* 모든 요소는 기본적으로 위에서 아래로, 좌에서 우로 배치된다. 요소 박스의 경계를 기준으로 배치되는데, `float` 속성은 이런 흐름을 벗어나  독자적인 공간에 배치되게 한다. `float` 속성을 사용한 이유는 주변 요소들과 더 자연스럽게 배치하기 위함이지만 floating되지 않은 주변 요소에도 영향을 주기 때문에 그 원리를 잘 알고 있어야 한다. **주변 텍스트나 인라인 요소가 주위를 감싸는 특징이 있다. 또 대부분 요소의 display 값을 block으로 변경됩니다.**(display 값 변경 예외: inline-table, flex 등)
 
 ```
  none | left | right | initial | inherit;
@@ -280,12 +276,9 @@ visible | hidden | collapse | initial | inherit;
 none | left | right | both | initial | inherit;
 ```
 
-- **none** : 양쪽으로 floating 요소를 허용(기본값)
-
-- **left** : 왼쪽으로 floating 요소를 허용하지 않음
-
-- **right** : 오른쪽으로 floating 요소를 허용하지 않음
-
+- **none** : 양쪽으로 floating 요소를 허용(기본값)<br>
+- **left** : 왼쪽으로 floating 요소를 허용하지 않음<br>
+- **right** : 오른쪽으로 floating 요소를 허용하지 않음<br>
 - **both** : 양쪽으로 floating 요소를 허용하지 않음
 
 ### 5. `position`
@@ -381,7 +374,7 @@ z-index: 1;
 
 우리는 위의 타입들 중에서 굵게 칠해진 **all**, **print**, **screen**만 알아도 된다. 
 
--  **screen** :  화면에 출력하는 디스플레이가 있는 미디어들은 screen에 해당하기 때문에 현실적으로 고려해야하는 미디어들은 전부 여기에 해당한다.
+- **screen** :  화면에 출력하는 디스플레이가 있는 미디어들은 screen에 해당하기 때문에 현실적으로 고려해야하는 미디어들은 전부 여기에 해당한다.
 - **print** : 스크린을 통해 접근하는 문서와 실제로 출력했을 때 종이로 보는 문서의 차이 때문에 간혹 쓰기는 한다. 예로 인쇄할 때는 가독성 때문에 스크린보다는 더 큰 폰트를 사용하거나 잉크 문제로 배경 색상을 없앤다든가 하는 용도로 쓰이기는 한다. 꼭 인쇄하지 않더라도 브라우저의 인쇄 미리보기 화면을 통해서도 적용된 모습을 확인할 수 있다. 
 - **all** : 모든 미디어에 적용되는 타입으로써, 미디어 매체를 구분하지 못하기 때문에 유용하지는 않다.
 
@@ -480,42 +473,30 @@ width는 길이에 유효한 단위면 px이든 cm이든 상관없다.orientatio
 
 **`@media (color-index)`**  :특성 이름만 나온 형태 (값이 생략)인데, 미디어 장치가 color-index의 기능을 지원하면 참이 되어 적용된다.
 
-**`@media screen and (min-width: 768px), screen and (orientation: portrait),...` **  : 쉼표로 연결된 미디어 쿼리 중 하나라도 참으로 평가되면 뒤의 스타일 규칙이 적용된다. and 키워드와 반대라고 생각하면 된다.
+**`@media screen and (min-width: 768px), screen and (orientation: portrait),...`**  : 쉼표로 연결된 미디어 쿼리 중 하나라도 참으로 평가되면 뒤의 스타일 규칙이 적용된다. and 키워드와 반대라고 생각하면 된다.
 
-**`@media not screen and (min-width: 768px)`**  
-
-​	: not과 only 키워드 둘 중에 하나가 들어갈 수 있다. only키워드는 예전에 미디어 쿼리를 지원하지 못하는 브라우저 때문에 있는 하위 호환성때문에 존재하는 키워드이기 때문에 지금    은 only키워드를 쓰나 안 쓰나 아무런 변화가 없다. 
-
-​	: not 키워드는 하나의 media_query 전체를 부정하는 키워드이다. (가장 마지막에 해석)
-
-​	: (not screen) and (min-width: 768px) 잘못된 해석
-
-​	: not (screen and (min-width: 768px)) 올바른 해석
-
+**`@media not screen and (min-width: 768px)`** <br>
+​	: not과 only 키워드 둘 중에 하나가 들어갈 수 있다. only키워드는 예전에 미디어 쿼리를 지원하지 못하는 브라우저 때문에 있는 하위 호환성때문에 존재하는 키워드이기 때문에 지금    은 only키워드를 쓰나 안 쓰나 아무런 변화가 없다. <br>
+​	: not 키워드는 하나의 media_query 전체를 부정하는 키워드이다. (가장 마지막에 해석)<br>
+​	: (not screen) and (min-width: 768px) 잘못된 해석<br>
+​	: not (screen and (min-width: 768px)) 올바른 해석<br>
 ​	: **`@media not screen and (min-width: 768px), print`** - 첫 번째 미디어 쿼리(not screen and (min-width: 768px)에만 not 키워드가 적용되며, 두 번째 미디어 쿼리(print)에는 영향이 없다.
 
 #### 2.3 미디어 쿼리 선언 방법
 
 미디어 쿼리를 선언하는 방법은 총 3가지가 있는데 `@media`를 이용한 방법을 가장 많이 사용하며 나머지 2가지 방법은 거의 쓰이지 않다.
 
-**👉 `@media`**
-
-​	: `@media screen and(color)`
-
+**👉 `@media`**<br>
+​	: `@media screen and(color)`<br>
 ​	: CSS 파일 내부에 또는 `<style>` 태그 내부에 사용 가능히다.
 
-**👉 `<link media="">`**
- 	: `<link rel="stylesheet" media="screen and (color)" herf="examplr.css">`
-
- 	: `<link>` 태그의 media 속성에 미디어 쿼리를 선언한다.
- 	
- 	: 미디어 쿼리가 참이면 뒤에 css 파일 규칙이 적용된다.
-
+**👉 `<link media="">`**<br>
+	: `<link rel="stylesheet" media="screen and (color)" herf="examplr.css">`<br>
+ 	: `<link>` 태그의 media 속성에 미디어 쿼리를 선언한다.<br>
+ 	: 미디어 쿼리가 참이면 뒤에 css 파일 규칙이 적용된다.<br>
 ​	 : 거짓으로 평가가 되어도 다운을 받게 된다.
 
- **👉 `@import`**
- 	: `@import orl(example.css) screen and(color);`
-
- 	: CSS 파일 내부에 또는 `<style>` 태그 내부에 사용가능하다.
- 	
+ **👉 `@import`**<br>
+ 	: `@import orl(example.css) screen and(color);`<br>
+ 	: CSS 파일 내부에 또는 `<style>` 태그 내부에 사용가능하다.<br>
  	: `@import`문 뒤에 css 파일의 경로를 적고 한 칸 뛰고 미디어 쿼리를 선언하면 된다.
