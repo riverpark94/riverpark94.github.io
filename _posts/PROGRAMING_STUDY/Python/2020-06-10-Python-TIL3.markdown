@@ -1,0 +1,151 @@
+---
+layout: post
+title: '[Python] TIL 3. 입출력 방법(2) - input함수'
+date: 2020-06-10 11:55:44 +0900
+subtitle: ' input함수'
+category: PROGRAMING_STUDY
+tags: Python
+comments: true
+toc: true
+---
+
+> 1. `input()` 함수의 사용법을 살펴본다.
+> 2. 숫자형을 어떻게 집어넣는지 살펴본다.
+> 3. 한 번에 2개 이상의 값을 받는 방법을 살펴본다.
+
+`input()`는 사용자가 변수의 값을 입력하는 함수이다.  지금까지는 변수를 만들때 값을 입력하는 형식이었다면, input 입력문은 사용자로부터 값을 입력받을 수 있다.
+
+
+![title](/assets/img/PROGRAMING STUDY/Python/TIL3/2020-06-10-Python-TIL3-1.png){: width=90% height=90%}
+
+<center> 그림1. input을 활용하면 키보드로 값을 직접 입력할 수 있다. </center>
+
+input 입력문은 마우스와 키보드를 사용해 입력 받을 수 있으며, 입력부분은 반드시 처리(입력)해주어야 한다.
+
+![title](/assets/img/PROGRAMING STUDY/Python/TIL3/2020-06-10-Python-TIL3-2.png){: width=90% height=90%}
+
+<center> 그림2. </center>
+
+  콘솔에서는 입력하는 방식의 표준입력(standard input, stdin), 출력하는 방식으로 표준출력(atandard output,stdout)이라 한다. `input ()`는 표준입력으로 사용자의 입력을 받는 형식이며 형태는 `변수 = input()` 또는 `변수 = input('문자열')`이다.
+
+아래의 출력결과 중, `강`, `컴퓨터공학`, `1234567`은 사용자가 직접 입력한 것이다. 또한, 여기서 입력받은 세 값은 모두 문자형으로 입력 받은 것이다. 즉, 마지막 입력 값인 '123457'은 숫자가 아니라 문자라는 뜻이다.
+
+```python
+name = input('이름을 입력하세요 : ')
+Department = input('학과를 입력하세요 : ')
+Student_ID = input('학번을 입력하세요 : ')
+# => 이름을 입력하세요 : 강
+# => 학과를 입력하세요 : 컴퓨터공학
+# => 학번을 입력하세요 : 1234567
+```
+
+<br>
+
+# 1. **숫자열**
+
+그렇다면 숫자열은 어떻게 입력받을 수 있을까? 숫자열은 `int()`나 `float()`로 `input()`를 깜싸줘야 한다. 형태는 아래와 같다.
+
+- `변수 = int(input())` 또는 `변수 = int(input('문자열')` 는 정수형 숫자를 입력받는 것이고
+
+```python
+Math = int(input('1. 수학성적을 입력하세요 : '))
+Eng = int(input('2. 영어성적을 입력하세요 : '))
+# => 1. 수학성적을 입력하세요 : 90
+# => 2. 영어성적을 입력하세요 : 95
+```
+
+- `변수 = float (input())` 또는 `변수 = float (input('문자열')` 는 실수형 숫자를 입력받는 것이다.
+
+```python
+credits1 = float(input('1. 학점을 입력하세요 (4.5만점) : '))
+credits2 = int(input('2. 학점을 입력하세요 (4.5만점) : '))
+# => 1. 수학성적을 입력하세요 : 4.0
+# => 2. 영어성적을 입력하세요 : 3.5
+```
+
+- 숫자열 형태로 입력받은 값은 숫자형이기 때문에 사칙 연산이 가능하다.
+
+```python
+Math = int(input('1. 수학성적을 입력하세요 : '))
+Eng = int(input('2. 영어성적을 입력하세요 : '))
+Sum = Math + Eng
+print(Math, '+', Eng, '=', Sum)
+Average = Sum / 2
+print(Sum, '/', 2, '=', Average)
+# => 1. 수학성적을 입력하세요 : 90
+# => 2. 영어성적을 입력하세요 : 95
+# => 90 + 95 = 185
+# => 185 / 2 = 92.5
+```
+
+<br>
+
+***
+
+# 2. **한 번에 두 개의 값 입력 받기**
+
+- `input()`에서 `split()`을 사용한 뒤 여러개의 변수를 지정해 줄 수 있다, 각 변수는 콤마로 구분
+
+- 변수1, 변수2 = `input().split()`
+
+- 변수1, 변수2 = `input().split(기준문자)`
+
+- 변수1, 변수2 = `input(문자열).split()`
+
+- 변수1, 변수2 = `input(문자열).split(기준문자)`
+
+```python
+# 한번에 값 2개 입력 반기
+# 입력 받은 값을 공백 기준으로 분리(공백이 기준문자)
+a, b = input('문자열 두 개를 입력하세요 : ').split( )
+print(a)
+print(b)
+# => 문자열 두 개를 입력하세요 : Hello World    
+# => Hello
+# => World
+## 공백을 기준으로 분리하였기때문에 Hello는 변수 a에 World는 변수 b에 입력됨
+```
+
+- 숫자 값 두개 입력 반기 : `input().split()`
+
+```python
+# 숫자 값 2개 입력받기
+# 입력 받은 값을 공백 기준으로 분리(공백이 기준문자)
+a, b = input('숫자 두 개를 입력하세요 : ').split()
+a = int(a)  # 변수를 정수로 변화한 뒤로 다시 저장
+b = int(b)  # 변수를 정수로 변화한 뒤로 다시 저장
+print(a + b)  # OR print(int(a) + int(b))
+# => 숫자 두 개를 입력하세요 : 100 200   
+# => 300
+```
+
+<br>
+
+***
+
+# 3. map 함수 사용
+
+- `map`에 `int`와 `input().split()`을 넣으면 `split`의 결과를 모두 `int`로 변환
+- 실수로 변환할 때는 `int` 대신 `float`를 넣는다.
+- 변수1, 변수2 = `map(int, input().split())`
+- 변수1, 변수2 = `map(int, input().split(기준문자))`
+
+```python
+# map 함수 이용
+a, b = map(int, input().split())
+print(a + b)
+# => 100 200    
+# => 300
+```
+
+- 변수1, 변수2 = `map(int, input(문자열).split())`
+- 변수1, 변수2 = `map(int, input(문자열).split(기준문자))`
+
+```python
+# 공백이 아닌 다른 문자로 구분하기
+a, b = map(int, input('숫자 두 개를 입력하세요 : ').split(','))
+print(a + b)
+# => 숫자 두 개를 입력하세요 : 100, 200    
+# => 300
+```
+

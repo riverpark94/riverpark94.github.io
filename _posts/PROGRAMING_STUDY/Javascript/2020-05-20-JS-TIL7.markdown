@@ -1,0 +1,395 @@
+---
+layout: post
+title: '[JS] TIL 7. HTML'
+date: 2020-05-20 22:27:44 +0900
+subtitle: 'HTML'
+category: PROGRAMING_STUDY
+tags: Javascript
+comments: true
+toc: true
+---
+
+> 1. HTML이 markup language라는 것을 이해할 수 있다.
+>    
+>    1.1 "구조를 표현하는 언어" 라는 의미를 자신의 언어로 표현할 수 있다.
+>    
+> 2. HTML의 기본 Tag와 속성에 대해서 이해하고 적용할 수 있다.
+>    
+>    2.1 `opening tag`, `closing tag`, `self-closing tag`에 대해서 이해하고 있다.
+>    
+>    2.2 `div`, `span` 이 무엇이고, 차이는 무엇인지 알고 있다.
+>    
+>    2.3 `ul`, `ol`, `li` 가 무엇이고, 언제 사용해야 하는지 알고 있다.
+>    
+>    2.4 input type을 설정하여 다양한 종류의 input을 활용할 수 있다.
+>    
+> 3. HTML의 기본 `Tag`와 `HTML`을 `class`, `id`로 semantic 하게 분류하고, semantic tag를 적재적소에 사용하여 의미를 부여한다성에 대해서 이해하고 적용할 수 있다.
+>    
+>    3.1 semantic tag의 남용 또한 semantic 하지 않음을 이해해야 한다.
+
+<br>
+
+[Codestates](https://codestates.com/)의 **[소프트웨어 엔지니어링](https://codestates.com/course/software-engineering)** 강의를 듣고 정리한 필기입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. HTML
+
+HTML은 HyperText Markup Language의 약자로써, 문서의 구조나 혹은 문서의 내용을 다루고 있는 언어이다. 지금까지 배운 조건문, 반복문, 함수 등은 프로그램을 할 때 필요한 스킬이었고, HTML은 문서의 틀을 만드는 것이다. 우리는 일상에서 HTML 문서에 쉽게 접하는데, 웹브라우저를 통해 보는 웹페이지나 애플리케이션들이 이 HTML로 구성이 되어있기 때문이다. 물론, 햄버거 버튼을 클릭하면 메뉴 창이 뜬다든가 하는 효과는 자바스크립트로 하는 것이지만 말이다. 즉, **HTML은 Javascript가 아닌, 웹페이지의 틀을 만드는 마크업 언어**라는 것이다. 
+
+ **▶마크업(MarkUp) 언어** : 태그(tag)와 같은 마크(mark)로 둘러쌓인 언어를 뜻한다.
+
+ **▶태그(tag)** : 시작 및 종료 태그와 같이 마크업(Markup)을 의미하며, 요소는 의미를 갖는 하나의 구조를 뜻한다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page title</title>
+</head>
+<body>
+  <h1>Hello world</h1>
+  <div>Contents here
+    <span>Here too!</span>
+  </div>
+</body>
+</html>
+```
+
+HTML은 tag들로 구성되어있다. 이 tag라는 것은 부등호(<>)로 묶여있는 HTML의 기본 구성요소이다. 위 코드를 보면 다 태그로 시작해 태그로 끝나는 것을 알 수 있다. *'여기 구성되어있는 게 html이다'* 라고 하는 것을 html 태그  (`<html>` ~ `</html>`)라고 하고,`<body>` ~ `</body>` 는 body 태그라고 이야기 할 수 있다. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-1.png){: width="100%" height="100%"}{: .center}
+
+맨 위 선언( `<!DOCTYPE HTML>`)을 빼면, 나머지는 **모두 쌍이 있음**을 발견할 수 있다. 예를 들어 span으로 열면 span으로 닫고 (`<span>` ~ `</span>`), div로 열면, div로 닫고. (`<body>` ~ `</body>`) body로 열면 body로 닫고 (`<body>` ~ `</ body>`) 이런 식의 구성으로 되어있는 것을 알 수 있으며, **여는 순서와 닫는 순서 역시 철저하게 지켜지고 있는 것** 또한 HTML 문서의 특징이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-2.png){: width="70%" height="70%"}{: .center}
+
+우리가 이것을 표현할 때 **'트리구조'**라는 말을 사용한다. 맨 상단에 문서 시작이라고 선언을 하면, 그 아래에 `html`이라는 상위 태그가 있고, 자식으로 `head`와 `body`가 있다. `head`와 `body` 아래는 각각, `title`과 `h1`, `div`가 존재한다. `div` 아래에는 `span`이 존재한다. 이런 식으로 부모 노드와 자식 노드로 구성되어있고, 그 안에 `content`(`title` 태그 안의 Page title)가 담기는 형태로 되어있다.
+
+```html
+<img src="namelessRiver-logo.png"></img>
+<img src="namelessRiver-logo.png" />
+```
+
+간혹가다가 닫는 태그가 없는 경우가 있다. 예를 들면 이미지 태그(`<img>`)는 여는 태그는 있지만, 닫는 태그는 없다. 이럴 때는 SELF-CLOSING (`<img ~ />`)으로 닫을 수가 있고, 사실 닫는 태그 자체를 생략(`<img ~ >`)을 해도 된다. 
+
+그리고 여기서 또 하나 설명하자면 태그 안에 `src`가 쓰인 것을 볼 수다.  `src`는 속성이고, 속성에 대해서 `"namelessRiver-log.png"` 이런 형태로 들어있다. 이런 것들이 태그에 들어갈 수 있는 속성과 속성에 대한 값이다. 
+
+<br>
+
+***
+
+# 2. 자주 쓰는 태그
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-3.png){: width="70%" height="70%"}{: .center}
+
+위의 표는 HTML에서 가장 많이 쓰이는 태그들이다. 이 이외의 태그들은 [mdn 레퍼런스](https://developer.mozilla.org/ko/docs/Web/HTML/Element) 문서에서 확인할 수 있다. 이것을 다 외울 필요는 없다, 그냥 array 메소드나, string 메소드처럼 정말 중요하고 잘 쓰는 것만 외워도 웹앱을 만드는 데 전혀 지장이 없다. 
+
+## 2.1 div VS. span
+
+```html
+<div>div 태그는 한 줄을 차지합니다</div>
+<div>division 2</div>
+<span>span 태그는 컨텐츠 크기만큼 공간을 차지합니다</span>
+<span>span 2</span>
+<span>span 3</span>
+<div>division 3</div>
+```
+
+`<div>` 태그는 한 줄을 차지하는 반면, `<span>` 태그는 콘텐츠 크기만큼의 공간을 차지한다. 에디터를 이용해서 html 파일을 만든 후 콘솔 창으로 보면 구조를 한눈에 파악할 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-4.png){: .center}
+
+`<div>` 태그는 전체 한 줄을 차지하는 것을 볼 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-5.png){: .center}
+
+`<div>` 태그보다 `<span>` 태그는 그 컨텐츠의 크기만큼 차지한다. 
+
+이처럼 `<div>` 태그와 `<span>` 태그의 큰 차이점은 한 줄을 먹느냐 안 먹느냐의 차이다. 물론 CSS를 이용해서 span 태그건, `<div>` 태그건 한 줄을 차지하게끔 만들 수 있고, 아니게 만들 수 있다. 자유롭게 스타일링 할 수 있지만, 기본값은  `<div>` 태그는 한 줄이고, `<span>` 태그는 콘텐츠 크기이다. 
+
+## 2.2  img : 이미지 삽입
+
+```html
+<img src="https://i.imgur.com/JVAj4tO.jpg">
+```
+
+`<img>` 태그는 사진을 삽입하고 싶을때 사용하며 닫는 태그가 존재하지 않는다. `img`는 태그의 이름을 뜻하고, `src`는 태그의 속성이다. 이것을 객체로 보면 이해하기 편한데, `src`는 키에 속하고, 이미지 주소 값은 value에 속한다. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-6.png){: .center}
+
+위의 코드를 입력하면 강아지 사진이 나온다. 역시 이미지 태그에 마우스를 올려보면 하이라이팅된 부분만큼만 차지하는 것을 알 수 있다. 
+
+## 2.3  a : 링크 삽입
+
+```html
+<a href="https://www.naver.com/" target="_blank">네이버</a>
+```
+
+html 문서의 특징 중의 하나는 링크를 삽입해, 삽입한 부분을 클릭하면 링크로 이동하는 것이다. `<a>` 태그도 `href`라는 키값에 링크라는 value 값을 넣으면 링크가 삽입되며, `<a>`와 `</a>`사이에 글씨를 바꿔주면 링크가 담기는 글도 바뀌게 된다.
+
+링크가 삽입된 글을 누르면 그냥 해당 창에서 바뀌는데 여러분이  새 창과 새 탭으로 하고 싶으면 href 키 값 뒤에 `target=”_blank”`를 넣어주면 된다. (`_blank`는 새 탭으로 열어주는 것이다.)
+
+## 2.4  ul, li: 리스트
+
+```html
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3 has nested list
+    <ul>
+      <li>Item 3-1</li>
+    </ul>
+  </li>
+</ul>
+```
+
+`ul` 태그와 `li`태그라는 것이 있다. `li`는 list의 줄임말이고, `ul` 은 Unordered List의 줄임말이다. Unordered List가 있으니 당연히 Ordered List도 존재한다.( `ul` 말고 `ol` 이라는 것도 쓸 수 있다. )
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-7.png){: .center}
+
+트리구조로 열리는 리스트를 볼 수 있다. `ul` 태그 안쪽에 다시 `ul` 태그가 들어갈 수도 있고, `li`태그 안쪽에 `ul` 태그이 들어갈 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-8.png){: .center}
+
+`ul` 태그를 `ol`태그로 바꾸면 머리 기호에 넘버링이 붙은 것을 볼 수 있다. 이런 거는 매뉴얼에 많이 쓰인다. 
+
+## 2.5  input, textarea: 다양한 입력 폼
+
+```html
+<div>
+  ID <input type="text" placeholder="type here">
+</div>
+<div>
+  Password <input type="password" >
+</div>
+
+<div>
+  <input type="checkbox" checked> 다음에 들어올 때 ID 기억하기
+</div>
+
+<div>
+  <input type="radio" name="option1" value="a"> a
+  <input type="radio" name="option1" value="b"> b
+</div>
+
+<textarea></textarea>
+```
+
+이제부터 나오는 것은 정말 웹앱에서 필요한 것이다. 앞서 봤던 것은 웹앱이라기보다는 문서 자체를 만드는 것이었다면 지금은 입력 폼이 들어간다. 우리는 입력 폼을 로그인 할 때도 사용하고 검색할 때도 사용하게 된다. 더 나아가면 radio 버튼, checkbox 도 이용할 수 있다. 이것들이 하나하나 뭔지 확인해보자. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-9.png){: .center}
+
+   * **input** 먼저 출력하면, 크롬 창에 텍스트 박스가 떴고, 저 박스에는 사용자 입력을 할 수 있다. 이것을 가지고 아이디와 비밀번호 입력창을 열 수 있다. 비밀번호는 노출되면 안 되기 때문에, type의 values 값을 text가 아니라 password로 해주면, 패스워드가 노출되지 않는다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-10.png){: .center}
+
+* **checkbox**는 ID 기억하기, 저장 유지하기 등에 사용된다. 물론 아직 이 기능은 안 되지만 form은 만들 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-11.png){: .center}
+
+* **radio**  버튼과 체크박스의 차이는 체크 박스는 복수 선택이 가능하지만, 라디오 버튼은 불가능하다는 것이다. 그룹 설정이 가능하다. 쉽게 이야기해서 라디오 버튼은 그룹 설정이 가능하고, 체크 박스는 자유롭게 여러 개를 선택할 수 있다. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-12.png){: .center}
+
+* **textarea**  특이하게 여는 태그와 닫는 태그를 꼭 넣어줘야 하며,  input 과는 달리 줄바꿈이 가능하다.
+
+## 2.6  button: 버튼
+
+```html
+<button>로그인</button>
+```
+
+위 코드를 입력하면 아래 그림처럼 로그인 버튼을 만들 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-13.png){: .center}
+
+<br>
+
+***
+
+# 3. JavaScript를 HTML에서 사용하는 방법
+
+## 3.1  HTML 내부에서 작성하는 방법 : `<script>` 태그 이용
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script type="text/javascript">
+      console.log('write your JS here');
+    </script>
+  <body>
+</html>
+```
+
+## 3.2  HTML 외부에서 작성하는 방법 : `<script>` 태그의 `src` 속성 이용
+
+```js
+// index.html
+<script src="main.js"></script>
+
+// main.js
+console.log('write your JS here');
+```
+
+외부에서 작성하는 방법은 HTML 에서 작성하지 않고, JAVASCRIPT 파일을 따로 만들어서 작성한다.
+
+<br>
+
+***
+
+# 4. HTML로 웹 앱의 구조 잡기
+
+HTML은 틀과 구조를 만드는 구조라고 하였다. 마크업(Markup) 언어라는 것이 다름이 아니라, 태그 등을 이용하여 문서나 데이터의 **구조를 만드는 언어다**라는 의미이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-14.png){: width="70%" height="70%"}{: .center}
+
+다음은 N모 포털 사이트의 댓글 창이다. 이 화면을 만들기 위해서는 HTML뿐만 아니라 CSS도 필요하다. 하지만 우리는 지금 완벽하게 작동하고, 완벽하게 같은 것이 아니라 해당 창이 어떤 구조로 이루어져 있는지 알아보고자 한다. 이런 껍데기만 만드는 것을 **목업**이라고 한다. (휴대폰 매장에 가면 실제 폰과 똑같은 크기, 똑같은 모양인데 화면은 스크린 샷만 붙여놓은 목업폰을 생각하면 된다.)
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-15.png){: .center}
+
+목업 작업 전에 **프로토타이핑**이라는 것을 꼭 해야 한다. **<u>프로토타이핑이란 개발 초기에 모형을 만들어 기능의 요구사항을 파악 후 반영하는 개선방식이다.</u>** 지금이야 만들어진 사이트를 똑같이 따라 하지만, 새롭게 개발하기 위해서는 이러한 작업이 꼭 필요하다.
+
+## 4.1 큰 틀에서 영역나누기
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-16.png){: .center}
+
+댓글 창을 크게 두 가지 영역으로 나눌 수 있는데, 바로 쓰기 영역과 읽기 영역이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-17.png){: .center}
+
+읽기 영역에는 게시물이 두 개가 있는 것을 볼 수 있다.
+
+## 4.2 각 영역을 태그로 표시하기
+
+지금 웹앱을 구성하는 영역(구성요소)를 조금 유식한 말로 하면 Component라고 부른다. 
+
+먼저 **쓰기 영역**부터 살펴보자. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-18.png){: .center}
+
+```html
+<div>
+    <div> 댓글 9 </div>
+    <input type = "text" placeholder = "댓글을 입력해주세요">
+    <button> 등록 </button>
+</div>
+```
+
+이 영역에 있을만한 태그는 `div`, `button`, text type(`input`), 이 있을 것이고, 이 세가지 태그를 하나로 갑싸주기위해 `div 태그`를 사용했다. `div`는 division(영역)이라는 뜻이다. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-19.png){: .center}
+
+혹시라도 조금 더 의미를 담고 싶으면, `section 태그`(보통 제목, 컨텐츠가 포함된 구획을 나눌 때 사용, 렌더링은 div와 크게 다른 점은 없음.) 혹은 `from 태그`(사용자 입력을 제출하는 용도로 보통 컨트롤 즉, `input`이나 `button` 등을 포함한다.) 를 이용해도 좋다. 다만 `from 태그`는 화면을 전환하는 액션이 있음으로 이를 충분히 이해하지 않으면 의도하지 않는 결과가 나올 수 있다는 점을 주의하자. 
+
+다음은 **읽기 영역**이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-20.png){: .center}
+
+읽기 영역에는 사용자 이름, 댓글 내용, 날짜가 있고(`div 태그` 나 `span 태그` 사용), 추천, 비추천을 눌러 변화를 주는 것(`button 태그` 사용)이 있다. 추천 비추천에 있는 손가락 그림은 `img태그`를 이용하면 될 것이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-21.png){: .center}
+
+```html
+<ul>
+    <li>
+        <div> ouo00**** </div>
+        <div> 
+            시각장애인들을 위한 지원이 반갑네요 앞으로도 이런 지원이 많았으면 좋겠어요! 
+        </div>
+        <sapn> 2018-03-22 23:29:22 </sapn>
+        <button>
+            <img src = 'thumbup.png'> 0
+        </button>
+        <button>
+            <img src = 'thumbdown.png'> 0
+        </button>
+    </li>
+    <li>
+        <div> cake**** </div>
+        <div> 
+            앞으로도 시각 장애인들이 일상생활에서 별다른 문제 없이 살아갈 수 있도록 많은 배려를 해주길 바랍니다. 
+            </div>
+        <sapn> 2017-04-06 18:21:58 </sapn>
+        <button>
+            <img src = 'thumbup.png'> 0
+        </button>
+        <button>
+            <img src = 'thumbdown.png'> 1
+        </button>
+    </li>
+</ul>
+```
+
+쓰기 영역과 다른 점은 쓰기 영역처럼 `div 태그`로 쓰기 영역 전체를 감싸주는 것이 아니라 각각의 게시물을 하나하나 감싸줘야 한다는 것이다. 즉, 위 그림처럼 `li태그`로 각 게시물을 감싸주고, 읽기 영역에 있는 게시물을 `ul태그`로 감싸주면 된다. 
+
+<br>
+
+***
+
+# 5. `id` 및 `class` 목적에 맞게 사용하기
+
+`id`와 `class`가 있다. **`id`는 목적이 고유한 이름을 붙일 때 사용**하고, 그리고 **`class`는 반복되는 영역에 유형별로 분류할 때 사용**한다. 즉, HTML을 작성할 때 고유한 것은 무엇이고, 반복되는 것은 무엇이지 구분할 필요가 있다.
+
+HTML로 웹 앱의 구조 잡기에서 `div 태그`, `li 태그`, `ul 태그` 등으로 읽기 영역과 쓰기 영역을 구분해줬다. 우리는 이제 `id`와 `class`를 이용해 각 태그들에 알맞은 이름을 붙여주는 작업을 할 것이다.
+
+## 5.1 HTML 태그 방식
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-22.png){: .center}
+
+이것는  고유의 영역이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-23.png){: .center}
+
+이것는 반복되는 영역이다.
+
+```html
+<div id = 'writing-section'>
+    <div> 댓글 9 </div>
+    <input id = 'new-comment' type = "text" placeholder = "댓글을 입력해주세요">
+    <button id = 'register'> 등록 </button>
+</div>
+
+<ul id = 'comments'>
+    <li class = 'comment'>
+        <div class = 'username'> ouo00**** </div>
+        <div class = 'content'> 
+            시각장애인들을 위한 지원이 반갑네요 앞으로도 이런 지원이 많았으면 좋겠어요!
+        </div>
+        <sapn class = 'createAt'> 2018-03-22 23:29:22 </sapn>
+        <button>
+            <img class = 'voteUp' src = 'thumbup.png'> 0
+        </button>
+        <button>
+            <img class = 'voteDown' src = 'thumbdown.png'> 0
+        </button>
+    </li>
+    <li class = 'comment'>
+        <div class = 'username'> cake**** </div>
+        <div class = 'content'> 
+            앞으로도 시각 장애인들이 일상생활에서 별다른 문제 없이 살아갈 수 있도록 많은 배려를 해주길 바랍니다. 
+            </div>
+        <sapn  class = 'createAt'> 2017-04-06 18:21:58 </sapn>
+        <button>
+            <img class = 'voteUp' src = 'thumbup.png'> 0
+        </button>
+        <button>
+            <img class = 'voteDown' src = 'thumbdown.png'> 1
+        </button>
+    </li>
+</ul>
+```
+
+각 `id`와 `class`를 코드로 나타내면 위와 같다. 여기서 중요한 것은 id는 중복되면 안된다. 즉, 동일한 `id` 이름을 사용할 수 없다는 뜻이다.
+
+## 5.2 selector 방식
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-24.png){: width="70%" height="70%"}{: .center}
+
+selector 방식은 `id`와 `class`를 명시적으로 표시해준 HTML 태그 방식과 모양만 다르다. 이것을 사용하는 이유는 더 쉽기 때문이다. `id`는 `#`을 앞에 붙여주고, `class`는 `.(Dot)` 을 붙여준다.
+
+

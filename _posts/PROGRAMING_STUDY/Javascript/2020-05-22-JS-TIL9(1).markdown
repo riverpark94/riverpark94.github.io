@@ -1,0 +1,128 @@
+---
+layout: post
+title: '[JS] TIL 9. DOM(1)'
+date:   2020-05-22 22:27:44 +0900
+subtitle: 'DOM'
+category: PROGRAMING_STUDY
+tags: Javascript
+comments: true
+toc: true
+---
+
+> 1. DOM
+> 
+>    1.1 JavaScript를 HTML에서 불러올 때 주의해야 할 점을 이해할 수 있다
+>    
+>    1.2 DOM의 의미를 이해할 수 있다. 
+
+<br>
+
+[Codestates](https://codestates.com/)의 **[소프트웨어 엔지니어링](https://codestates.com/course/software-engineering)** 강의를 듣고 정리한 필기입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. DOM(Document Object Model)
+
+우리는 이제 HTML과 CSS로 만든 UI 설계에다가 생명력을 불어넣을 차례이다. 실제로 돌아가는 Web 애플리케이션을 만들기 위해서는 DOM이라는 지식이 필수적이다. DOM은 Document Object Model의 줄임말이다. 즉, DOM을 이용하면 JavaScript를 이용해서 HTML 문서를 Object의 형태로 조작할 수 있다는 말이다.
+
+HTML 문서를 조작할 수 있다? 우리가 평소에 사용하는 웹사이트를 떠올리면 이 문장을 이해하기 쉬울 것이다. 아이디와 비밀번호를 입력하고 로그인 버튼을 누르면 로그인이 되고, 또 로그아웃 버튼을 누르면 로그아웃이 된다. 이런 클릭과 같은 각종 이벤트를 적용하는 것이다. (클릭 이외에도 HTML을 조작할 수 있는 이벤트들은 많다.)
+
+```html
+<body>
+    <div id = 'practice' class = 'highlight red'>
+        여기 엘리먼트가 하나 있습니다.
+        <span> 자식이 하나 있습니다. </span>
+        <span> 자식이 여럿 있습니다. </span>        
+    </div>
+</body>
+```
+
+우리는 위 코드에서 <u>태그 이름은 `div`</u>, <u>`id`는 `practice`</u>, <u>`class`는 `highlight`와 `red`</u>이다. 여기서 눈여겨 봐야 할 것은 **practice의 부모 엘리먼트는 1개(`body`)와 자식 엘리먼트는 2개(`span`, `span`)라는 것**이다.
+
+```js
+{
+    tagName : 'DIV',
+    id : 'practice',
+    classList : ['highlight', 'red'],
+    textContent: '여기에 엘리먼트 하나가 있습니다. 자식이 ...',
+    parentElement : body,
+    children: [
+        {
+            tagName: 'SPAN',
+            textContent: '자식이 하나 있습니다.'
+        },
+        {
+            tagName: 'SPAN',
+            textContent: '자식이 여럿 있습니다.'
+        }
+    ]
+}
+```
+
+이러한 구조를 Javascript Object로 표현하면 위와 같다. 이것은 HTML이 트리구조이기 때문에 가능한 것이다. (*Javascript의 데이터 타입 중에서도 트리구조가 있는데, 형태는 Object이다. Object에 key와 value가 있다.*) 즉, key의 자식으로 또 다른 Object(자식 엘리먼트)를 가질 수 있다는 것이다.
+
+위 코드를 살펴보면 classList라는 key는 `Array`를 자식으로 가진다. children이라는 키는 자식으로 Object를 가질 수 있다는 말이다. 이런 식으로 HTML 문서의 구조와 관계를 객체(Object)로 표현한 모델이 DOM이다.
+
+HTML 문서와 JavaScript 객체 모두 트리구조라는 자료구조로 되어 있기 때문에 이렇게 표현이 될 수 있다. 여기서 오해하지 말아야 할 것은 **<u>DOM이 Javascript는 아니고, JavaScript를 이용해서 DOM 구조 접근을 한다는 것</u>**이다. (document라는 전역변수로 접근이 가능.).
+
+<br>
+
+***
+
+# 2. DOM에 접근하기
+
+다음과 같은 페이지가 있다고 치자. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-1.png){: width="100%" height="100%"}{: .center}
+
+개발자 창을 열어 Elements 탭으로 가보면 어떤 HTML로 구성이 되어있는지 볼 수 있을 것이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-2.png){: width="100%" height="100%"}{: .center}
+
+### 2.1 document로 접근하기
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-3.png){: width="100%" height="100%"}{: .center}
+
+크롬의 개발자 창에서 `document`를 검색하면 Elements 탭의 내용이 같다. 즉, `document`에는 HTML이 들어있다. 이것을 하나씩 까볼 수는 있지만, 그렇다고 해서 Object처럼 보이지는 않는다.
+
+### 2.2 console.log (document)로 접근하기
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-4.png){: width="100%" height="100%"}{: .center}
+
+우리가 그동안 특정 값을 보기 위해 사용했던 `console.log` 또한 2.1과 같은 결괏값을 나타내며, 역시 Object의 형태로 보이지는 않는다.
+
+### 2.3 console.dir (document)로 접근하기
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-5.png){: width="100%" height="100%"}{: .center}
+
+이때 사용하는 것이 `console.dir (document)`이다. 이것을 사용하면 Object 형태로 출력되는 것을 볼 수 있다. **Object로 접근한다는 것은 우리가 접근할 수 있는 key와 value가 있다는 것**이다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-6.png){: width="100%" height="100%"}{: .center} 
+
+`console.dir (document)`의 출력물을 보면 다양한 속성들이 있다. 이러한 것들은 전부 콘솔 창에 찍어보면, 찍어본 key에 대한 값이 나오는 것을 볼 수 있다.
+
+HTML 문서를 출력하는 `document`혹은 `console.log`으로는 접근하는 방식은 속성들의 key 이름을 알 수는 없었다. 그렇다면, 이러한 속성들을 접근할 때 `console.dir()`만 사용해야 할까? 꼭 key 이름을 알아야지만 접근할 수 있는 걸까?
+
+### 2.4 Elements 탭에서 속성들에 접근하기 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-7.png){: width="100%" height="100%"}{: .center} 
+
+Elements 탭에서 얻을 수 있는 내용은 HTML 구조와 스타일 시트뿐이라고 생각할 수도 있지만, **Elements 탭과 Console 탭을 한 번에 이용**하면 DOM 속성에 접근할 수 있다. 키보드 ESC 버튼을 누르면 Elements 탭과 Console 탭을 한 번에 볼 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-8.png){: width="100%" height="100%"}{: .center} 
+
+여기서 내가 원하는 엘리먼트를 딱 하나만 찍어보자. `id`가 `reading-section`인 것을 찍으면 개발자 창에 해당하는 줄이 하이라이팅 되면서 태그 끝에 *`== $0`*이라고 되어있는 것을 볼 수 있다. 
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-9.png){: width="100%" height="100%"}{: .center} 
+
+그곳에 커서를 올리면 `Use $0 in the console to refer to this element`라고 나온다. 이 안내처럼` $0`은 콘솔에서 엘리먼트를 참조할 때 쓸 수 있다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-10.png){: width="100%" height="100%"}{: .center} 
+
+`document`에 접근했을 때처럼 `$0`만 사용하거나 `console.log`를 이용하면 HTML과 같은 결과값이 나온다.
+
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL9/2020-05-22-JS-TIL9-11.png){: width="100%" height="100%"}{: .center} 
+
+하지만 이때도 `console.dir`를 사용하면 객체 형식으로 값을 얻을 수 있다. 즉, 출력 값이 key와 value로 이루어졌다는 것이다. 이것은 클릭한 `id`가 `reading-section`인 엘리먼트의 태그 이름, id, class, 안쪽에 담긴 내용, 부모엘리먼트, 자식 엘리먼트 등의 객체들이 안에 들었다.
+
