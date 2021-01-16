@@ -3,8 +3,8 @@ layout: post
 title: '[HTML & CSS]  라이브 강의 후기'
 date: 2021-01-16 22:07:44 +0900
 subtitle: '라이브 강의'
-categories: Review
-tags: HtmlCss
+categories: RIVER
+tags: Review
 comments: true
 toc: true
 ---
