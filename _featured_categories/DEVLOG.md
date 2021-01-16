@@ -6,6 +6,6 @@ menu: true
 submenu: true
 order: 4
 description: >
-   프로그래밍 언어를 배우는 흔적 
+   clone coding 혹은 project 흔적.
 
 ---
