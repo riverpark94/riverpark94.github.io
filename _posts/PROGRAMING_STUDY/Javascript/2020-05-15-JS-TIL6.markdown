@@ -7,46 +7,48 @@ category: PROGRAMING_STUDY
 tags: Javascript
 comments: true
 toc: true
+
 ---
 
-> 1. 스코프(Scope)
+> **스코프(Scope)**
 >
->    1.1 JavaScript의 Scope의 의미와 적용 범위를 이해할 수 있다.
->    
->    1.2 JavaScript의 Scope 주요 규칙을 이해할 수 있다.
->    
->         1.2.1 중첩 규칙
->    
->         1.2.2 block scope(block-level scope) vs. function scope(function-level scope)
->    
->         1.2.3 `let`, `const`, `var`의 차이
->    
->         1.2.4 전역 변수와 전역 객체의 의미
->    
-> 2. 클로저(Closure)
+>    1. JavaScript의 Scope의 의미와 적용 범위를 이해할 수 있다.
 >
->    2.1 Closure의 의미와 Closure가 가지는 Scope Chain을 이해할 수 있다
->    
->    2.2 Closure의 유용하게 쓰이는 몇 가지 코딩 패턴을 이해할 수 있다.
->    
-> 3. 매개변수
-> 
->    3.1 Parameter의 갯수가 유동적인 함수를 만들 수 있다.
->    
->    3.2 ES6에서 사용하는 Rest parameter 및 ES5의 방법인 `arguments` 키워드를 이용할 수 있다.
->    
->    3.3 Default parameter를 사용할 수 있다.
->    
-> 4. 객체 지향 JavaScript
+>    2. JavaScript의 Scope 주요 규칙을 이해할 수 있다.
 >
->    4.1 객체 지향 프로그래밍의 기본적인 컨셉을 이해할 수 있다.<br>>    
->         4.1.1 class, instance 등의 용어를 이해할 수 있다.
->    
->         4.1.2 `new` 키워드를 사용해 instance를 생성할 수 있다.
->    
->         4.1.3 S6 `class` 키워드를 사용할 수 있다.
->    
->    4.2 prototype을 이용해 클래스의 원형을 만드는 방법을 이해할 수 있다.
+>       2.1 중첩 규칙
+>
+>       2.2 block scope(block-level scope) vs. function scope(function-level scope)
+>
+>       2.3 `let`, `const`, `var`의 차이
+>
+>       2.4 전역 변수와 전역 객체의 의미
+>
+> **클로저(Closure)**
+>
+>       1. Closure의 의미와 Closure가 가지는 Scope Chain을 이해할 수 있다
+>
+>       2. Closure의 유용하게 쓰이는 몇 가지 코딩 패턴을 이해할 수 있다.
+>
+> **매개변수**
+>
+>       1. Parameter의 갯수가 유동적인 함수를 만들 수 있다.
+>
+>       2. ES6에서 사용하는 Rest parameter 및 ES5의 방법인 `arguments` 키워드를 이용할 수 있다.
+>
+>       3. Default parameter를 사용할 수 있다.
+>
+> **객체 지향 JavaScript**
+>
+>    1. 객체 지향 프로그래밍의 기본적인 컨셉을 이해할 수 있다.
+>
+>       1.1 class, instance 등의 용어를 이해할 수 있다.
+>
+>       1.2 `new` 키워드를 사용해 instance를 생성할 수 있다.
+>
+>       1.3 S6 `class` 키워드를 사용할 수 있다.
+>
+>   2. prototype을 이용해 클래스의 원형을 만드는 방법을 이해할 수 있다.
 
 <br>
 
@@ -58,6 +60,7 @@ toc: true
 # 1. 스코프(Scope)
 
 ###         1.1 Scope의 정의
+
 Scope는 영어 단어로써, 범위라는 뜻을 가지고 있다. **범위라는 개념이 있어야, 작성된 코딩이 어디까지 작동하고, 어디까지 작동하지 않는지를 알 수 있다.** 이는 잘 작동하는 코드를 작성하는 데 있어 잘 알아야 하는 기초나 마찬가지다. 
 
 ```js
