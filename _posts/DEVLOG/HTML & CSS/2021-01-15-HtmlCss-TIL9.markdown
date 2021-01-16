@@ -154,6 +154,7 @@ visible | hidden | collapse | initial | inherit;
 <br>
 
 - **hidden** : 화면에 표시되지 않음(공간은 차지함) <br>
+
 ```html
 <!DOCTYPE html>
 <html lang="ko">
@@ -193,9 +194,13 @@ visible | hidden | collapse | initial | inherit;
 </body>
 </html>
 ```
+
 ![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-5.png)
+
 <br>
+
 - **collapse** : 셀 간의 경계를 무시하고 숨김(테이블 관련 요소에만 적용 가능)<br>
+
 ```html
 <!DOCTYPE html>
 <html lang="ko">
@@ -235,6 +240,7 @@ visible | hidden | collapse | initial | inherit;
 </body>
 </html>
 ```
+
 ![title](/assets/img/DEVLOG/HTML & CSS/TIL9/2021-01-15-HC-TIL9-6.png)
 
 
