@@ -26,11 +26,11 @@ toc: true
 
 입력으로부터 출력을 어떻게 얻을 수 있을까. 이런 과정을 설명하는데에는 다른 무엇보다 고등학교 때 배웠던 함수를 이용하면 쉽다. 입력값이 함수를 거치고 나면 고정된 값을 출력한다. 함수는 **입력(input)→함수→출력(output)**의 과정으로 이루어져 있다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-1.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-1.png)
 
 컴퓨터에서는 **함수 대신 알고리즘**이라는 말을 사용할 뿐, **원리는 완전히 똑같이 보면** 된다. 문제 해결 관점에서 보면 알고리즘은 문제를 해결하는 단계적인 방법에 불과하다. 즉, 입력값을 출력값의 형태로 바꾸기 위해 어떤 명령들이 수행되어야 하는지에 대한 **규칙들의 순서적 나열**이라는 것이다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-2.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-2.png)
 
 알고리즘은 **정확도**와 **효율성**을 가지고 평가할 수 있다. (**효율성**이란, 작업을 완료하기까지 얼마나 시간과 노력을 덜 들일 수 있는지에 대한 것 ) 그렇다면 우리는 문제를 해결하기 위해서는 **어떤 알고리즘**을 활용해야 할까? 
 
@@ -44,25 +44,23 @@ toc: true
 
 의사코드는 컴퓨터가 수행해야하는 프로그램을 작성할 때 각 행동이 작동하는 논리를 표현하기 위한 언어이다. **세 번째 방법**에 대한 의사코드는 아래와 같다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-3.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-3.png)
 
 여기서 C, Python, Javascript 등과 같은 언어에서 볼 수 있는 공통점이 있다. 밑에 노랗게 칠한 부분이 함수이다. 함수를 행동을 정의한 동사와 같다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-4.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-4.png)
 
 이번에 칠해진 부분은 조건이라고 부른다. 선택지라고 보면 된다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-5.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-5.png)
 
 이것은 불리언(Boolean)이라고 부른다. True 혹은 False로 나오는 부분이다. (이 페이지에 Smith가 있어? 응 혹은 아닝으로 답) 
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-6.png)
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-6.png)
 
 여기서 강조된 부분은 루프라고 한다. 적혀있는 문장을 반복하는 것이다.
 
-![title](/assets/img/DEVLOG/CS/TIL2/2021-01-11-CS-TIL2-5.png)
-
-
+![title](/assets/img/DEVLOG/CS/TIL2/2021-01-12-CS-TIL2-7.png)
 
 <br>
 
