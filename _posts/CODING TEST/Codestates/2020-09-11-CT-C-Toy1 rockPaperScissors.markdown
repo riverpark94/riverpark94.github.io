@@ -19,12 +19,24 @@ comments: true!
 
 # 1. Example
 
-**Your output should look something like:**
+### Your output should look something like :
 
-- 2차원 배열(`arr[i]`)을 리턴해야 합니다.
-- `arr[i]`는 전체 경우의 수 중 한 가지 경우(총 세 번의 선택)를 의미하는 배열입니다.
-- `arr[i]`는 `'rock'`, `'paper'`, `'scissors'` 중 한 가지 이상을 요소로 갖는 배열입니다.
-- `arr[i].length`는 3입니다.
+- **input**
+
+  -  없음
+
+- **output ** 
+  - 2차원 배열(`arr[i]`)을 리턴해야 합니다.
+  - `arr[i]`는 전체 경우의 수 중 한 가지 경우(총 세 번의 선택)를 의미하는 배열입니다.
+  - `arr[i]`는 `'rock'`, `'paper'`, `'scissors'` 중 한 가지 이상을 요소로 갖는 배열입니다.
+  - `arr[i].length`는 3입니다.
+
+- **주의 사항** :
+
+  - 최종적으로 리턴되는 배열의 순서는 가중치 적용 정렬(Weighted Sort)을 따릅니다.
+  - 중요도는 `'rock'`, `'paper'`, `'scissors'` 순으로 높습니다.
+  - 쉽게 생각해 올림픽 순위 결정 방식을 참고하면 됩니다.
+  - 금메달(`'rock'`)이 은메달(`'paper'`)보다 우선하고, 은메달(`'paper'`)이 동메달(`'scissors'`)보다 우선합니다.
 
 ```js
 let output = rockPaperScissors();
@@ -41,14 +53,7 @@ console.log(output);
   */
 ```
 
-**주의 사항:**
-
-- 최종적으로 리턴되는 배열의 순서는 가중치 적용 정렬(Weighted Sort)을 따릅니다.
-- 중요도는 `'rock'`, `'paper'`, `'scissors'` 순으로 높습니다.
-- 쉽게 생각해 올림픽 순위 결정 방식을 참고하면 됩니다.
-- 금메달(`'rock'`)이 은메달(`'paper'`)보다 우선하고, 은메달(`'paper'`)이 동메달(`'scissors'`)보다 우선합니다.
-
-**Advanced:**
+### Advanced :
 
 - 가위바위보 게임의 수를 나타내는 양의 정수 rounds가 주어질 경우, 해당 rounds 동안 선택할 수 있는 모든 경우의 수를 리턴하도록 함수를 작성해 보세요.
 
@@ -83,7 +88,6 @@ const rockPaperScissors = function () {
   // TODO: 여기에 코드를 작성합니다.
 };
 ```
-### 2020-09-11 (10:29~11:30)
 
   1. rock, paper, scissors 가 들어가있는 array를 선언한다.
 
@@ -102,9 +106,7 @@ const rockPaperScissors = function () {
 
 ***
 
-## 3. My solution
-
-### 2020-10-19 (10:29~11:30)
+# 3. My solution
 
 ```js
 let rockPaperScissors = function () {
@@ -144,7 +146,27 @@ let rockPaperScissors = function () {
 ## 4. Reference Code
 
 ```js
+const rockPaperScissors = function (rounds) {
+  rounds = rounds || 3;
+  const rps = ['rock', 'paper', 'scissors'];
 
+  const outcomes = [];
+  let permutate = function (roundsToGo, playedSoFar) {
+    if (roundsToGo === 0) {
+      outcomes.push(playedSoFar);
+      return;
+    }
+
+    for (let i = 0; i < rps.length; i++) {
+      let currentPlay = rps[i];
+      permutate(roundsToGo - 1, playedSoFar.concat(currentPlay));
+    }
+  };
+
+  permutate(rounds, []);
+
+  return outcomes;
+};
 ```
 
 <br>
@@ -152,7 +174,5 @@ let rockPaperScissors = function () {
 ***
 
 # 마치며
-
-### 2020-09-11 (10:29~11:30)
 
 Advanced는 통과하지 못했지만, 세 번의 선택으로 가능한 모든 경우의 수를 구하는 함수를 작성하긴했다. for 문과 push를 같이 쓰면 어떻게 출력되는지 까먹었어서 거기서 시간을 한참 잡아먹었다. 반복되는 부분이 있으니 시간 날때, 재귀를 쓰는 쪽으로 해봐야겠다.
