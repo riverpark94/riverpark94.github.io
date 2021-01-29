@@ -1,0 +1,57 @@
+---
+layout: post
+title: '[C] 기초1002. 출력하기'
+date: 2021-01-28 12:37:44 +0900
+subtitle: '1002 : [기초-출력] 출력하기02(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+---
+
+> 이번에는 공백()을 포함한 문장을 출력한다.
+>Hello World라는 문장을 출력하시오.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+
+  -  입력 없음
+
+- **output ** 
+  - Hello World
+    (대소문자에 주의한다.)
+
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main() 
+{
+    printf("Hello World");
+    return 0;
+}
+```
+
+<br>
+
+***
+
+# 마치며
+
+역시나 간단한 문제라 빠르게 푸는데도 세미콜론과 스펠링 그리고, #include 부분에서 자꾸 실수를 해서 오류가 난다ㅠㅠㅠ

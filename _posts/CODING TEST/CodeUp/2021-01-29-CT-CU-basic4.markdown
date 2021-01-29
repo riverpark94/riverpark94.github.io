@@ -1,0 +1,55 @@
+---
+layout: post
+title: '[C] 기초1004. 출력하기'
+date: 2021-01-29 08:27:44 +0900
+subtitle: '1004 : [기초-출력] 출력하기04(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+---
+
+> 이번에는 작은 따옴표(single quotation mark)가 들어있는
+>특수한 형태의 출력문에 대한 연습을 해보자.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+
+  -  없음
+
+- **output ** 
+  - 'Hello'
+
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    printf("\"Hello World\"");
+}
+```
+
+<br>
+
+***
+
+# 마치며
+
+JS와 파이썬은 print 함수를 쓸 때 작은 따옴표와 큰 따옴표를 섞어 사용해도 상관 없는데 C는 큰 따옴표만 써야 하더라... 

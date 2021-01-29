@@ -1,0 +1,56 @@
+---
+layout: post
+title: '[C] 기초1001. 출력하기'
+date: 2021-01-28 08:27:44 +0900
+subtitle: '1001 : [기초-출력] 출력하기01(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+---
+
+> C/C++언어에서 가장 기본적인 명령이 출력문이다.
+>printf()를 이용해 Hellow 를 출력하시오.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+
+  -  없음
+
+- **output ** 
+  - Hello
+
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main() 
+{
+    printf("Hello");
+    return 0;
+}
+```
+
+<br>
+
+***
+
+# 마치며
+
+저번주에 배웠던 것을 복습 + ;(세미콜론) 붙이기 연습을 위해서 처음부터 풀어보고자 한다. 아니 근데 javascript완 달리 ;(세미콜론)을 붙이지 않으면 오류가 난다.... 일찍이 배워둘 때 버릇 좀 잘 기들여 놓을 걸... 여하튼 얼른 ;(세미콜론)이 손에 익었으면 좋겠다.
