@@ -1,0 +1,52 @@
+---
+layout: post
+title: '[C] 기초1010. 정수 1개 입력받아 그대로 출력하기'
+date: 2021-01-31 08:27:44 +0900
+subtitle: '1010 : [기초-입출력] 정수 1개 입력받아 그대로 출력하기(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+---
+
+> 정수형(int)으로 변수를 선언하고, 변수에 정수값을 저장한 후 변수에 저장되어 있는 값을 그대로 출력해보자.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+
+  -  정수 1개가 입력된다.
+  -  ex. 15
+
+- **output ** 
+  - 입력된 정수를 그대로 출력한다.
+  - ex. 15
+
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%i", &n);
+    printf("%i", n);
+}
+```
+
+<br>

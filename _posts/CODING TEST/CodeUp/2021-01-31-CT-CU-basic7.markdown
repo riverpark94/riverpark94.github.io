@@ -1,0 +1,56 @@
+---
+layout: post
+title: '[C] 기초1007. 출력하기'
+date: 2021-01-31 08:27:44 +0900
+subtitle: '1007 : [기초-출력] 출력하기07(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+---
+
+> 윈도우 운영체제의 파일 경로를 출력하는 연습을 해보자.
+>
+> 파일 경로에는 특수문자들이 포함된다.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+
+  -  없음
+
+- **output ** 
+  - "C:\Download\hello.cpp"
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main() 
+{
+    printf("\"C:\\Download\\hello.cpp\"");
+}
+```
+
+<br>
+
+***
+
+# 마치며
+
+경로를 출력하는데에도 백슬레스는 문자로 취급되기 때문에 `\\`를 해줘야했다. 처음에는 따옴표 출력을 같이 안해서 조금 헤맸다.
+

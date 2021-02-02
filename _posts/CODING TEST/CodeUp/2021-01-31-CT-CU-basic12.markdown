@@ -1,0 +1,62 @@
+---
+layout: post
+title: '[C] 기초1012. 실수 1개 입력받아 그대로 출력하기'
+date: 2021-01-31 08:27:44 +0900
+subtitle: '1012 : [기초-입출력] 실수 1개 입력받아 그대로 출력하기(설명)'
+categories: CODING_TEST
+tags: Codestates
+comments: true
+toc: true
+
+---
+
+> 실수형(float)로 변수를 선언하고 그 변수에 실수값을 저장한 후
+> 저장되어 있는 실수값을 출력해보자.
+
+<br>
+
+[Codeup](https://codeup.kr/index.php)의 **[기초 100제](https://codeup.kr/problemsetsol.php?psid=23)** 커리큘럼에서 제공되는 문제입니다. 😀 
+{: .notice--warning}
+
+<br>
+
+# 1. Example
+
+### Your output should look something like :
+
+- **input**
+  - 실수값 1개가 입력된다.
+    (단, float로 저장할 수 있는 실수 값만 입력된다.)
+  - ex.1.414213
+
+- **output ** 
+  - 입력된 실수값을 그대로 출력한다.
+  - ex. 1.414213
+
+
+<br>
+
+***
+
+# 2. solution
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    float x;
+    scanf("%f", &x);
+    printf("%f", x);
+}
+```
+
+<br>
+
+
+
+***
+
+# 마치며
+
+프로그래밍 언어를 접하기 전에 C가 컴공과에서 배우는 언어 중 가장 기계어에 가깝다고 했는데 무슨 의미인지 슬슬 알 것 같다. 파이썬에서는 단 두줄로 끝낼 수 있는 것을 `scanf()`와 `printf() `두 가지를 이용해서 해야한다니....
