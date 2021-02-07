@@ -312,6 +312,7 @@ margin은 다른 요소오의 간격을 만들 수 있다. 이는 pandding과 �
 
 - **문법**
   - **margin auto** : 브라우저가 적절한 여백 크기를 선택. 예를 들어 요소를 중앙 정렬하고 싶을 때 사용할 수 있다.
+  
 ```css
 /* 네 면 모두 적용 */
 margin: 1em;
@@ -330,6 +331,7 @@ margin: 2px 1em 0 auto;
 margin-left: auto;
 margin-right: auto;
 ```
+
 
 - **margin collapse(마진 병합)** 
   
