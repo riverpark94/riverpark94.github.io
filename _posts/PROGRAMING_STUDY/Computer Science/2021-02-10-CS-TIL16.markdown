@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[CS] TIL 16. 메모리 할당과 해제, 메모리 교환, 스택, 힙'
-date: 2021-02-09 18:15:44 +0900
+date: 2021-02-10 18:15:44 +0900
 subtitle: '메모리주소, 포인터'
 category: PROGRAMING_STUDY
 tags: CS
@@ -328,7 +328,7 @@ void swap(int *a, int *b)
 
 
 
-## 3.3 질문
+## 2.3 질문
 
 **Q1. 메모리를 해제하지 않아도 괜찮은가?**
 
