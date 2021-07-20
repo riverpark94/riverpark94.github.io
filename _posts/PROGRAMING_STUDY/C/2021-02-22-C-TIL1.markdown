@@ -317,7 +317,7 @@ C에서 단순한 어구를 입력받은 `printf()`를 어떻게 호출(call)하
 
 당장은 **호출자(caller) 함수가 피호출자(Calle) 함수를 호출한다고 한다**라고 이해하면 된다.. 호출자(Caller) 함수는 `main()`에 해당하며 원래 호출한(calling)에 해당한다. 피호출자(Calle) 함수는 `printf()`에 해당하며, 호출된(called)함수에 해당한다.
 
-![title](/assets/img/PROGRAMING STUDY/C/TIL1/2021-02-23-C-TIL1-5.png){ width:50%; height:50%;}
+![title](/assets/img/PROGRAMING STUDY/C/TIL1/2021-02-23-C-TIL1-5.png){: width="50%" height="50%"}
 
 이런 호출자 함수가 피호출자 함수를 부르기 위해서는 피호출자 함수의 매개변수에 초기값(실인수)을 기술해야한다. 
 
