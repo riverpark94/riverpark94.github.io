@@ -4,5 +4,5 @@ title: Computer Science
 slug: CS
 category: PROGRAMING_STUDY
 menu: false
-order: 4
+order: 1
 ---
