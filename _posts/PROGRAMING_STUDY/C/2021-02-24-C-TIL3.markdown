@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[C] TIL 3. 자료형의 종료'
+title: '[C] TIL 3. 자료형의 종류'
 date: 2021-02-24 18:55:44 +0900
 subtitle: 'C 프로그래밍 입문'
 category: PROGRAMING_STUDY
