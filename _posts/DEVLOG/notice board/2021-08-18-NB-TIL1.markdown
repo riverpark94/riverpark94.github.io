@@ -1,0 +1,46 @@
+---
+layout: post
+title: '[Notice Board] TIL 1. 목적'
+date: 2021-07-18 21:18:44 +0900
+subtitle: 'Wiki'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. 목적
+> 
+> 2. wiki
+> 
+>    2.1. Requirements
+> 
+>    2.2. DB shema
+> 
+>    2.3. API
+> 
+
+
+
+# 1. 목적
+
+며칠 전, 솔리다리테 백엔드 과제를 진행 중에 역시나 N:M 관계에 대한 API 작성에 실패했다. 코드스테이츠 과제를 할 때도 거듭 실패했던 것들이라 이번에는 1:1, 1:N, N:M 관계에 집중하여, 커뮤니티 서비스에서 흔하게 볼 수 있는 게시물 조회, 생성, 삭제 기능을 구현하고자한다.
+
+<br>
+
+***
+
+# 2. wiki
+
+## 2.1 Requirements
+
+[Requirements](https://github.com/riverpark94/Notice_Board/wiki/Requirements)
+
+## 2.2 DB shema
+
+![title](/assets/img/DEVLOG/notice board/TIL1/2021-08-18-NB-TIL1-1.png)
+
+## 2.3 API
+
+[API](https://github.com/riverpark94/Notice_Board/wiki/API)
+
