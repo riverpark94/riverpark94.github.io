@@ -1,0 +1,266 @@
+---
+layout: post
+title: '[Notice Board] TIL 2. 프로젝트 생성'
+date: 2021-07-18 21:18:44 +0900
+subtitle: 'Wiki'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. [npm](https://docs.npmjs.com/cli/v7/commands/npm-init)
+> 2. [node](https://nodejs.org/en/)
+> 3. [express](https://expressjs.com/ko/)
+
+<br>
+
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 
+{: .notice--warning}
+
+<br>
+
+
+
+# 1. npm
+
+> 공식 레퍼런스 👉 [https://www.npmjs.com/](https://www.npmjs.com/)
+
+npm 은 Node package Manager의 줄임말로써 JavaScript 개발자가 사용하도록 패키지된 코드 모듈이다.  
+
+## 1.1 packge.json
+
+프로젝트의 특성상 혼자가 아닌 팀 업이 대부분이며, 이들은 각 업무를 분담받아 각기 다른 패키지들을 사용한다.  팀업이 더 유용하게 이루어지기 위해서는 누구의 컴퓨터에서도 기능이 작동할 수 있도록 사용한 패키지들을 기록해둘 필요가 있다. 이때, 설치한 패키지들을 관리하는 파일을 `packge.json`이라고 한다.
+
+```
+npm init
+```
+
+위 명령어를 터미널창에 입력하면,`packge.json` 파일이 만들어진다.  
+
+```
+npm init --yes
+```
+
+위 또한 `packge.json`을 만드는 명령어이다.
+
+```
+{
+  "name": "my_package",
+  "description": "",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monatheoctocat/my_package.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monatheoctocat/my_package/issues"
+  },
+  "homepage": "https://github.com/monatheoctocat/my_package"
+}
+```
+
+그렇게 만들어진 파일의 내용은 위와 같다.
+
+- `name` : 현재 디렉토리 이름
+- `version` : 패키지 버전인데, 항상 `1.0.0`이다.
+- `description` : `README.md`에 있는 정보거나, 빈 스트링(`""`)이 일반적이다.
+- `scripts` : 기본적으로 빈 테스트 스크립트을 생성한다.  
+- `license` : [ISC](https://opensource.org/licenses/ISC)란,  `Copyright  ` 이 저작권과 허가 표시가 사본에 입력된 때에만 이 소프트웨어를 사용, 복사, 수정 및 유료 사용, 무료 배포할 수 있는 권한을 부여하는 것이다. 
+
+## 1.2 설치한 패키지
+
+```json
+{
+  "name": "notice_board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riverpark94/Notice_Board.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riverpark94/Notice_Board/issues"
+  },
+  "homepage": "https://github.com/riverpark94/Notice_Board#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
+}
+```
+
+join에 대한 기능을 만들기 전에 `dependencies`에는 `dotenv`, `express`, `mysql2`, `nodemon`, `sequelize`를 `devDependencies`에는 `sequelize-cli`를 설치했다.
+
+```
+npm install dotenv
+```
+
+이러한 패키지를 설치하기 위해서는 `npm install` 혹은 `npm i`라는 키워드를 사용해야한다.
+
+```
+npm i mysql2, express 
+```
+
+설치해야하는 패키지가 다수일 경우 위와 같은 형태로 사용해도 된다.
+
+## 1.3 `dependencies` 와 `devDependencies`
+
+![title](/assets/img/DEVLOG/notice board/TIL2/2021-08-19-NB-TIL2-1.png)
+
+```
+npm i nodemon (--save)
+```
+
+위 명령어를 쓰면 `dependencies`에 저장된다. 끝네 `--save`가 괄호 안에 들어간 이유는 아무런 옵션을 주지 않으면 기본적으로 `dependencies`으로 추가되기 때문이다.
+
+```
+npm i nodemon --save-dev
+```
+
+패이지명 뒤에 `--save-dev` 옵션을 주면 `devDependencies`에 추가된다.
+
+### 1.3.1 **`dotenv`**
+
+```
+npm i dotenv
+```
+
+`dotenv`는 환경변수를 관리하기 위해서 설치해준 패키지이다. 이 라이브러리는`.env` 파일로부터 환경변수를 읽어낸다. (`.env` 파일은 따로 만들어 줘야 한다.) **dotenv를 설정하는 이유는 DB url을 감추기 위함**이다. DB url이 노출되면 보안에 취약해진다.
+
+그 안에 들어가는 내용은 다음과 같다.
+
+```.env
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=s1mpl3
+```
+
+입력된 내용보다는 그 문법에 집중해야 한다. 환경변수는 `key = value`와 같이 객체 형태로 입력되어있다.
+
+```javascript
+const db = require('db')
+db.connect({
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS
+})
+```
+
+그리고 `.env` 안에 있는 환경변수를 사용하기 위해서는 `process.env.키` 라고 입력해야한다.
+
+### 1.3.2 **`nodemon`**
+
+```c
+npm i nodemon
+```
+
+`nodemon`은 서버를 시작함과 동시에 서버 코드를 변경할 때마다, 서버의 재시작 없이 자동으로 재시작해주는 라이브러리이다. 사실 node.js에 `exprss`를 설치하면 `node <실행할 서버 파일>`을 통해서 서버를 시작할 수 있지만, 코드 변경 시 재시작을 내가 해야 한다는 번거로움이 있다.
+
+```
+nodemon (실행할 서버 파일)
+```
+
+위 문법에서 `실행할 서버 파일`이 괄호 안에 있는 이유는 옵션 없이 `nodemon`만 실행시켰을 경우 현재 디렉토리의 `index.js`를 실행시키기 때문이다.
+
+### 1.3.3 **`mysql2`**
+
+```c
+npm i mysql2
+```
+
+프로젝트를 하다보면 DB와 nodejs 서버를 연결시킬 일이 생긴다. 이 때 사용하는 것이 `mysql`과 `mysql2`이다. 그 중에서 `mysql2`를 사용하는 이유는 `callback`을 기반으로한 `promise`를 사용할 수 있기 때문이다. `mysql`은 `promise`를 사용하지 못할 뿐 아니라, 사용하기 위해서는 `promise-mysql`이라는 모듈을 설치해야만 한다. 
+
+### 1.3.4 `sequelize`와 `sequelize-cli`
+
+```
+npm i sequelize
+```
+
+sequelize는 Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server를 위한 Node.js ORM이다. sequelize에 대해서는 내일 좀 더 설명할 생각이다.
+
+<br>
+
+***
+
+# 2. express 서버 생성
+
+> 공식 레퍼런스 👉 [https://expressjs.com/](https://expressjs.com/)
+
+```
+npm i express 
+```
+
+공식 레퍼런스에도 적혀있지만, express는 node.js 웹 애플리케이션 프레임 워크이다. 이것을 사용하기 전에 사전에 알아두면 좋을 지식이 있다. 기본적인 컴퓨터의 이해, [server side website programming](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps), [클라이언트와 서버 간의 상호작용](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview) 이 이에 해당한다.
+
+**│ index.js**
+
+```js
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json())
+app.listen(port, () => {
+  console.log(`http://localhost:${port} port success`);
+})
+
+app.get('/', (req, res, next) => {
+  res.send('Hello World!');
+})
+```
+
+위는 기본 디렉터리에 있는 index.js 파일이다. 
+
+```js
+const express = require('express');
+const app = express();
+```
+
+위 코드는 Express 어플리 케이션을 만드는 것이다. `express()`라는 함수는 Express 모듈에서 내보내는 최상위 함수이다.
+
+```js
+app.use(express.json())
+```
+
+`app.use()`는 미들웨어 기능을 마운트 하거나 지정된 경로로 마운트 하는 데 사용된다. 기본 경로가 일치하게 미들웨어는 실행된다. 여기서 언급도 된 미들웨어란, 운영체제와 응용 소프트웨어의 중간에 조정과 중개 역할을 하는 소프트웨어이다.
+
+`express.json()`은 express의 내부 미들웨어이다. Json으로 들어오는 요청을 분석하고 body-parse에 근간을 두고 있다. 이 미들웨어는 두 가지 행동만 하는데, JSON 구문을 분석하고, content-type headr가  type option과 일치하는 요청만을 확인한다. 
+
+```js
+app.listen(port, () => {
+  console.log(`http://localhost:${port} port success`);
+})
+```
+
+`app.listen`을 사용함으로써  `nodemon`으로 실행하면 서버를 시작함과 동시에 port 3000에 수신대기를 한다. 이 함수는 Node.js의 [http.Server.listen().](https://nodejs.org/api/http.html#http_server_listen)와 완벽하게 동일하다.  만약 포트가 생략됐거나, 0일 경우, 운영체제는 사용하지 않는 포트를 임의로 지정해서 수신대기를 한다.
+
+위 코드를 실행하고 나면 http://localhost:3000의 화면에는 " http://localhost:3000 port success"이라는 문구가 출력된다.
+
+```js
+app.get('/', (req, res, next) => {
+  res.send('Hello World!');
+})
+```
+
+마지막으로 볼 것은 라우터이다. 라우팅이라는 것은 URI(경로) 및 특정 HTTP를 받는 요청을 받고 어플리케이션에 요청에 대한 응답을 하는 방식을 말한다.  경로가 일치할 때는 하나 이상의 처리가 있을 수 있다고 한다. 라우터 함수는 `get`, `post`, `put`, `delete`가 있다. 위의 코드는 '/' 경로에서 `get`에 대한 요청을 진행한다. 성공하면 "Hello world!"라는 문구를 받게 된다.<br><br><br>
+
+npm, node, express를 모두 마친 다음 터미널에 `nodemon`을 실행하게 되면 localhost3000포트에 접속할 수 있을 것이다.
