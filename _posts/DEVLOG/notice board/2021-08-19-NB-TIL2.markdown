@@ -20,7 +20,15 @@ toc: true
 
 <br>
 
-
+```
+/
+├── 📁/server
+│   ├── 📄README.md                   # Notice_Board README.md 파일
+│   ├── 📄index.js                    # node.js로 작성된 웹 서버 진입점
+│   ├── 📄package.json
+│   ├── 📄package-lock.json
+│   ├── 📄.gitignore                  # node_modules, env 등 포함되지 않게 설정요망
+```
 
 # 1. npm
 
