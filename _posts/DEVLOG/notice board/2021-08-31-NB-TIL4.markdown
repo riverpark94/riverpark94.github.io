@@ -1,0 +1,343 @@
+---
+layout: post
+title: '[Notice Board] TIL 4. join API'
+date: 2021-08-31 21:18:44 +0900
+subtitle: 'Wiki'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. 라우터 분리
+> 2. Sequelize
+> 3. Join API
+>    3.1. controllers
+>    3.2. middlewares
+
+<br>
+
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 
+{: .notice--warning}
+
+<br>
+
+```
+/
+├── 📁/server
+│   ├── 📄README.md                     # Notice_Board README.md 파일
+│   ├── 📄index.js                      # node.js로 작성된 웹 서버 진입점
+│   ├── 📄package.json
+│   ├── 📄package-lock.json
+│   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
+│   ├── 📁/config                       # 환경설정
+│   │    └── 📄config.js         
+│   ├── 📁/controllers                  # 기능 API
+│   │    ├── 📄index.js        
+│   │    ├── 📁User                     #유저관련 API
+│   │         ├── 📄index.js 
+│   │         └── 📄join.js             # join API
+│   ├── 📁/middlewares
+│   │    ├── 📄CheckEmailForm.js        # email 양식이 맞는지 확인하는 middleware     
+│   │    └── 📄CheckPassword.js         # password 조건이 맞는지 확인하는 middleware      
+│   ├── 📁/migrations 
+│   │    ├── 📄20210819052749-create-users.js
+│   │    └── 📄20210819065842-add-column-in-usersTable.js          
+│   ├── 📁/models                       # DB 모델 파일
+│   │    ├── 📄index.js
+│   │    └── 📄users.js
+│   ├── 📁/routes
+│        └── 📄index.js                  # 분기 파일
+│   
+
+```
+
+<br>
+
+# 1. controllers
+
+```js
+const { Users } = require('../../models');
+const checkPassword = require("../../middlewares/CheckPassword");
+const checkEmailForm = require("../../middlewares/CheckEmailForm");
+const crypto = require('crypto');
+
+require('dotenv').config();
+
+module.exports = {
+  post : async (req, res) =>{
+    const { email, nickname, password } = req.body;
+
+    if( !email || !nickname  || !password) {
+      res.status(400).send("not enough user information.");
+    }
+    else if (nickname.length > 10) {
+      res.status(403).send("make nickname less than 10 characters.");
+    }
+    else if (!checkPassword(password)) {
+      res.status(403).send("Special Characters or Numbers or English were not included in password.");
+    }
+    else if (!checkEmailForm(email)) {
+      res.status(403).send("Keep e-mail form.");
+    }
+    else{
+      const createSalt = () => 
+        new Promise ((resolve, reject) => {
+          crypto.randomBytes(64, (err, buf) => {
+            if (err) reject(err);
+            resolve(buf.toString('base64'));
+          })
+        })
+
+      const createHashedPassword = (pass) => 
+        new Promise(async (resolve, reject) =>{
+          const salt = await createSalt();
+          crypto.pbkdf2(pass, salt, 1009, 64, 'sha512', (err, key) => {
+            if (err) reject(err);
+            resolve({ hashpaw: key.toString('base64'), salt })
+          });
+        });
+
+      const { hashpaw, salt } = await createHashedPassword(password);
+
+      await Users.findOrCreate({
+        where : {
+          email
+        },
+        defaults: {
+          nickname, 
+          password : hashpaw,
+          salt:salt
+        }
+      }).then(([data, created]) => {
+        if (!created) {
+          res.status(402).send("existed email");
+        }
+        else {
+          res.status(201).json(data);
+        }
+      })
+    }
+  }
+}
+```
+
+ ## 1.1 사용자에게 받은 정보
+
+```js
+const { email, nickname, password } = req.body;
+```
+
+회원가입이란, 고객에게 일정 정보를 얻고 그것을 저장하고 있다가 고객이 로그인을 요청하면 회원가입 시 저장한 정보와 비교하여 승인 혹은 반려 처리를 한다. 해당 프로젝트에서는 회원가입 시 `email`, `nickname`, `password`만 받는다. 그리고 이것은 `req.body`에서 얻을 수 있다. Express v4.16.0 이전에는 bodyparser라는 node.js의 모듈을 사용했지만, 이제는 Express 내부에 비트인 되어있기 때문에 모듈 사용 없이  `req.body`의 값을 얻을 수 있다.
+
+ ## 1.2 에러처리
+
+- 이미 이메일이 존재할 경우 `403` (지금 불가 => DB를 확인해야하기 때문)
+- 이메일, 닉네임, 비밀번호 컬럼이 비었을 경우 `400`
+- 닉네임이 10자 초과인 경우 `403`
+- 비밀번호에 영문과 숫자가 포함되지 않았을 경우 `403`
+- 이메일형식에서 어긋났을 경우 `403`
+
+```js
+if( !email || !nickname  || !password) {
+  res.status(400).send("not enough user information.");
+}
+else if (nickname.length > 10) {
+  res.status(403).send("make nickname less than 10 characters.");
+}
+else if (!checkPassword(password)) {
+  res.status(403).send("Special Characters or Numbers or English were not included in password.");
+}
+else if (!checkEmailForm(email)) {
+  res.status(403).send("Keep e-mail form.");
+}
+```
+
+## 1.3 비밀번호 단방향 암호화
+
+```js
+const crypto = require('crypto');
+
+const createSalt = () => 
+  new Promise ((resolve, reject) => {
+    crypto.randomBytes(64, (err, buf) => {
+      if (err) reject(err);
+      resolve(buf.toString('base64'));
+    })
+  })
+const createHashedPassword = (pass) => 
+  new Promise(async (resolve, reject) =>{
+    const salt = await createSalt();
+    crypto.pbkdf2(pass, salt, 1009, 64, 'sha512', (err, key) => {
+      if (err) reject(err);
+      resolve({ hashpaw: key.toString('base64'), salt })
+    });
+  });
+const { hashpaw, salt } = await createHashedPassword(password);
+```
+
+암호화란, 문장을 알 수 없는 규칙으로 만들어 해킹을 당해도 그 문장을 알 수 없게 만드는 것이다. 만약 원문장으로 저장하면 해킹에 매우 취약하다. (이걸 페이스북에서 해왔다...[2019년 기사](https://www.boannews.com/media/view.asp?idx=78058&page=1&kind=1))이 암호화에는 두 가지 방법이 있다.  복원할 수 있는 암호화와 복원할 수 없는 암호화다. 이 프로젝트에서 쓸 방법 복원할 수 없는 단방향 해시 암호(One-Way Hash Function)이다.
+
+```
+npm i crypto
+```
+
+bcrypt도 있지만, crypto를 사용한 이유는 Bcrypt는 Blowfish 알고리즘을 사용하기 때문에 엄청난 비용이 든다는 것과 crypto 모듈이 Node 기본 모듈에 있는 이유가 있다고 생각해서 crypto을 사용해 암호화하고자 한다. 
+
+```js
+crypto.createHash('sha512').update('1234').digest('base64');
+crypto.createHash('sha512').update('1234').digest('base64');
+```
+
+`crypto`모듈을 불러와 `createHash`를 사용해 되지만, 이 방법은 같은 비밀번호에 대해 같은 암호문으로 반환한다. 그 때문에 해커들이 결과만을 보고 원래 암호를 유추할 수 있다는 단점이 존재한다. 이것을 레인보우 테이블이라고 한다. 
+
+```js
+const createSalt = () => 
+  new Promise ((resolve, reject) => {
+    crypto.randomBytes(64, (err, buf) => {
+      if (err) reject(err);
+      resolve(buf.toString('base64'));
+    })
+  })
+```
+
+레인보우 테이블을 방지하기 위해 많은 방법이 있지만, 이 프로젝트에서는 salt라는 특정 값을 이용한다. 그리고 이렇게 만들어진 salt값은  데이터베이스에 저장해야한다. 로그인을 시도해할 때 같은 salt값으로 비밀번호를 찾아야 비교가 가능하다. ([TIL3에 보면 이를 위해서 칼럼을 추기했다는 것을 알 수 있을 것이다.](https://riverpark94.github.io/devlog/2021/08/18/NB-TIL3/#24-%EC%B9%BC%EB%9F%BC%EC%B6%94%EA%B0%80) ) **`randomBytes`를 통해 매번 다른 64바이트길이의 salt를 생성**한다. buf는 버퍼 형식익 때문에 `buf.toString('base64')`를 통해 64바이트로 생성된 salt를 base64 문자열 salt로 변경한다. 이미 매번 다른 salt값을 생성함에도, base64 문자열 salt로 한 번 더 변경해야 하는 이유는 다음과 같다. 이후에 해시 단방향 암호를 만들 때 key가 버퍼 형태로 리턴해주기 때문에 base64 방식으로 문자열을 만들어야 하기 때문이다.
+
+```js
+const createHashedPassword = (pass) => 
+  new Promise(async (resolve, reject) =>{
+    const salt = await createSalt();
+    crypto.pbkdf2(pass, salt, 123450, 64, 'sha512', (err, key) => {
+      if (err) reject(err);
+      resolve({ hashpaw: key.toString('base64'), salt })
+    });
+  });
+```
+
+그다음은 `pbkdf2`를 통해서 해시 단방향 암호를 만들어주면 된다. `pbkdf2`의 인자는 총 5개이다. 순서대로  **비밀번호, salt, 반복 횟수, 비밀번호 길이, 해시 알고리즘** 순이다. 
+
+- 비밀번호 :  회원가입을 한 고객에게 입력받는다. 
+- salt : 매번 다른 salt 값을 뱉는 `createSalt`라는 함수를 통해서 만들어줬다. (매번 다른 base64 문자열 salt) 
+- 반복횟수 : 10만 번 이상으로 지정해줬는데, 어차피 연산은 컴퓨터가 하기 때문에 1초도 안 걸린다고 한다. 이 숫자가 높을수록 슈퍼컴퓨터를 이용해서 레인보우 테이블을 만들기 힘들어진다. 딱 떨어진 수보다는 위 불규칙한 숫자를 사용하는 것이 좋다고 한다.
+- 비밀번호 길이 : 적당한 길이로 해주면 된다.
+- 해시알고리즘 : 단방향성 해시 암수에는 종류가 많다. SHA, MD, HAS, WHIRLPOOL 등이 있다. 이중에서 최소 권장상향인 SHA2계열의 SHA25를 사용했다.
+
+위 함수가 잘 작동하면 객체형태의 값을 뱉을 것이다. 암호문으로 바뀐 비밀번호는 `hashpaw`라는 키의 value로 들어갈 것이고, salt값 또한, `salt`라는 키의 value로 들어가 있을 것이다. 
+
+```js
+const { hashpaw, salt } = await createHashedPassword(password);
+```
+
+단방향 해쉬 암호를 만드는 함수에 사용자에게 받은 페스워드를 입력 후, 그 값을 각각 `hashpaw`와 `salt`라는 변수에 할당하면 이로써 Users DB에 넣어야 할 정보는 모두 얻게 된다.
+
+## 1.4 User DB에 정보 넣기
+
+```js
+await Users.findOrCreate({
+  where : {
+    email
+  },
+  defaults: {
+    nickname, 
+    password : hashpaw,
+    salt:salt
+  }
+}).then(([data, created]) => {
+  if (!created) {
+    res.status(402).send("existed email");
+  }
+  else {
+    res.status(201).json(data);
+  }
+})
+```
+
+이제 DB에 정보를 넣는 일만이 남았다. 물론 이뿐만 아니라, DB에 접근해야만 할 수 있었던 이메일 존재 여부 또한 여기서 해야한다. Sequelize에는 여러 개의 Finder 함수가 존재한다. 이 finder 함수는 DB로부터 데이터 베이스 쿼리를 사요하는 데에 사용된다. 
+
+```js
+await Users.findOrCreate({
+  where : {
+    email
+  },
+  defaults: {
+    nickname, 
+    password : hashpaw,
+    salt:salt
+  }
+})
+```
+
+다시한번 말하지만, 우리게 필요한 것은 단순히 데이터를 집어 넣거나(`create` 함수), 단순히 기존에 가입된 이메일과 중복인지 아닌지를 확인하는 것(`find` 함수)이 아니라 두개를 복합적으로 해야할 필요가 있다. 그래서 `findOrCreate`라는 함수를 사용했다. 이 함수는 **특정 요소를 검색하여, 존재하지 않으면 데이터를 DB에 새로 생성**하는 함수이다. 만약 존재한다면 변경되지 않으며, 해당 인스턴스를 반환한다. 
+
+`findOrCreate`라는 함수에는 여러가지 옵션이 존재하는데, 특정 칼럼을 검색해야하는 `where`이라는 옵션과 검색결과가 존재하지 않을 경우에 새로 생성되는 요소가 값는 기본 값임 `defaults` 옵션을 사용했다. 만약 검색한 칼럼에 결과가 존재하지 않으면  `where` 옵션을 이용해 검색했던 내용이 그 특정칼럼의 새로운 데이터가 된다. 그리고 `defaults` 옵션에 의해서 nickname 칼럼에는 req.body에서 빼온 `nickname`이라는 변수에 들어간 정보를, password칼럼에는 `hashpaw`라는 변수가, `salt` 칼럼에는 `salt` 변수가 들어간다.
+
+```js
+}).then(([data, created]) => {
+  if (!created) {
+    res.status(402).send("existed email");
+  }
+  else {
+    res.status(201).json(data);
+  }
+})
+```
+
+위 코드에는 `then` 메서드는 `data`와 `created`라는 2부분으로 나우어지는 콜백인자로 전달한다.  `data`는 DB에 생성되는 내용이고, `created`는 true값을 갖는 대한 boolean 변수이다. 만약 이미 있는 이메일이면 `created`는 true 값이 되어 "existed email" 문구를 출력하게 될 것이다.
+
+<br>
+
+# 2. middlewares
+
+join API를 작성하면서 두개의 에러처리를 위한 미들웨어를 작성했다.
+
+- 비밀번호에 영문과 숫자가 포함되지 않았을 경우 `403`
+- 이메일형식에서 어긋났을 경우 `403`
+
+## 2.1 CheckPassword
+
+**/middlewares/CheckPassword.js**
+
+```js
+const checkPassword = (paw) => {
+  const pawNum = paw.search(/[0-9]/); // 비밀번호에 숫자가 들어가는지 안 들어가지 않으면 -1 
+  const pawEng = paw.search(/[a-zA-Z]/); // 비밀번호에 영문이 들어가는지 안 들어가지 않으면 -1 
+
+  if (pawNum < 0 || pawEng < 0) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+module.exports = checkPassword;
+```
+
+입력된 string 객체 안에서 규칙을 찾으면 되기 때문에  `search`라는 메소드를 사용했다. ([MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/search)참고) 메개변수로 받은 내용이 스트링에 있으면 첫번째 인덱스를 반환하지만, 아니라면 -1을 반환한다. 
+
+## 2.2 CheckEmailForm
+
+**/middlewares/CheckEmailForm.js**
+
+```js
+const checkEmailForm = (email) => {
+  const emailCheck = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+    // 이메일 형식에는 @와 .가 꼭 들어간다. 
+  if (!emailCheck.test(email)) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+module.exports = checkEmailForm;
+```
+
+`test`라는 함수는 주어진 문자열이 정규표현식에 만족하는지 판별하고 그 값을 boolean 값으로 나타낸다. ([MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test) 참고)
+
+# 3. 정리가 늦은 이유 및 10간 한 것.
+
+- 우선 백신 1차를 맞고 이틀정도 골아 떨어져있었다. 왼손이 붓고 근육통이 심해 거의 누워있었다.
+- 단방향 암호화를 미들웨어를 빼고자 노력했는데.. 일단 다른 API를 작성해보고 생각해봐야겠다.
+- API를 작성하면서 읽은 글이 많아서 어디서부터 어디까지 작성해야하는지를 몰라 한참을 고민했다.
