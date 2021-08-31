@@ -336,7 +336,10 @@ module.exports = checkEmailForm;
 
 `test`라는 함수는 주어진 문자열이 정규표현식에 만족하는지 판별하고 그 값을 boolean 값으로 나타낸다. ([MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test) 참고)
 
-# 3. 정리가 늦은 이유 및 10간 한 것.
+<br>
+
+
+# 3. 정리가 늦은 이유 및 10일간 한 것.
 
 - 우선 백신 1차를 맞고 이틀정도 골아 떨어져있었다. 왼손이 붓고 근육통이 심해 거의 누워있었다.
 - 단방향 암호화를 미들웨어를 빼고자 노력했는데.. 일단 다른 API를 작성해보고 생각해봐야겠다.
