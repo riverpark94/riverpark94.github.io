@@ -286,6 +286,8 @@ await Users.findOrCreate({
 
 <br>
 
+***
+
 # 2. middlewares
 
 join API를 작성하면서 두개의 에러처리를 위한 미들웨어를 작성했다.
@@ -338,6 +340,7 @@ module.exports = checkEmailForm;
 
 <br>
 
+***
 
 # 3. 정리가 늦은 이유 및 10일간 한 것.
 
