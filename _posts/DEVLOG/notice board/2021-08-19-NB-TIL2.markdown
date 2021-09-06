@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Notice Board] TIL 2. 프로젝트 생성'
+title: '[게시판 만들기] TIL 2. 프로젝트 생성'
 date: 2021-08-18 21:18:44 +0900
 subtitle: 'Wiki'
 categories: DEVLOG

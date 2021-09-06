@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: Notice Board
+title: 게시판 만들기
 slug: Notice_Board
 category: DEVLOG
 menu: false

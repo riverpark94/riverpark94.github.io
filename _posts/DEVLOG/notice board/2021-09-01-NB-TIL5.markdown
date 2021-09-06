@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Notice Board] TIL 5. Login'
+title: '[게시판 만들기] TIL 5. Login'
 date: 2021-09-01 21:18:44 +0900
 subtitle: 'Login'
 categories: DEVLOG

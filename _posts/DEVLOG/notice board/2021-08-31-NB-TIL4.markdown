@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Notice Board] TIL 4. join API'
+title: '[게시판 만들기] TIL 4. join API'
 date: 2021-08-31 21:18:44 +0900
 subtitle: 'Wiki'
 categories: DEVLOG
