@@ -1,0 +1,318 @@
+---
+layout: post
+title: '[Notice Board] TIL 5. Login'
+date: 2021-09-01 21:18:44 +0900
+subtitle: 'Login'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. findOne
+> 2. 단방향 비밀번호
+> 3. 토큰 발행
+
+<br>
+
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 
+{: .notice--warning}
+
+<br>
+
+★ : 이번 과정을 통해서 새로 만들어진 파일
+
+```
+/
+├── 📁/server
+│   ├── 📄README.md                     # Notice_Board README.md 파일
+│   ├── 📄index.js                      # node.js로 작성된 웹 서버 진입점
+│   ├── 📄package.json
+│   ├── 📄package-lock.json
+│   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
+│   ├── 📁/config                       # 환경설정
+│   │    ├── 📄config.js        
+│   │    └── 📄jwt.js                   # ★ jwt 관련 환경변수
+│   ├── 📁/controllers                  # 기능 API
+│   │    ├── 📄index.js        
+│   │    ├── 📁User                     # 유저관련 API
+│   │         ├── 📄index.js 
+│   │         ├── 📄join.js             # join API
+│   │         └── 📄login.js            # ★ login API
+│   ├── 📁/middlewares
+│   │    ├── 📄CheckEmailForm.js        # email 양식이 맞는지 확인하는 middleware     
+│   │    └── 📄CheckPassword.js         # password 조건이 맞는지 확인하는 middleware      
+│   ├── 📁/migrations 
+│   │    ├── 📄20210819052749-create-users.js
+│   │    └── 📄20210819065842-add-column-in-usersTable.js          
+│   ├── 📁/models                       # DB 모델 파일
+│   │    ├── 📄index.js
+│   │    └── 📄users.js
+│   ├── 📁/routes
+│        └── 📄index.js                  # 분기 파일
+│   
+
+```
+
+<br>
+
+# 1. controllers
+
+**/controllers/Users/login.js**
+
+```js
+const { Users } = require('../../models');
+const secretObj = require("../../config/jwt");
+const jwt = require("jsonwebtoken");
+const crypto = require('crypto');
+require('dotenv').config();
+
+
+module.exports = {
+  post : async (req, res) =>{
+    const { email, password } = req.body;
+    const secret = secretObj.secret;
+
+    const userInfo = await Users.findOne({
+      where : {
+        email
+      } 
+    });
+
+    if(!userInfo) {
+      res.status(403).send("Non-Existent User.");
+      return;
+    }
+    const dbId = userInfo.dataValues.id;
+    const dbNickname = userInfo.dataValues.nickname;
+    const dbSalt = userInfo.dataValues.salt;
+    const dbPass = userInfo.dataValues.password;
+
+    const createHashedPassword = (pass) => 
+      new Promise(async (resolve, reject) =>{
+        crypto.pbkdf2(pass, dbSalt, 1009, 64, 'sha512', (err, key) => {
+          if (err) reject(err);
+          resolve({ hashpaw: key.toString('base64'), dbSalt });
+        });
+      });
+
+    const { hashpaw } = await createHashedPassword(password);
+
+    if(dbPass !== hashpaw) {
+      res.status(403).send("The password is incorrect.");
+      return;
+    } 
+    else{
+      const token = jwt.sign(
+        email,
+        secret,
+        // {expiresIn: "7d"}
+      );
+
+      res
+        .cookie("sid", token, {
+                  maxAge: 1000 * 60 * 60 * 24 * 7, // 7일간 유지
+                  httpOnly: true,
+                })
+        .status(200)
+        .send({
+          token,
+          user : {
+            id : userInfo.dataValues.id,
+            email,
+            nickname : userInfo.dataValues.nickname
+          }
+        })
+    }
+  }
+}
+```
+
+ ## 1.1 사용자에게 받은 정보
+
+```js
+const { email, password } = req.body;
+```
+
+이 프로그램에서 로그인을 할 때는 이메일과 패스워드를 사용한다. 이 두 정보로 우리가 확인할 것은 두가지이다.
+
+- 입력된 이메일로 등록된 정보가 Users 테이블에 있는가?
+- 있다면, 등록된 정보의 비밀번호와 입력된 비밀번호가 동일한가? 
+
+ ## 1.2 이메일로 User DB 검색하기
+
+```js
+const userInfo = await Users.findOne({
+    where : {
+      email
+    } 
+  });
+```
+
+`findOne`이라는 함수는 sequelize에 있는 finders 함수이다. 이 함수는 조건에 맞는 첫 번째 항목의 데이터를 쭉 가지고 온다. 위 코드를 통해 고객에게 입력받은 이메일로 User DB를 검색하고, 검색해서 나온 데이터를 `userInfo`라는 변수에 저장하는 것이다.
+
+```json
+{
+    "id": 1,
+    "nickname": "팬더",
+    "email": "assignment@example.com",
+    "password": "lakjgwiehlghlaksjdgljsoldivlksnj1241==...",
+    "salt": "Hwlsilehlgpslkn1l2j5h2364623412414235235==...",
+    "createdAt": 2021-09-01 21:18:44,
+    "updatedAt": 2021-09-01 21:18:44
+}
+```
+
+위는 `assignment@example.com`로 로그인을 시도했을 때 `userInfo`에 저장될 정보이다.
+
+```js
+const dbId = userInfo.dataValues.id;
+const dbNickname = userInfo.dataValues.nickname;
+const dbSalt = userInfo.dataValues.salt;
+const dbPass = userInfo.dataValues.password;
+```
+
+그리고 이 정보들은 분리해서 전부 다른 변수에 저장할 수 있다.
+
+## 1.3  에러처리 1
+
+- 존재하지 않은 이메일일 경우 `403`
+- 비밀번호가 틀렸을 경우 `403` (이후에 진행)
+
+```js
+if(!userInfo) {
+  res.status(403).send("Non-Existent User.");
+  return;
+}
+```
+
+## 1.4 입력받은 비밀번호 단방향 암호화
+
+```js
+const createHashedPassword = (pass) => 
+  new Promise(async (resolve, reject) =>{
+    crypto.pbkdf2(pass, dbSalt, 123450, 64, 'sha512', (err, key) => {
+      if (err) reject(err);
+      resolve({ hashpaw: key.toString('base64'), dbSalt });
+    });
+  });
+
+const { hashpaw } = await createHashedPassword(password);
+```
+
+위는 DB에 저장된 비밀번호와 입력받은 비밀번호를 비교하기 위해서, DB에 저장되었던 `salt`으로 입력받은 비밀번호를 단방향 암호화를 하는 것이다. 암호화하는 방법은 Join API에서 사용한 방법과 매우 동일하다. ([링크](https://riverpark94.github.io/devlog/2021/08/31/NB-TIL4/#13-%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-%EB%8B%A8%EB%B0%A9%ED%96%A5-%EC%95%94%ED%98%B8%ED%99%94))
+
+## 1.5 비밀번호 비교 (에러처리 2)
+
+- 비밀번호가 틀렸을 경우 `403` (여기서 진행)
+
+```js
+if(dbPass !== hashpaw) {
+  res.status(403).send("The password is incorrect.");
+  return;
+} 
+```
+
+## 1.6 JWT
+
+```js
+else{
+  const token = jwt.sign(
+    email,
+    secret,
+    // {expiresIn: "7d"}
+  );
+
+  res
+    .cookie("sid", token, {
+              maxAge: 1000 * 60 * 60 * 24 * 7, // 7일간 유지
+              httpOnly: true,
+            })
+    .status(200)
+    .send({
+      token,
+      user : {
+        id : userInfo.dataValues.id,
+        email,
+        nickname : userInfo.dataValues.nickname
+      }
+    })
+}
+```
+
+입력받은 email도 DB에 있고, 비밀번호도 알맞게 입력했으면 JWT 토큰을 발행할 차례이다. JWT는 Json Web Token의 약자이다. 보통 웹사이트를 사용하다 보면 로그인 없이 사용할 수 있는 기능이 있는 반면, 로그인이 없다면 사용할 수 없는 기능이 있을 것이다. JWT는 후자처럼 권한허가(Authorization)가 있어야 사용할 수 있는 기능들을 위한 것이다. 
+
+```
+npm i jsonwebtoken
+```
+
+
+
+### 1.6.1 정보의 안정성
+
+JWT는웹포준(REC 7519)으로써 Json 객체를 사용하고, 이것을 자기수용적인 방식으로 안정성 있게 전달해준다.
+
+JWT는 그 자체로 필요한 모든 정보를 가지고 있다고 할 수 있다. 로그인 시스템에서는 유저의 정보를 나타낼 것이다. 그리고 또한, 웹서버의 경우 HTTP 헤더나 URL의 파라미터로 전달할 수 있다.
+
+하지만 JWT는  비밀번호나 주민번호를 넣어서는 안 된다. 암호화가 아니라 BASE64로 인코딩을 해줄 뿐이기 때문에 디코딩을 하면 데이터를 볼 수 있다.
+
+### 1.6.2 구조
+
+```js
+xxxxx.yyyyy.zzzzz
+```
+
+토큰을 발행하고 보면 위처럼 `.`(콤마)를 기준으로 세 구역으로 나뉘어진다.  
+
+![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-01-NB-TIL5-1.png)
+
+위 그림처럼 각각의 구역을 Header, Payload, Signature이라고 한다. 짧게 설명하면 Header에는 JWT 토큰 유형과 어떤 알고리즘을 사용하는지에 대한 정보가 들어가 있다. Payload에 있는 속성들은 클레임 셋(Claim set)이라고 불리며, 토큰 생성자(클라이언트)의 정보, 생성 일시 등이나 클라이언트와 서버가 주고받기로 한 값들로 되어있다. Signature는 헤더와 페이로드를 합친 문자열을 성명한 값이다.
+
+![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-01-NB-TIL5-2.png)
+
+위 그림은 JWT 공식문서에 나와 있는 JWT 토큰과 각 구역을 해독한 것을 한 장으로 보여준다.
+
+### 1.6.3 JWT 발생
+
+```js
+const token = jwt.sign(
+  email,
+  secret,
+  // {expiresIn: "7d"}
+);
+res
+  .cookie("sid", token, {
+            maxAge: 1000 * 60 * 60 * 24 * 7, // 7일간 유지
+            httpOnly: true,
+          })
+```
+
+`jwt.sign()`를 사용하면 JWT 토큰을 만든다.
+
+첫 번째 인자로는 Payload에 해당하는 내용이 들어간다. 비밀번호와 같은 개인정보는 아니지만, 또 nickname 처럼 중복값이 허용되는 정보가 아닌 email을 페이로드로 넣어주었다. 
+
+두 번째 인자로는 secret 키를 넣어준다. 이것은 JWT 환경변수에서 가지고 온 값인데, `.gitignore `에 등록된 `.env`에 관리되기 때문에 안전하게 보관할 수 있다.
+
+**config/jwt.js**
+
+```js
+require("dotenv").config();
+
+let jwtObj = {};
+
+jwtObj.secret = process.env.JWT_SECRET
+
+module.exports = jwtObj
+```
+
+세 번째 인자로는 토큰에 대한 정보를 객체로 전달한다. 지금 주석처리를 해놨는데 주석을 풀면, 토큰의 유효시간이 7일이 된다. 
+
+JWT 토큰 발행 코드에는 세 번째 인자까지만 사용했지만, [레퍼런스](https://www.npmjs.com/package/jsonwebtoken)를 보면 네 번째 인자로 콜백함수를 받는다는 걸 알 수 있다. 주의할 것은 콜백함수를 작성하지 않으면 동기처리가 된다.
+
+<br>
+
+# 2. 후기
+
+- ... 직전에 만들었던 프로그램이 고작 두 개지만, 무슨 정신으로 만들었는지는 몰라도 비밀번호끼리 비교를 안 했다. (이게 뭐 하는 짓인지) 이번에 깨닫고 그전에 했던 코드를 뒤졌는데.. 가관이더라... 공식문서에 `findOne`함수에서 단일 인스턴스를 검색한다는 말이 떡하니 적혀있는데 email과 password를 검색하는.. 으음... 다음에 또 똑같은 기능을 만들 때, 이번처럼 무언가를 깨달을지는 모르겠지만... 나름 전보다는 나은 것 같다.
+- 레인보우 테이블을 방지하기 위해 salt 값을 만들어 DB에 저장하고 있는데... 문뜩 salt 값과 비밀번호 값을 비교하면 어떤 알고리즘과 어떤 미들웨어를 사용했는지 알 수 있지 않을까? 하는 의문이 들었다.
+
