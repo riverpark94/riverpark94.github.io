@@ -19,16 +19,19 @@ toc: true
 {: .notice--warning}
 
 <br>
+★ : 이번 과정을 통해서 새로 만들어진 파일
 
 ```
 /
 ├── 📁/server
-│   ├── 📄README.md                   # Notice_Board README.md 파일
-│   ├── 📄index.js                    # node.js로 작성된 웹 서버 진입점
+│   ├── 📄README.md                   # ★ Notice_Board README.md 파일
+│   ├── 📄index.js                    # ★ node.js로 작성된 웹 서버 진입점
 │   ├── 📄package.json
 │   ├── 📄package-lock.json
-│   ├── 📄.gitignore                  # node_modules, env 등 포함되지 않게 설정요망
+│   ├── 📄.gitignore                  # ★ node_modules, env 등 포함되지 않게 설정요망
 ```
+
+
 
 # 1. npm
 
@@ -52,7 +55,7 @@ npm init --yes
 
 위 또한 `packge.json`을 만드는 명령어이다.
 
-```json
+```
 {
   "name": "my_package",
   "description": "",
@@ -177,7 +180,7 @@ db.connect({
 
 ### 1.3.2 **`nodemon`**
 
-```
+```c
 npm i nodemon
 ```
 
@@ -191,7 +194,7 @@ nodemon (실행할 서버 파일)
 
 ### 1.3.3 **`mysql2`**
 
-```
+```c
 npm i mysql2
 ```
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Notice Board] TIL 3. User DB 와 Join 라우터'
+title: '[Notice Board] TIL 3. join 라우터 및 DB'
 date: 2021-08-18 21:18:44 +0900
 subtitle: 'Wiki'
 categories: DEVLOG
@@ -22,6 +22,8 @@ toc: true
 
 <br>
 
+★ : 이번 과정을 통해서 새로 만들어진 파일
+
 ```
 /
 ├── 📁/server
@@ -30,16 +32,16 @@ toc: true
 │   ├── 📄package.json
 │   ├── 📄package-lock.json
 │   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
-│   ├── 📁/config                       # 환경설정
-│   │    └── 📄config.js            
-│   ├── 📁/migrations 
+│   ├── 📁/config                       # ★ 환경설정
+│   │    └── 📄config.js                # ★            
+│   ├── 📁/migrations                   # ★
 │   │    ├── 📄20210819052749-create-users.js
 │   │    └── 📄20210819065842-add-column-in-usersTable.js          
-│   ├── 📁/models                       # DB 모델 파일
-│   │    ├── 📄index.js
-│   │    └── 📄users.js
+│   ├── 📁/models                       # ★ DB 모델 파일
+│   │    ├── 📄index.js                 # ★
+│   │    └── 📄users.js                 # ★
 │   ├── 📁/routes
-│        └── 📄index.js                  # 분기 파일
+│        └── 📄index.js                 # ★분기 파일
 │   
 
 ```
