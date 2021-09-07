@@ -128,7 +128,7 @@ module.exports = {
 }
 ```
 
- ## 1.1 사용자에게 받은 정보
+## 1.1 사용자에게 받은 정보
 
 ```js
 const { email, password } = req.body;
@@ -139,7 +139,7 @@ const { email, password } = req.body;
 - 입력된 이메일로 등록된 정보가 Users 테이블에 있는가?
 - 있다면, 등록된 정보의 비밀번호와 입력된 비밀번호가 동일한가? 
 
- ## 1.2 이메일로 User DB 검색하기
+## 1.2 이메일로 User DB 검색하기
 
 ```js
 const userInfo = await Users.findOne({
@@ -264,11 +264,11 @@ xxxxx.yyyyy.zzzzz
 
 토큰을 발행하고 보면 위처럼 `.`(콤마)를 기준으로 세 구역으로 나뉘어진다.  
 
-![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-01-NB-TIL5-1.png)
+![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-09-NB-TIL5-1.png)
 
 위 그림처럼 각각의 구역을 Header, Payload, Signature이라고 한다. 짧게 설명하면 Header에는 JWT 토큰 유형과 어떤 알고리즘을 사용하는지에 대한 정보가 들어가 있다. Payload에 있는 속성들은 클레임 셋(Claim set)이라고 불리며, 토큰 생성자(클라이언트)의 정보, 생성 일시 등이나 클라이언트와 서버가 주고받기로 한 값들로 되어있다. Signature는 헤더와 페이로드를 합친 문자열을 성명한 값이다.
 
-![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-01-NB-TIL5-2.png)
+![title](/assets/img/DEVLOG/notice board/TIL5/2021-09-09-NB-TIL5-2.png)
 
 위 그림은 JWT 공식문서에 나와 있는 JWT 토큰과 각 구역을 해독한 것을 한 장으로 보여준다.
 
