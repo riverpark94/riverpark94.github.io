@@ -289,16 +289,6 @@ const token = jwt.sign(
 
 두 번째 인자로는 secret 키를 넣어준다. 이것은 JWT 환경변수에서 가지고 온 값인데, `.gitignore `에 등록된 `.env`에 관리되기 때문에 안전하게 보관할 수 있다.
 
-```js
-res
-  .cookie("sid", token, {
-            maxAge: 1000 * 60 * 60 * 24 * 7, // 7일간 유지
-            httpOnly: true,
-          })
-```
-
-`res.cookie()`라는 함수를 이용해서 쿠키에 토큰을 넣어주었고, 이것을 7일간 유지할 수 있도록 하였다. cookie를 통해서 JWT 토큰 인증을 할 것이다.
-
 **config/jwt.js**
 
 ```js
@@ -314,6 +304,16 @@ module.exports = jwtObj
 세 번째 인자로는 토큰에 대한 정보를 객체로 전달한다. 지금 주석처리를 해놨는데 주석을 풀면, 토큰의 유효시간이 7일이 된다. 
 
 JWT 토큰 발행 코드에는 세 번째 인자까지만 사용했지만, [레퍼런스](https://www.npmjs.com/package/jsonwebtoken)를 보면 네 번째 인자로 콜백함수를 받는다는 걸 알 수 있다. 주의할 것은 콜백함수를 작성하지 않으면 동기처리가 된다.
+
+```js
+res
+  .cookie("sid", token, {
+            maxAge: 1000 * 60 * 60 * 24 * 7, // 7일간 유지
+            httpOnly: true,
+          })
+```
+
+`res.cookie()`라는 함수를 이용해서 쿠키에 토큰을 넣어주었고, 이것을 7일간 유지할 수 있도록 하였다. cookie를 통해서 JWT 토큰 인증을 할 것이다.
 
 <br>
 
