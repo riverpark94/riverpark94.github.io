@@ -17,33 +17,34 @@ toc: true
 
 <br>
 
-😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 <br>Stack : Javascript, express, nodejs, sequelize
 {: .notice--warning}
 
 <br>
 
 ★ : 이번 과정을 통해서 새로 만들어진 파일
 
+☆ : 이번 과정을 통해서 수정된 파일
+
 ```
 /
 ├── 📁/server
 │   ├── 📄README.md                     # Notice_Board README.md 파일
 │   ├── 📄index.js                      # node.js로 작성된 웹 서버 진입점
-│   ├── 📄package.json
-│   ├── 📄package-lock.json
+│   ├── 📄☆ package.json
+│   ├── 📄☆ package-lock.json
 │   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
-│   ├── 📁/config                       # ★ 환경설정
-│   │    └── 📄config.js                # ★            
-│   ├── 📁/migrations                   # ★
-│   │    ├── 📄20210819052749-create-users.js
-│   │    └── 📄20210819065842-add-column-in-usersTable.js          
-│   ├── 📁/models                       # ★ DB 모델 파일
-│   │    ├── 📄index.js                 # ★
-│   │    └── 📄users.js                 # ★
+│   ├── 📁/config                       # 환경설정
+│   │    └── 📄★ config.js                        
+│   ├── 📁/migrations                 
+│   │    ├── 📄★ 20210819052749-create-users.js
+│   │    └── 📄★ 20210819065842-add-column-in-usersTable.js          
+│   ├── 📁/models                       # DB 모델 파일
+│   │    ├── 📄★ index.js              
+│   │    └── 📄★ users.js               
 │   ├── 📁/routes
-│        └── 📄index.js                 # ★분기 파일
+│        └── 📄★ index.js              # 분기 파일
 │   
-
 ```
 
 <br>

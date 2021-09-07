@@ -20,7 +20,12 @@ toc: true
 >    2.3. API
 > 
 
+<br>
 
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 <br>Stack : Javascript, express, nodejs, sequelize
+{: .notice--warning}
+
+<br>
 
 # 1. 목적
 
