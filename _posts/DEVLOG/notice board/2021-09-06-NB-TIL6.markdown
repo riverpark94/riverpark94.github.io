@@ -9,11 +9,9 @@ comments: true
 toc: true
 ---
 
-> 1. 라우터 분리
-> 2. Sequelize
-> 3. Join API
->    3.1. controllers
->    3.2. middlewares
+> 1. clearCookie
+> 
+> 2. JWT 토큰 검증 (`jwt.verify()`)
 
 <br>
 
