@@ -9,9 +9,9 @@ comments: true
 toc: true
 ---
 
-> 1. clearCookie
+> 1. `update`
 > 
-> 2. JWT 토큰 검증 (`jwt.verify()`)
+> 2. HTTP 메소드와 CRUD
 
 <br>
 
