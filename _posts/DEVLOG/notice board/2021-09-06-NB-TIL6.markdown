@@ -198,7 +198,19 @@ module.exports = checkToken;
 
 `jwt.verify()`라는 함수를 사용해 검증한다. `verify` 함수는 인자로는 발급받은 token, 생성할 때 사용한 비밀키, [옵션]이 된다. 옵션은 있어도 그만, 없어도 그만이다. 검증하면 토큰의 구역 중 PayLoad가 Decoded된다. 이 프로젝트에서는 로그인된 user의 email 값을 불러온다.
 
-비밀키가 틀리거나, 만료 시간이 지나면 err가 발생해 catch로 넘어간다.
+```js
+check.then(user => {
+  req.user = user;
+  next();
+}).catch(err => {
+  res.status(401).json({
+    success: false,
+    message: err
+  })
+})
+```
+
+비밀키가 맞아 토큰검증에 성공하면 email이 `req.user`저장된다. 앞으로 이것이 중요한 역할을 하게 될 것이다. (`req.user = user;`)비밀키가 틀리거나, 만료 시간이 지나면 err가 발생해 catch로 넘어간다.
 
 **/routes/index.js**
 
