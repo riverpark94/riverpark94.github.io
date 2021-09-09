@@ -163,11 +163,11 @@ HTML에서 HT(Hyper Text)는 링크를 의미한다. 앵커 태그(`<a>`)는 이
 
 `<div>` 태그는 한 줄을 차지하는 반면(블록 레벨 태그), `<span>` 태그는 콘텐츠 크기만큼의 공간을 차지(인라인 레벨)한다. 에디터를 이용해서 html 파일을 만든 후 콘솔 창으로 보면 구조를 한눈에 파악할 수 있다.
 
-![title](/assets/img/JS-TIL/TIL7/2020-05-20-JS-TIL7-4.png){: .center}
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-4.png){: .center}
 
 `<div>` 태그는 전체 한 줄을 차지하는 것을 볼 수 있다.
 
-![title](/assets/img/JS-TIL/TIL7/2020-05-20-JS-TIL7-5.png){: .center}
+![title](/assets/img/PROGRAMING STUDY/Javascript/TIL7/2020-05-20-JS-TIL7-5.png){: .center}
 
 `<div>` 태그보다 `<span>` 태그는 그 컨텐츠의 크기만큼 차지한다. 
 
