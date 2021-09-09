@@ -174,7 +174,7 @@ absolute-size | relative-size | length| percentage | initial | inherit ;
 
 - **oblique** : oblique 스타일. italic과는 달리 기울기에대한 각도를 지정할 수 있다.
 
-  - **font-weight oblique <각도>;** : 유효한 값은 -90~90이며, 기본값은 14도이다.양수 값은 글의 끝 부분이 기울어지고, 음수값은 시작부분이 기울여진다. (CSS Fonts Module Level 4 지원하는 브라우저에서만 사용이 가능하다.)
+  - **`font-weight oblique <각도>;`**` : 유효한 값은 -90~90이며, 기본값은 14도이다.양수 값은 글의 끝 부분이 기울어지고, 음수값은 시작부분이 기울여진다. (CSS Fonts Module Level 4 지원하는 브라우저에서만 사용이 가능하다.)
 
 대부분의 브라우저에선 italic 스타일과 oblique 스타일을 똑같은 형태로 표현하고 있다.
 
