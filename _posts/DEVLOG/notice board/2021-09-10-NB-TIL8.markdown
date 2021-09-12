@@ -1,0 +1,369 @@
+---
+layout: post
+title: '[게시판 만들기] TIL 8. CreateBoard'
+date: 2021-09-10 21:18:44 +0900
+subtitle: 'Wiki'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. associate (1:N)
+> 
+> 2. MySQL 한글 깨짐 문제(utf8)
+
+<br>
+
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 <br>Stack : Javascript, express, nodejs, sequelize
+{: .notice--warning}
+
+<br>
+
+★ : 이번 과정을 통해서 새로 만들어진 파일
+
+☆ : 이번 과정을 통해서 수정된 파일
+
+```
+/
+├── 📁/server
+│   ├── 📄README.md                     # Notice_Board README.md 파일
+│   ├── 📄index.js                      # node.js로 작성된 웹 서버 진입점
+│   ├── 📄package.json
+│   ├── 📄package-lock.json
+│   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
+│   ├── 📁/config                       # 환경변수
+│   │    ├── 📄config.js        
+│   │    └── 📄jwt.js                   # jwt 관련 환경변수
+│   ├── 📁/controllers                  # 기능 API
+│   │    ├── 📄☆ index.js        
+│   │    ├── 📁User                     # 유저관련 API
+│   │    │    ├── 📄index.js 
+│   │    │    ├── 📄join.js             # join API
+│   │    │    ├── 📄login.js            # login API
+│   │    │    └── 📄logout.js           # logout API
+│   │    ├── 📁MyPage                   # 마이페이지 API
+│   │    │    ├── 📄index.js 
+│   │    │    ├── 📄myPage.js            # myPage API
+│   │    │    └── 📄editUserInfo.js      # editUserInfo API
+│   │    └── 📁Boards                   # 게시판 API
+│   │         ├── 📄★ index.js 
+│   │         └── 📄★ writeBoard.js     # writeBoard API
+│   ├── 📁/middlewares
+│   │    ├── 📄CheckEmailForm.js        # email 양식이 맞는지 확인하는 middleware
+│   │    ├── 📄CheckPassword.js         # password 조건이 맞는지 확인하는 middleware      
+│   │    └── 📄checkToken.js            # JWT 검증 middleware
+│   ├── 📁/migrations 
+│   │    ├── 📄20210819052749-create-users.js
+│   │    ├── 📄20210819065842-add-column-in-usersTable.js   
+│   │    ├── 📄★ 20210910065541-create-boards.js
+│   │    └── 📄★ 20210910070528-fk-Boards.js         
+│   ├── 📁/models                       # DB 모델 파일
+│   │    ├── 📄index.js
+│   │    ├── 📄users.js
+│   │    └── 📄★ boards.js
+│   ├── 📁/routes
+│        └── 📄☆ index.js               # 분기 파일
+│   
+```
+
+<br>
+
+**/controllers/Boards/writeBoard.js**
+
+```js
+  
+const { Users } = require('../../models');
+const { Boards } = require('../../models');
+
+module.exports = {
+  post : async (req, res) =>{
+    const { title, content } = req.body;
+
+    if(!title||!content) {
+      if(!title && !content) {
+        res.status(403).send("Please write down the title and content.");
+      }
+      else if(!title) {
+        res.status(403).send("Please write down the title.");
+      }
+      else if(!content) {
+        res.status(403).send("Please write down the content.");
+      }
+    }
+    else{
+      const email = req.user;
+      const userInfo =await Users.findOne({
+        where : {email}
+      })
+      const dbId = userInfo.dataValues.id;
+      const dbNickname = userInfo.dataValues.nickname;
+
+      await Boards.create({
+        userId : dbId,
+        title : title,
+        content : content,
+        like : 0
+      })
+      .then (data => {
+        res.status(200).json({
+          userId: data.userId,
+          user : {
+            nickname: dbNickname,
+          },
+          title : data.title,
+          content : data.content,
+          like :data.like
+        });
+      })
+    }
+  }
+}
+```
+
+**/migrations/20210910065541-create-boards.js**
+
+```js
+'use strict';
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Boards', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+          as: 'userId'
+        }
+      },
+      title: {
+        type: Sequelize.STRING
+      },
+      content: {
+        type: Sequelize.STRING
+      },
+      like: {
+        type: Sequelize.INTEGER,
+        defaultValue:0
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    },{
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci',
+    underscored: true,
+ 
+    freezeTableName: true,
+ 
+    tableName: 'Boards'
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Boards');
+  }
+};
+```
+
+**/migrations/20210910070528-fk-Boards.js**
+
+```js
+'use strict';
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn("Boards", "userId");
+    await queryInterface.addColumn("Boards", "userId", {
+      type: Sequelize.INTEGER,
+    });
+    await queryInterface.addConstraint("Boards", {
+      fields: ["userId"],
+      type: "foreign key",
+      name: "User_write_Post_fk",
+      references: {
+        table: "Users",
+        field: "id",
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn("Boards", "userId");
+  },
+};
+```
+
+<br>
+
+기능으로는 join API와 별반 다를게 없으므로 controllers에 대한 설명은 생략하고, 1:1 관계 설정과 한글 깨짐 문제에 대해서 기록하고자 한다.
+
+<br>
+
+# 1. associate (1:N)
+
+모델 간의 관계에는 1:1, 1:N, N:M 관계가 있다. 이번에 정의한 1:N 관계는 `hasMany()`와 `belongsTo()`라는 메소드를 사용한다. `belongsTo()`는 예를 들면 선수가 하나의 팀을 갖게 되는 것처럼 관계를 형성되고, `hasMany()`는 반대로 하나의 팀이 여러 명의 선수를 갖게 되는 것 같은 관계를 형성한다.
+
+```js
+this.belongsTo(models.Users, {foreignKey: "userId"}); // boards.js 의 associate 부분에 들어가는 코드
+this.hasMany(models.Boards, {foreignKey: "userId"}); // users.js 의 associate 부분에 들어가는 코드s
+```
+
+레퍼런스 상에서는 위처럼 코드를 각 JS파일에 추가하면 `Boards.js`에 `userId`가 생기고 1:N관계가 만들어진다는데…. 나는 그게 잘 안 되는 것 같아서 다른 방법을 더 사용했다.  
+
+```
+sequelize migration:generate fk-Boards
+```
+
+외래키를 어떻게 설정했고 Users 테이블의 어떤 칼럼과 연결했는지만을 볼 수 있다는 점과 더 상세하게 조건들을 넣을 수 있다는 점에서 위와 같은 명령어로 파일을 만들고 코드를 추가해줬다.
+
+**/migrations/20210910070528-fk-Boards.js**
+
+```js
+'use strict';
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn("Boards", "userId");
+    await queryInterface.addColumn("Boards", "userId", {
+      type: Sequelize.INTEGER,
+    });
+    await queryInterface.addConstraint("Boards", {
+      fields: ["userId"],
+      type: "foreign key",
+      name: "User_write_Post_fk",
+      references: {
+        table: "Users",
+        field: "id",
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.removeColumn("Boards", "userId");
+  },
+};
+```
+
+`queryInterface`에는 여러개의 메소드가 있다. `removeColumn()`은 기존에 만들었던 `userId`를 삭제하는 메소드고, `addColumn()`이라는 메소드는 다시 `userId`를 만든다. 그리고 `addConstraint()`로 외래키에 대한 설정을 넣어준다.
+
+```
+public async addConstraint(tableName, [fields, type, name, defaultValue, where, references.table, references.field]):
+```
+
+위는 `addConstraint()`의 예시이다. 이 중에서 `tableName`을 제외하면, 정부 있어도 그만, 없어도 그만인 옵션이다만... 옵션을 사용하지 않으면 딱히 쓸 이유도 없다. 나는 옵션 중에 `fields`, `type`, `name`, `references.table`, `references.field`를 사용했다.
+
+- `fields` : 배열 형태이며, 제약조건을 적용할 칼럼이름이다. 
+- `type` : 제약조건을 적용할 칼럼이름의 유형이다. 여기서는 외래키로 적용할 것이기 때문에 foreign key를 적어줬다.
+- `name` : 칼럼에 적용되는 제약조건의 이름이다. 지정하지 않으면, 제약조건의 유형, 테이블 및 열 이름에 따라 자동으로 만든다. (중복되면 에러나더라...)
+- `references` : 외래 키를 연결할 테이블과 칼럼을 지정하는 객체(Object)이다. `table`과 `field`라는 키가 있다. 
+  - `table` : 연결할 테이블의 이름
+  - `field` : 연결할 칼럼의 이름
+
+```js
+onDelete: "cascade",
+onUpdate: "cascade",
+```
+
+위 설정은 외래키를 설정할 때 꼭 해줘야 한다. 꼭, 꼭.  `cascade` 는 부모 테이블(연결할 테이블)의 데이터를 제거하면 그것과 연결된 자식(외캐키를 가진 테이블)테이블의 테이터, 그 자식의 자식까지 모든 데이터가 자동으로 삭제된다.
+
+<br>
+
+# 2. MySQL 한글 깨짐 문제(utf8)
+
+API를 완성하고 데이터를 이것저것 집어넣다가 한글을 넣으면 깨지는 문제가 발생했다.
+
+```
+Incorrect string value: '\xEB\x82\xB4\xEC\x9A\xA9...' for column 'content' at row 1 
+```
+
+정확히는 위와 같은 문제인데, 영어를 집어넣을 때는 문제가 없이 작동됐는데 한글만 집어넣으면 오류가 생겼다. 검색을 해보니 DB의 캐릭터셋을 변경해야 한다.
+
+sequelizes는 default로 utf8을 상용하지 않기 때문에 string으로 칼럼을 생성하더라도 utf8이 아니다.
+
+**/migrations/20210910065541-create-boards.js**
+
+```js
+'use strict';
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Boards', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+          as: 'userId'
+        }
+      },
+      title: {
+        type: Sequelize.STRING
+      },
+      content: {
+        type: Sequelize.STRING
+      },
+      like: {
+        type: Sequelize.INTEGER,
+        defaultValue:0
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    },{
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci',
+    underscored: true,
+ 
+    freezeTableName: true,
+ 
+    tableName: 'Boards'
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Boards');
+  }
+};
+```
+
+해서 이를 해결하기 위해 migrations파일을 위처럼 수정해줬다.
+
+```js
+{
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci',
+    underscored: true,
+ 
+    freezeTableName: true,
+ 
+    tableName: 'Boards'
+}
+```
+
+윗부분을 추가해줌으로써 Boards 테이블의 모든 캐릭터셋은 default로 utf8이 된다.
+
+<br>
+
+# 3. 고민 중인 것.
+
+1:N 관계를 잘 설정했는지 확인하기 위해 `cascade`를 설정해줬다. 이게 Workbench에서는 잘 보이는데 정말 잘 설정됐는지는 모르겠다. 댓글기능을 넣기 전에 확인해보고자 회원탈퇴 기능을 추가할까 고민 중이다.
