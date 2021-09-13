@@ -1,0 +1,332 @@
+---
+layout: post
+title: '[게시판 만들기] TIL 9. Withdrawal, SearchBoards '
+date: 2021-09-13 21:18:44 +0900
+subtitle: 'Wiki'
+categories: DEVLOG
+tags: Notice_Board
+comments: true
+toc: true
+---
+
+> 1. Withdrawal(탈퇴) : `destroy()`
+>
+> 2. SearchBoards : 
+>
+>    2.1. Url params
+>    
+>    2.2. operators(`Op.like`)
+>    
+>    2.3. operators(`Op.or`)
+>
+
+<br>
+
+😀 [Notice Board 레파지토리](https://github.com/riverpark94/Notice_Board)😀 <br>Stack : Javascript, express, nodejs, sequelize
+{: .notice--warning}
+
+<br>
+
+★ : 이번 과정을 통해서 새로 만들어진 파일
+
+☆ : 이번 과정을 통해서 수정된 파일
+
+```
+/
+├── 📁/server
+│   ├── 📄README.md                     # Notice_Board README./
+├── 📁/server
+│   ├── 📄README.md                     # Notice_Board README.md 파일
+│   ├── 📄index.js                      # node.js로 작성된 웹 서버 진입점
+│   ├── 📄package.json
+│   ├── 📄package-lock.json
+│   ├── 📄.gitignore                    # node_modules, env 등 포함되지 않게 설정요망
+│   ├── 📁/config                       # 환경변수
+│   │    ├── 📄config.js        
+│   │    └── 📄jwt.js                   # jwt 관련 환경변수
+│   ├── 📁/controllers                  # 기능 API
+│   │    ├── 📄☆ index.js        
+│   │    ├── 📁User                     # 유저관련 API
+│   │    │    ├── 📄☆ index.js 
+│   │    │    ├── 📄join.js             # join API
+│   │    │    ├── 📄login.js            # login API
+│   │    │    ├── 📄logout.js           # logout API
+│   │    │    └── 📄★ withdrawal.js    # withdrawal API
+│   │    ├── 📁MyPage                   # 마이페이지 API
+│   │    │    ├── 📄index.js 
+│   │    │    ├── 📄myPage.js            # myPage API
+│   │    │    └── 📄editUserInfo.js      # editUserInfo API
+│   │    └── 📁Boards                   # 게시판 API
+│   │         ├── 📄☆ index.js 
+│   │         ├── 📄writeBoard.js        # writeBoard API
+│   │         └── 📄★ searchBords.js    # searchBords API
+│   ├── 📁/middlewares
+│   │    ├── 📄CheckEmailForm.js        # email 양식이 맞는지 확인하는 middleware
+│   │    ├── 📄CheckPassword.js         # password 조건이 맞는지 확인하는 middleware      
+│   │    └── 📄checkToken.js            # JWT 검증 middleware
+│   ├── 📁/migrations 
+│   │    ├── 📄20210819052749-create-users.js
+│   │    ├── 📄20210819065842-add-column-in-usersTable.js   
+│   │    ├── 📄20210910065541-create-boards.js
+│   │    └── 📄20210910070528-fk-Boards.js         
+│   ├── 📁/models                       # DB 모델 파일
+│   │    ├── 📄index.js
+│   │    ├── 📄users.js
+│   │    └── 📄boards.js
+│   ├── 📁/routes
+│        └── 📄☆ index.js               # 분기 파일
+│   
+```
+
+<br>
+
+**controllers/Users/withdrawal.js**
+
+```js
+const { Users } = require('../../models');
+
+module.exports = {
+  delete : async (req, res) =>{
+    const { nickname } = req.body;
+    const email = req.user;
+
+    Users.destroy({
+      where : {
+        email
+      }
+    }).then(data =>{
+      res
+        .status(205)
+        .clearCookie("sid")
+        .send("Withdrawal success");
+    })
+  }
+}
+```
+
+**controllers/Boards/searchBords.js**
+
+```js
+const { Boards } = require('../../models');
+const { Op } = require("sequelize");
+
+module.exports = {
+  get : async (req, res) =>{
+    const { search } = req.params;
+
+    Boards.findAll({
+      where : {
+        [Op.or] : [
+          {
+            title : {
+              [Op.like]: "%" + search + "%"
+            }
+          }, {
+            content : {
+              [Op.like]: "%" + search + "%"
+            }
+          }
+        ]          
+      },
+      order: [['createdAt', 'DESC']]
+    }).then(data => {
+        res.status(200).send(data)
+    })
+  }
+}
+```
+
+**/routes/index.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const checkToken = require('../middlewares/checkToken');
+const { userController, 
+        myPageController, 
+        BoardController } = require('../controllers');
+
+router.get('/', (req, res) => {
+  res.send("Site access success");
+});
+
+router.post('/user/join', userController.join.post);
+router.post('/user/login', userController.login.post);
+router.get('/board/searchBords/:search', BoardController.searchBords.get);
+
+router.use(checkToken);
+
+router.post('/user/logout', userController.logout.post);
+router.delete('/user/withdrawal', userController.withdrawal.delete);
+
+router.get('/user/myPage', myPageController.myPage.get);
+router.put('/user/myPage', myPageController.editUserInfo.put);
+
+router.post('/board/write', BoardController.writeBoard.post);
+
+module.exports = router;
+```
+
+
+
+<br>
+
+1. Withdrawal(탈퇴) : `destroy()`
+2. SearchBoards : 유사검색
+
+# 1. Withdrawal
+
+**controllers/Users/withdrawal.js**
+
+```js
+const { Users } = require('../../models');
+
+module.exports = {
+  delete : async (req, res) =>{
+    const { nickname } = req.body;
+    const email = req.user;
+
+    Users.destroy({
+      where : {
+        email
+      }
+    }).then(data =>{
+      res
+        .status(205)
+        .clearCookie("sid")
+        .send("Withdrawal success");
+    })
+  }
+}
+```
+
+sequelize는 데이터를 삭제하는 쿼리문을 작성할 때, `destroy()`를 사용하고 `where` 옵션을 사용한다. 
+
+JWT 토큰 검증을 통해 email을 `req.user`에 넣어놨으니, 그것으로 Users 테이블을 검색하고 해당 데이터를 삭제한다. 해당 기능은 JWT 토큰 검증을 거쳤으니 로그아웃 때처럼 토큰이 들어있는 cookie 또한 삭제한다. 
+
+<br>
+
+# 2. SearchBoards : Operators
+
+**controllers/Boards/searchBords.js**
+
+```js
+const { Boards } = require('../../models');
+const { Op } = require("sequelize");
+
+module.exports = {
+  get : async (req, res) =>{
+    const { search } = req.body;
+
+    Boards.findAll({
+      where : {
+        title : {
+                [Op.like]: "%" + search + "%"
+            }
+      }
+    }).then(data => {
+        res.status(200).send(data)
+    })
+  }
+```
+
+각 프로그래밍 언어에는 연산자라는 게 존재하 듯이 DB에도 마찬가지 이다.  
+
+```js
+const Op = Sequelize.Op
+```
+
+## 2.1 라우터(Url params)
+
+**/routes/index.js**
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const checkToken = require('../middlewares/checkToken');
+const { userController, 
+        myPageController, 
+        BoardController } = require('../controllers');
+
+.
+.
+.
+
+router.get('/board/searchBords/:search', BoardController.searchBords.get);
+
+.
+.
+.
+
+module.exports = router;
+```
+
+URL params 란, 클릭으로 정보를 전달하는 방식이다. 예를들면 특정 게시글을 보거나, 검색처럼 사용자에 의해 URL 정보가 결정되는 것들이 있다. 이 정보들은 매우 유동적이라서 라우터를 딱 정할 수 없는데, 그럴때 사용하는 것이 `:(키워드)`이다. 이때 `:`(콜론) 뒤에있는 키워드는 `req.params`를 통해 얻을 수 있다.
+
+## 2.2 operators(`Op.like`)
+
+**controllers/Boards/searchBords.js**
+
+```js
+const { Boards } = require('../../models');
+const { Op } = require("sequelize");
+
+module.exports = {
+  get : async (req, res) =>{
+    const { search } = req.params;
+
+    Boards.findAll({
+      where : {
+        title : {
+                [Op.like]: "%" + search + "%"
+            }
+      }
+    }).then(data => {
+        res.status(200).send(data)
+    })
+  }
+```
+
+sequelize에서는 이를 operators라고 하는데,  따로 설치 없이 위처럼 Op 객체가 정의되어야 한다.
+
+보통 게시물을 검색할 때는 키워드를 검색해 키워드가 쓰인 모든 글을 출력한다. 때문에, 완전히 똑같지 않은 검색어를 입력해도 검색어가 글에 포함되어있으면 검색되는 유사검색을 사용했다. 대부분의 DB는 유사검색으로 `%` 기호를 사용한다고 한다. 
+
+`%River`를 작성하면 River로 끝나는 것을 검색하고, `River%`는 그 반대인 River로 시작하는 문자열을, `%River%`는 River가포함된 문자열을 검색해서 출력한다.
+
+## 2.3 operators(`Op.or`)
+
+```js
+const { Boards } = require('../../models');
+const { Op } = require("sequelize");
+
+module.exports = {
+  get : async (req, res) =>{
+    const { search } = req.params;
+
+    Boards.findAll({
+      where : {
+        [Op.or] : [
+          {
+            title : {
+              [Op.like]: "%" + search + "%"
+            }
+          }, {
+            content : {
+              [Op.like]: "%" + search + "%"
+            }
+          }
+        ]          
+      },
+      order: [['createdAt', 'DESC']]
+    }).then(data => {
+        res.status(200).send(data)
+    })
+  }
+}
+```
+
+보통 포털사이트에 어떤 키워드를 검색할 때, 그 키워드가 제목에 있는 것 뿐 아니라, 내용에 포함된 것도 출력하곤 한다. 그래서 operators 중 하나인 or를 통해 `title` 테이블뿐만 아니라 `content` 테이블까지 검색하도록 했다.
+
+<br>
